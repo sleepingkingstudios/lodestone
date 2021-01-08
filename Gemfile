@@ -21,10 +21,24 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'thor', '~> 1.0'
+
+  gem 'sleeping_king_studios-tasks',
+    git: 'https://github.com/sleepingkingstudios/sleeping_king_studios-tasks'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
+end
+
+group :test do
+  gem 'rspec', '~> 3.10'
+  gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-sleeping_king_studios', '~> 2.5'
+  gem 'rubocop', '~> 1.8.0'
+  gem 'rubocop-rails', '~> 2.9.1'
+  gem 'rubocop-rspec', '~> 2.1.0'
+  gem 'simplecov', '~> 0.21'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

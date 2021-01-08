@@ -9,18 +9,34 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/public/assets
+/spec/examples.txt
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+.byebug_history
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
 
-
-/public/assets
-.byebug_history
-
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore local credentials.
+/config/credentials/development.key
+/config/credentials/development.yml.enc
+/config/credentials/test.key
+/config/credentials/test.yml.enc
+
+# Ignore local configuration.
+
+.rspec
+.rubocop
+
+# Ignore local and generated documentation.
+/coverage/*
+/doc/*
+.yardoc
+.yardopts
