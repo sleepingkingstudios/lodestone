@@ -17,3 +17,27 @@ Layout/HashAlignment:
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
   IndentationWidth: ~
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_examples.rb
+    - spec/**/*_spec.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*_examples.rb
+
+RSpec/ExampleWording:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - db/migrate/*.rb
+    - spec/**/*_examples.rb
