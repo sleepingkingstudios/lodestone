@@ -21,8 +21,10 @@ gem 'webpacker', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
+  gem 'annotate', '~> 3.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.1'
   gem 'thor', '~> 1.0'
 
   gem 'sleeping_king_studios-tasks',

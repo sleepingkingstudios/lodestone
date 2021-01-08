@@ -4,7 +4,8 @@
 
 ### Board
 
-- has_many :projects
+- has_many :project_boards
+- has_many :projects, through: project_boards
 - has_many :tasks, through: :board
 
 ### Milestone
@@ -24,8 +25,9 @@
 - project_type:string (enum: application, library, script)
 - repository:string
 
-- belongs_to :board
+- has_many :boards, through: :project_boards
 - has_many :milestones
+- has_many :project_boards
 - has_many :tasks
 
 - has_many :project_dependencies,
@@ -38,6 +40,11 @@
 - has_many :inverse_dependencies,
     class: Project,
     through: :inverse_project_dependencies
+
+### ProjectBoard
+
+- belongs_to :board
+- belongs_to :project
 
 ### ProjectDependency
 
