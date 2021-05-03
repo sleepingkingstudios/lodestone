@@ -1,0 +1,55 @@
+<%= form_with model: project do |form| %>
+  <% if project.errors.present? %>
+    <p>
+      Unable to <%= project.persisted? ? 'update' : 'create' %> project:
+    </p>
+
+    <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :slug %>
+    <%= form.text_field :slug %>
+  </p>
+
+  <p>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </p>
+
+  <p>
+    <%= form.label :public %>
+    <%= form.check_box :public %>
+  </p>
+
+  <p>
+    <%= form.label :project_type, 'Project Type' %>
+    <%= form.select :project_type, Project::ProjectTypes.each.map { |key, value| [key.capitalize, value] } %>
+  </p>
+
+  <p>
+    <%= form.label :repository %>
+    <%= form.text_field :repository %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,37 @@
+<h1><%= @project.name %></h1>
+
+<p>
+  <%= link_to 'Edit Project', edit_project_path(@project) %>
+  |
+  <%= link_to 'Delete Project', project_path(@project), method: :delete %>
+</p>
+
+<p>
+  <strong>Slug:</strong> <%= @project.slug %>
+</p>
+
+<p>
+  <strong>Active:</strong> <%= @project.active ? 'Yes' : 'No' %>
+</p>
+
+<p>
+  <strong>Public:</strong> <%= @project.public ? 'Yes' : 'No' %>
+</p>
+
+<p>
+  <strong>Project Type:</strong> <%= @project.project_type.capitalize %>
+</p>
+
+<p>
+  <strong>Repository:</strong> <%= @project.repository %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <br>
+  <%= @project.description %>
+</p>
+
+<p>
+  <%= link_to 'Back to Projects', projects_path %>
+</p>

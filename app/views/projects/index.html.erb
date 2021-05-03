@@ -1,0 +1,39 @@
+<h1>Projects</h1>
+
+<p>
+  <%= link_to 'Create Project', new_project_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Active</td>
+      <td>Public</td>
+      <td>Project Type</td>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects&.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.active ? 'Yes' : 'No' %></td>
+        <td><%= project.public ? 'Yes' : 'No' %></td>
+        <td><%= project.project_type.capitalize %></td>
+        <td>
+          <%= link_to 'Show', project_path(project) %>
+          |
+          <%= link_to 'Edit', edit_project_path(project) %>
+          |
+          <%= link_to 'Delete', project_path(project), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @projects.blank? %>
+      <tr>
+        <td colspan=4>There are no projects.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
