@@ -15,6 +15,8 @@ gem 'puma', '~> 5.0'
 
 # Assets
 gem 'sass-rails', '>= 6' # Use SCSS for stylesheets
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 5.0'
 
 gem 'bcrypt', '~> 3.1.7'
 
