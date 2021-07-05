@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/sleepingkingstudios/cuprum
+  revision: 63a9c815c917b77b22f206a1230ad7fdc4d15e19
+  branch: main
+  specs:
+    cuprum (0.10.0)
+      sleeping_king_studios-tools (~> 1.0)
+
+GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
   revision: 62ed8fa709b7a29def6eeb3aa6274f7f5bbbff72
   specs:
@@ -247,6 +255,7 @@ DEPENDENCIES
   annotate (~> 3.1)
   bcrypt (~> 3.1.7)
   byebug
+  cuprum!
   factory_bot_rails (~> 6.1)
   listen (~> 3.3)
   pg (~> 1.1)

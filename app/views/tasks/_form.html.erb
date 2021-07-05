@@ -1,0 +1,48 @@
+<%= form_with model: task do |form| %>
+  <% if task.errors.present? %>
+    <p>
+      Unable to <%= task.persisted? ? 'update' : 'create' %> task:
+    </p>
+
+    <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <% project_options = projects.map { |project| [project.name, project.id] }%>
+    <%= label :project_id, 'Project' %>
+    <%= select_tag :project_id, options_for_select(project_options, selected: task.project&.id), disabled: task.persisted? %>
+  </p>
+
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <% status_options = Task::Statuses.map { |key, value| [key.capitalize, value] } %>
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select(status_options, task.status) %>
+  </p>
+
+  <p>
+    <% task_options = Task::TaskTypes.map { |key, value| [key.capitalize, value] } %>
+    <%= form.label :task_type, 'Task Type' %>
+    <%= form.select :task_type, options_for_select(task_options, task.task_type) %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,40 @@
+<h1>
+  <%= @task.title %>
+</h1>
+
+<p>
+  <%= link_to 'Edit Task', edit_task_path(@task) %>
+  |
+  <%= link_to 'Delete Task', task_path(@task), method: :delete %>
+</p>
+
+<p>
+  <strong>Project:</strong> <%= @task.project.name %>
+</p>
+
+<p>
+  <strong>Title:</strong> <%= @task.title %>
+</p>
+
+<p>
+  <strong>Slug:</strong> <%= @task.slug %>
+</p>
+
+<p>
+  <strong>Task Type:</strong> <%= @task.task_type %>
+</p>
+
+<p>
+  <strong>Status:</strong> <%= @task.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <br>
+  <%= @task.description %>
+</p>
+
+<p>
+  <%= link_to 'Back to Tasks', tasks_path %>
+</p>
+
