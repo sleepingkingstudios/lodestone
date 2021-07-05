@@ -58,34 +58,46 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  include_examples 'should have primary key'
+  include_examples 'should define primary key'
 
-  include_examples 'should have slug'
+  include_examples 'should define slug'
 
-  include_examples 'should have timestamps'
+  include_examples 'should define timestamps'
 
   describe '#active' do
-    include_examples 'should have attribute', :active, default: true
+    include_examples 'should define attribute', :active, default: true
   end
 
   describe '#description' do
-    include_examples 'should have attribute', :description, default: ''
+    include_examples 'should define attribute', :description, default: ''
   end
 
   describe '#name' do
-    include_examples 'should have attribute', :name, default: ''
+    include_examples 'should define attribute', :name, default: ''
   end
 
   describe '#project_type' do
-    include_examples 'should have attribute', :project_type, default: ''
+    include_examples 'should define attribute', :project_type, default: ''
   end
 
   describe '#public' do
-    include_examples 'should have attribute', :public, default: true
+    include_examples 'should define attribute', :public, default: true
   end
 
   describe '#repository' do
-    include_examples 'should have attribute', :repository, default: ''
+    include_examples 'should define attribute', :repository, default: ''
+  end
+
+  describe '#tasks' do
+    include_examples 'should define reader', :tasks, []
+
+    context 'when the project has many tasks' do
+      let(:tasks) { Array.new(3) { FactoryBot.build(:task, project: project) } }
+
+      before(:example) { tasks.each(&:save!) }
+
+      it { expect(project.tasks).to contain_exactly(*tasks) }
+    end
   end
 
   describe '#valid?' do

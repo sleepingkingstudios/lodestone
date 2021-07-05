@@ -38,6 +38,9 @@ module Spec::Support::Examples
         context "when the attributes include #{attr_name}" do
           if value == DEFAULT_VALUE
             let(:expected) { attributes.fetch(attr_name.intern) }
+          elsif value.is_a?(Proc)
+            let(:attributes) { super().merge(attr_name => expected) }
+            let(:expected)   { instance_exec(&value) }
           else
             let(:attributes) { super().merge(attr_name => value) }
             let(:expected)   { value }
@@ -46,6 +49,7 @@ module Spec::Support::Examples
           it { expect(subject.public_send(attr_name)).to be == expected }
         end
       end
+    alias_shared_examples 'should define attribute', 'should have attribute'
 
     shared_examples 'should have primary key' do
       describe '#id' do
@@ -54,8 +58,9 @@ module Spec::Support::Examples
           value: '00000000-0000-0000-0000-000000000000'
       end
     end
+    alias_shared_examples 'should define primary key', 'should have primary key'
 
-    shared_examples 'should have slug' do
+    shared_examples 'should have slug' do |other_attributes: {}|
       describe '#slug' do
         include_examples 'should have attribute', :slug, default: ''
 
@@ -90,9 +95,12 @@ module Spec::Support::Examples
 
         include_examples 'should validate the presence of', :slug, type: String
 
-        include_examples 'should validate the uniqueness of', :slug
+        include_examples 'should validate the uniqueness of',
+          :slug,
+          attributes: other_attributes
       end
     end
+    alias_shared_examples 'should define slug', 'should have slug'
 
     shared_examples 'should have timestamps' do
       describe '#created_at' do
@@ -103,5 +111,6 @@ module Spec::Support::Examples
         include_examples 'should have reader', :updated_at
       end
     end
+    alias_shared_examples 'should define timestamps', 'should have timestamps'
   end
 end

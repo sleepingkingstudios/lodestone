@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'controllers/projects_controller'
+require 'rails_helper'
 
-RSpec.describe Controllers::ProjectsController do
+RSpec.describe ProjectsController, type: :controller do
   pending
 end

@@ -20,6 +20,8 @@ gem 'webpacker', '~> 5.0'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'sleeping_king_studios-tools', '~> 1.0'
+
 group :development, :test do
   gem 'annotate', '~> 3.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
