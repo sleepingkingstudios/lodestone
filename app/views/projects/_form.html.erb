@@ -27,10 +27,8 @@
     <div class='form-group col-sm-4 mb-2'>
       <%= form.label :project_type, 'Project Type', class: 'form-label' %>
 
-      <div class='py-1'>
-        <% project_types_options = Project::ProjectTypes.each.map { |key, value| [key.capitalize, value] } %>
-        <%= form.select :project_type, project_types_options, {},   class: 'form-select' %>
-      </div>
+      <% project_types_options = Project::ProjectTypes.each.map { |key, value| [key.capitalize, value] } %>
+      <%= form.select :project_type, project_types_options, {},   class: 'form-select' %>
     </div>
 
     <div class='form-group col-sm-6 mb-2'>

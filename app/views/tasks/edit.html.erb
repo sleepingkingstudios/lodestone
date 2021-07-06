@@ -1,9 +1,9 @@
-<h1>Edit Task</h1>
+<h1>Update Task</h1>
 
 <%= render partial: 'form', locals: { projects: @projects, task: @task } %>
 
 <p>
-  <%= link_to 'Back to Tasks', tasks_path %>
+  <%= link_to 'Back to Tasks', tasks_path, class: 'text-decoration-none' %>
   |
-  <%= link_to 'Back to Task', task_path(@task) %>
+  <%= link_to 'Back to Task', task_path(@task), class: 'text-decoration-none' %>
 </p>
