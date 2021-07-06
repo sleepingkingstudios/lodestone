@@ -1,40 +1,44 @@
-<h1>
-  <%= @task.title %>
-</h1>
+<div>
+  <h1 class='d-inline-block'><%= @task.title %></h1>
+
+  <div class='float-end mt-3'>
+    <%= link_to 'Edit Task', edit_task_path(@task), class: 'btn btn-outline-primary btn-sm' %>
+
+    <%= link_to 'Delete Task', task_path(@task), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+  </div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Slug</div>
+  <div class='col-10 font-monospace'><%= @task.slug %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Project</div>
+  <div class='col-10'><%= link_to @task.project.name, project_path(@task.project) %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Task Type</div>
+  <div class='col-10'><%= @task.task_type.capitalize %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Status</div>
+  <div class='col-10'><%= @task.status.split('_').map(&:capitalize).join(' ') %></div>
+</div>
+
+<% @task.description.split(/\n{2,}/).each do |paragraph| %>
+  <p>
+    <% paragraph.split("\n").each.with_index do |line, index| %>
+      <% unless index.zero? %><br><% end %>
+
+      <%= line %>
+    <% end %>
+  </p>
+<% end %>
 
 <p>
-  <%= link_to 'Edit Task', edit_task_path(@task) %>
-  |
-  <%= link_to 'Delete Task', task_path(@task), method: :delete %>
-</p>
-
-<p>
-  <strong>Project:</strong> <%= @task.project.name %>
-</p>
-
-<p>
-  <strong>Title:</strong> <%= @task.title %>
-</p>
-
-<p>
-  <strong>Slug:</strong> <%= @task.slug %>
-</p>
-
-<p>
-  <strong>Task Type:</strong> <%= @task.task_type %>
-</p>
-
-<p>
-  <strong>Status:</strong> <%= @task.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <br>
-  <%= @task.description %>
-</p>
-
-<p>
-  <%= link_to 'Back to Tasks', tasks_path %>
+  <%= link_to 'Back to Tasks', tasks_path, class: 'text-decoration-none' %>
 </p>
 
