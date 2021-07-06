@@ -15,7 +15,11 @@
   </div>
 
   <% if @projects.blank? %>
-    <div class='row p-1 py-2'>There are no projects matching the criteria.</div>
+    <div class='row p-1 py-2'>
+      <div class='col-12'>
+        There are no projects matching the criteria.
+      </div>
+    </div>
   <% end %>
 
   <% @projects&.each do |project| %>

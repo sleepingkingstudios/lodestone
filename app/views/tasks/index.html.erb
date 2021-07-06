@@ -1,41 +1,40 @@
-<h1>Tasks</h1>
+<div>
+  <h1 class='d-inline-block'>Tasks</h1>
 
-<p>
-  <%= link_to 'Create Task', new_task_path %>
-</p>
+  <div class='float-end mt-3'>
+    <%= link_to 'Create Task', new_task_path, class: 'btn btn-outline-primary btn-sm' %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <td>Task</td>
-      <td>Project</td>
-      <td>Title</td>
-      <td>Task Type</td>
-      <td>Status</td>
-      <td>&nbsp;</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks&.each do |task| %>
-      <tr>
-        <td><%= task.slug %></td>
-        <td><%= task.project.name %></td>
-        <td><%= task.title %></td>
-        <td><%= task.task_type %></td>
-        <td><%= task.status %></td>
-        <td>
-          <%= link_to 'Show', task_path(task) %>
-          |
-          <%= link_to 'Edit', edit_task_path(task) %>
-          |
-          <%= link_to 'Delete', task_path(task), method: :delete %>
-        </td>
-      </tr>
-    <% end %>
-    <% if @tasks.blank? %>
-      <tr>
-        <td colspan=6>There are no tasks.</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
+  <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
+    <div class='col-2'>Task</div>
+    <div class='col-3'>Title</div>
+    <div class='col-2'>Task Type</div>
+    <div class='col-2'>Status</div>
+  </div>
+
+  <% if @tasks.blank? %>
+    <div class='row p-1 py-2'>
+      <div class='col-12'>
+        There are no tasks matching the criteria.
+      </div>
+    </div>
+  <% end %>
+
+  <% @tasks&.each do |task| %>
+    <div class='row p-1 py-2'>
+      <div class='col-2 font-monospace'><%= task.slug %></div>
+      <div class='col-3'><%= task.title %></div>
+      <div class='col-2'><%= task.task_type.capitalize %></div>
+      <div class='col-2'><%= task.status.split('_').map(&:capitalize).join(' ') %></div>
+      <div class='col-3'>
+        <div class='row text-center'>
+          <%= link_to 'Show', task_path(task), class: 'col text-decoration-none text-info' %>
+          <%= link_to 'Edit', edit_task_path(task), class: 'col text-decoration-none' %>
+          <%= link_to 'Delete', task_path(task), method: :delete, class: 'col text-decoration-none text-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
