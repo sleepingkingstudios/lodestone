@@ -1,7 +1,21 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with \
-    name:     Rails.application.credentials.authentication[:username],
-    password: Rails.application.credentials.authentication[:password]
+  class << self
+    private
+
+    def password
+      ENV.fetch('BASIC_AUTH_PASSWORD') do
+        Rails.application.credentials.authentication[:password]
+      end
+    end
+
+    def username
+      ENV.fetch('BASIC_AUTH_USERNAME') do
+        Rails.application.credentials.authentication[:username]
+      end
+    end
+  end
+
+  http_basic_authenticate_with name: username, password: password
 end
