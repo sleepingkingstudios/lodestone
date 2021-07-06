@@ -9,7 +9,7 @@ FactoryBot.define do
     end
 
     name         { "Project #{project_index}" }
-    slug         { "project-#{project_index}" }
+    slug         { name.split.map(&:underscore).join('_').tr('_', '-') }
     active       { true }
     description  { "The description for project #{project_index}." }
     project_type { Project::ProjectTypes::APPLICATION }

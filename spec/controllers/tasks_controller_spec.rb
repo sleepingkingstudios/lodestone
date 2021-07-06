@@ -2,6 +2,6 @@
 
 require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe TasksController do
   pending
 end

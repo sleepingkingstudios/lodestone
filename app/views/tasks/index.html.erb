@@ -1,0 +1,41 @@
+<h1>Tasks</h1>
+
+<p>
+  <%= link_to 'Create Task', new_task_path %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Task</td>
+      <td>Project</td>
+      <td>Title</td>
+      <td>Task Type</td>
+      <td>Status</td>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks&.each do |task| %>
+      <tr>
+        <td><%= task.slug %></td>
+        <td><%= task.project.name %></td>
+        <td><%= task.title %></td>
+        <td><%= task.task_type %></td>
+        <td><%= task.status %></td>
+        <td>
+          <%= link_to 'Show', task_path(task) %>
+          |
+          <%= link_to 'Edit', edit_task_path(task) %>
+          |
+          <%= link_to 'Delete', task_path(task), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @tasks.blank? %>
+      <tr>
+        <td colspan=6>There are no tasks.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

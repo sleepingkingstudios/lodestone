@@ -230,12 +230,19 @@ module Spec::Support::Examples::Models
 
           described_class.name.split('::').last.underscore.intern
         end
+        let(:injected) do
+          if injected_attributes.is_a?(Proc)
+            instance_exec(&injected_attributes)
+          else
+            injected_attributes
+          end
+        end
 
         before do
           attributes =
             FactoryBot
             .attributes_for(factory_name)
-            .merge(injected_attributes)
+            .merge(injected)
             .merge(attr_name.intern => value)
 
           described_class.create!(attributes)
@@ -272,11 +279,21 @@ module Spec::Support::Examples::Models
             end
 
           context "with #{tools.array_tools.humanize_list(attributes_list)}" do
+            let(:scoped_attributes) do
+              scope_attributes
+                .map do |key, value|
+                  value = instance_exec(&value) if value.is_a?(Proc)
+
+                  [key, value]
+                end
+                .to_h
+            end
+
             before do
               described_class.create!(
                 attributes
                   .merge(attr_name => value)
-                  .merge(scope_attributes)
+                  .merge(scoped_attributes)
               )
             end
 
@@ -284,7 +301,7 @@ module Spec::Support::Examples::Models
             # rubocop:disable RSpec/MultipleExpectations
             it 'should check the scope' do
               scopes_match =
-                scope_attributes
+                scoped_attributes
                 .reduce(true) do |memo, (scope_attribute, scope_value)|
                   memo && subject.send(scope_attribute) == scope_value
                 end

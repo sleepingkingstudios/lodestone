@@ -12,6 +12,9 @@ class Project < ApplicationRecord
     }
   ).freeze
 
+  ### Associations
+  has_many :tasks, dependent: :destroy
+
   ### Validations
   validates :active,
     exclusion: {
