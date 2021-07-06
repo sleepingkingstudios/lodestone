@@ -1,37 +1,54 @@
-<h1><%= @project.name %></h1>
+<div>
+  <h1 class='d-inline-block'><%= @project.name %></h1>
+
+  <div class='float-end mt-3'>
+    <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-outline-primary btn-sm' %>
+
+    <%= link_to 'Delete Project', project_path(@project), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+  </div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Slug</div>
+  <div class='col-10 font-monospace'><%= @project.slug %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Project Type</div>
+  <div class='col-10'><%= @project.project_type.capitalize %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Active</div>
+  <div class='col-10'><%= @project.active? ? 'Yes' : 'No' %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Public</div>
+  <div class='col-10'><%= @project.public? ? 'Yes' : 'No' %></div>
+</div>
+
+<div class='row mb-2'>
+  <div class='col-2 fw-bold'>Repository</div>
+  <div class='col-10'>
+    <% if @project.repository.blank? %>
+      <span class='text-muted'>(None)</span>
+    <% else %>
+      <%= sanitize link_to(@project.repository, @project.repository) %>
+    <% end %>
+  </div>
+</div>
+
+<% @project.description.split(/\n{2,}/).each do |paragraph| %>
+  <p>
+    <% paragraph.split("\n").each.with_index do |line, index| %>
+      <% unless index.zero? %><br><% end %>
+
+      <%= line %>
+    <% end %>
+  </p>
+<% end %>
 
 <p>
-  <%= link_to 'Edit Project', edit_project_path(@project) %>
-  |
-  <%= link_to 'Delete Project', project_path(@project), method: :delete %>
-</p>
-
-<p>
-  <strong>Slug:</strong> <%= @project.slug %>
-</p>
-
-<p>
-  <strong>Active:</strong> <%= @project.active ? 'Yes' : 'No' %>
-</p>
-
-<p>
-  <strong>Public:</strong> <%= @project.public ? 'Yes' : 'No' %>
-</p>
-
-<p>
-  <strong>Project Type:</strong> <%= @project.project_type.capitalize %>
-</p>
-
-<p>
-  <strong>Repository:</strong> <%= @project.repository %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <br>
-  <%= @project.description %>
-</p>
-
-<p>
-  <%= link_to 'Back to Projects', projects_path %>
+  <%= link_to 'Back to Projects', projects_path, class: 'text-decoration-none' %>
 </p>
