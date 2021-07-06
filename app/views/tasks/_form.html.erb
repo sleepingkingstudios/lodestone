@@ -13,36 +13,46 @@
     </ul>
   <% end %>
 
-  <p>
-    <% project_options = projects.map { |project| [project.name, project.id] }%>
-    <%= label :project_id, 'Project' %>
-    <%= select_tag :project_id, options_for_select(project_options, selected: task.project&.id), disabled: task.persisted? %>
-  </p>
+  <div class='row justify-content-start'>
+    <div class='form-group col-sm-12 mb-2'>
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
 
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
+    <div class='form-group col-sm-4 mb-2'>
+      <%= label :project_id, 'Project', class: 'form-label' %>
 
-  <p>
-    <% status_options = Task::Statuses.map { |key, value| [key.capitalize, value] } %>
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select(status_options, task.status) %>
-  </p>
+      <% project_options = projects.map { |project| [project.name, project.id] }%>
+      <%= select_tag :project_id, options_for_select(project_options, selected: task.project&.id), disabled: task.persisted?, class: 'form-select' %>
+    </div>
 
-  <p>
-    <% task_options = Task::TaskTypes.map { |key, value| [key.capitalize, value] } %>
-    <%= form.label :task_type, 'Task Type' %>
-    <%= form.select :task_type, options_for_select(task_options, task.task_type) %>
-  </p>
+    <div class='form-group col-sm-4 mb-2'>
+      <%= form.label :task_type, 'Task Type', class: 'form-label' %>
 
-  <p>
-    <%= form.label :description %>
-    <br>
-    <%= form.text_area :description %>
-  </p>
+      <% task_type_options = Task::TaskTypes.map { |key, value| [key.capitalize, value] } %>
+      <%= form.select :task_type, options_for_select(task_type_options, selected: task.task_type), {}, class: 'form-select' %>
+    </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+    <div class='form-group col-sm-4 mb-2'>
+      <%= form.label :status, 'Status', class: 'form-label' %>
+
+      <% status_options = Task::Statuses.map { |key, value| [key.to_s.split('_').map(&:capitalize).join(' '), value] } %>
+      <%= form.select :status, options_for_select(status_options, selected: task.status), {}, class: 'form-select' %>
+    </div>
+
+    <div class='form-group col-sm-12 mb-2'>
+      <%= form.label :description, class: 'form-label' %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='row justify-content-end mt-4'>
+    <div class='form-group col-sm-3 mb-2'>
+      <%= link_to 'Cancel', (@task.persisted? ? task_path(@task) : tasks_path), class: 'btn btn-outline-secondary d-block w-100' %>
+    </div>
+
+    <div class='form-group col-sm-3 mb-2'>
+      <%= form.submit nil, class: 'btn btn-outline-primary d-block w-100' %>
+    </div>
+  </div>
 <% end %>
