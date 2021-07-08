@@ -78,7 +78,8 @@ RSpec.describe Task, type: :model do
         BUGFIX:        'bugfix',
         CHORE:         'chore',
         FEATURE:       'feature',
-        INVESTIGATION: 'investigation'
+        INVESTIGATION: 'investigation',
+        RELEASE:       'release'
       }
     end
 
@@ -113,6 +114,13 @@ RSpec.describe Task, type: :model do
       it 'should store the value' do
         expect(described_class::TaskTypes::INVESTIGATION)
           .to be == 'investigation'
+      end
+    end
+
+    describe '::RELEASE' do
+      it 'should store the value' do
+        expect(described_class::TaskTypes::RELEASE)
+          .to be == 'release'
       end
     end
   end
