@@ -18,7 +18,8 @@ class Task < ApplicationRecord
       BUGFIX:        'bugfix',
       CHORE:         'chore',
       FEATURE:       'feature',
-      INVESTIGATION: 'investigation'
+      INVESTIGATION: 'investigation',
+      RELEASE:       'release'
     }
   ).freeze
 
