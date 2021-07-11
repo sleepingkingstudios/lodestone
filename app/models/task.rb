@@ -29,6 +29,16 @@ class Task < ApplicationRecord
 
   ### Associations
   belongs_to :project
+  has_many :inverse_relationships,
+    class_name:  'TaskRelationship',
+    dependent:   :destroy,
+    foreign_key: :target_task_id,
+    inverse_of:  :target_task
+  has_many :relationships,
+    class_name:  'TaskRelationship',
+    dependent:   :destroy,
+    foreign_key: :source_task_id,
+    inverse_of:  :source_task
 
   ### Validations
   validates :description, presence: true
@@ -62,8 +72,8 @@ end
 #  description   :text             default(""), not null
 #  project_index :integer          not null
 #  slug          :string           default(""), not null
-#  status        :string           default(""), not null
-#  task_type     :string           default(""), not null
+#  status        :string           default("icebox"), not null
+#  task_type     :string           default("feature"), not null
 #  title         :string           default(""), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

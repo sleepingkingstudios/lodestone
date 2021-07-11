@@ -1,0 +1,9 @@
+<h1>Update Relationship</h1>
+
+<%= render partial: 'form', locals: { relationship: @relationship, source_task: @source_task, tasks: @tasks } %>
+
+<p>
+  <%= link_to 'Back to Tasks', tasks_path, class: 'text-decoration-none' %>
+  |
+  <%= link_to 'Back to Task', task_path(@source_task), class: 'text-decoration-none' %>
+</p>

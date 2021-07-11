@@ -13,6 +13,36 @@ RSpec.describe Task, type: :model do
     before(:example) { project.save! }
   end
 
+  shared_context 'when the task has relationships' do
+    include_context 'when the task has a project'
+
+    let(:other_task) { FactoryBot.build(:task, project: project) }
+    let(:inverse_relationships) do
+      Array.new(3) do
+        FactoryBot.build(
+          :task_relationship,
+          source_task: other_task,
+          target_task: task
+        )
+      end
+    end
+    let(:relationships) do
+      Array.new(3) do
+        FactoryBot.build(
+          :task_relationship,
+          source_task: task,
+          target_task: other_task
+        )
+      end
+    end
+
+    before(:example) do
+      other_task.save!
+
+      relationships.each(&:save!)
+    end
+  end
+
   subject(:task) { described_class.new(attributes) }
 
   let(:project) { FactoryBot.build(:project, name: 'Xanadu') }
@@ -136,6 +166,16 @@ RSpec.describe Task, type: :model do
     include_examples 'should define attribute', :description, default: ''
   end
 
+  describe '#inverse_relationships' do
+    include_examples 'should define reader', :inverse_relationships, []
+
+    wrap_context 'when the task has relationships' do
+      let(:expected) { inverse_relationships }
+
+      it { expect(task.inverse_relationships).to contain_exactly(*expected) }
+    end
+  end
+
   describe '#project' do
     include_examples 'should define property', :project, nil
 
@@ -156,6 +196,14 @@ RSpec.describe Task, type: :model do
 
   describe '#project_index' do
     include_examples 'should define attribute', :project_index
+  end
+
+  describe '#relationships' do
+    include_examples 'should define reader', :relationships, []
+
+    wrap_context 'when the task has relationships' do
+      it { expect(task.relationships).to contain_exactly(*relationships) }
+    end
   end
 
   describe '#status' do
@@ -182,6 +230,10 @@ RSpec.describe Task, type: :model do
     include_examples 'should validate the presence of',
       :description,
       type: String
+
+    include_examples 'should validate the presence of',
+      :project,
+      message: 'must exist'
 
     include_examples 'should validate the numericality of',
       :project_index,

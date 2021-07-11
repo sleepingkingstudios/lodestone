@@ -37,7 +37,9 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task                  = Task.find(params[:id])
+    @relationships         = @task.relationships.includes(:target_task)
+    @inverse_relationships = @task.inverse_relationships.includes(:source_task)
   end
 
   def update

@@ -1,0 +1,39 @@
+<div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
+  <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
+    <div class='col-4'>Task</div>
+    <div class='col-2'>Status</div>
+    <div class='col-2'>Type</div>
+    <div class='col-2'>Blocking</div>
+  </div>
+
+  <% if relationships.blank? %>
+    <div class='row p-1 py-2'>
+      <div class='col-12'>
+        The task has no <%= inverse ? 'inverse ' : '' %>relationships.
+      </div>
+    </div>
+  <% end %>
+
+  <% relationships&.each do |relationship| %>
+    <div class='row p-1 py-2'>
+      <% task = inverse ? relationship.source_task : relationship.target_task %>
+
+      <div class='col-4'>
+        <%= link_to task.title, task_path(task) %>
+      </div>
+
+      <div class='col-2'><%= task.status.titleize %></div>
+
+      <div class='col-2'><%= relationship.relationship_type.titleize %></div>
+
+      <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
+
+      <div class='col-2'>
+        <div class='row text-center'>
+          <%= link_to 'Edit', edit_task_relationship_path(task, relationship), class: 'col text-decoration-none' %>
+          <%= link_to 'Delete', task_relationship_path(task, relationship), method: :delete, class: 'col text-decoration-none text-danger' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

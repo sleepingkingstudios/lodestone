@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_184412) do
+ActiveRecord::Schema.define(version: 2021_07_09_213515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 2021_07_05_184412) do
     t.index ["slug"], name: "index_projects_on_slug", unique: true
   end
 
+  create_table "task_relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "relationship_type", default: "", null: false
+    t.boolean "blocking", default: false, null: false
+    t.uuid "source_task_id"
+    t.uuid "target_task_id"
+    t.index ["source_task_id"], name: "index_task_relationships_on_source_task_id"
+    t.index ["target_task_id"], name: "index_task_relationships_on_target_task_id"
+  end
+
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,5 +54,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_184412) do
     t.index ["slug"], name: "index_tasks_on_slug", unique: true
   end
 
+  add_foreign_key "task_relationships", "tasks", column: "source_task_id"
+  add_foreign_key "task_relationships", "tasks", column: "target_task_id"
   add_foreign_key "tasks", "projects"
 end

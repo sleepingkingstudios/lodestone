@@ -28,15 +28,35 @@
   <div class='col-10'><%= @task.status.split('_').map(&:capitalize).join(' ') %></div>
 </div>
 
-<% @task.description.split(/\n{2,}/).each do |paragraph| %>
-  <p>
-    <% paragraph.split("\n").each.with_index do |line, index| %>
-      <% unless index.zero? %><br><% end %>
+<div class='mb-4'>
+  <% @task.description.split(/\n{2,}/).each do |paragraph| %>
+    <p>
+      <% paragraph.split("\n").each.with_index do |line, index| %>
+        <% unless index.zero? %><br><% end %>
 
-      <%= line %>
-    <% end %>
-  </p>
-<% end %>
+        <%= line %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<div class='mb-4'>
+  <div>
+    <h2 class='d-inline-block'>Relationships</h1>
+
+    <div class='float-end mt-2'>
+      <%= link_to 'Create Relationship', new_task_relationship_path(@task), class: 'btn btn-outline-primary btn-sm' %>
+    </div>
+  </div>
+
+  <%= render partial: 'task_relationships/table', locals: { inverse: false, relationships: @relationships } %>
+</div>
+
+<div class='mb-4'>
+  <h3>Inverse Relationships</h3>
+
+  <%= render partial: 'task_relationships/table', locals: { inverse: true, relationships: @inverse_relationships } %>
+</div>
 
 <p>
   <%= link_to 'Back to Tasks', tasks_path, class: 'text-decoration-none' %>
