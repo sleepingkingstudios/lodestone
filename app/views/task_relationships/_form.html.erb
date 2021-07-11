@@ -1,0 +1,57 @@
+<% url = relationship.persisted? ? task_relationship_path(@source_task, relationship) : task_relationships_path(@source_task) %>
+<%= form_with model: relationship, url: url do |form| %>
+  <% if relationship.errors.present? %>
+    <p>
+      Unable to <%= relationship.persisted? ? 'update' : 'create' %> relationship:
+    </p>
+
+    <ul>
+      <% relationship.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class='row justify-content-start'>
+    <% task_options = tasks.map { |task| ["#{task.slug}: #{task.title}", task.id] } %>
+
+    <div class='form-group col-sm-6 mb-2'>
+      <%= form.label :source_task_id, 'Source Task', class: 'form-label' %>
+
+      <%= form.select :source_task_id, options_for_select(task_options, selected: relationship.source_task_id), {}, class: 'form-select' %>
+    </div>
+
+    <div class='form-group col-sm-6 mb-2'>
+      <%= form.label :target_task_id, 'Target Task', class: 'form-label' %>
+
+      <%= form.select :target_task_id, options_for_select(task_options, selected: relationship.target_task_id), { prompt: '' }, class: 'form-select' %>
+    </div>
+
+    <div class='form-group col-sm-4 mb-2'>
+      <%= form.label :relationship_type, 'Relationship Type', class: 'form-label' %>
+
+      <% relationship_type_options = TaskRelationship::RelationshipTypes.map { |key, value| [key.to_s.titleize, value] } %>
+      <%= form.select :relationship_type, options_for_select(relationship_type_options, selected: relationship.relationship_type), {}, class: 'form-select' %>
+    </div>
+
+    <div class='form-group col-sm-2 mb-2'>
+      <%= form.label :blocking, class: 'form-label' %>
+
+      <div class='form-check pt-2'>
+        <%= form.check_box :blocking, class: 'form-check-input' %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-end mt-4'>
+    <div class='form-group col-sm-3 mb-2'>
+      <%= link_to 'Cancel', task_path(relationship.source_task), class: 'btn btn-outline-secondary d-block w-100' %>
+    </div>
+
+    <div class='form-group col-sm-3 mb-2'>
+      <%= form.submit "#{relationship.persisted? ? 'Update' : 'Create'} Relationship", class: 'btn btn-outline-primary d-block w-100' %>
+    </div>
+  </div>
+<% end %>

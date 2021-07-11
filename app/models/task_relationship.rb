@@ -37,8 +37,8 @@ class TaskRelationship < ApplicationRecord
   private
 
   def target_task_must_not_match_source_task
-    return if source_task.nil?
-    return unless source_task == target_task
+    return if source_task_id.nil?
+    return unless source_task_id == target_task_id
 
     errors[:target_task] << 'must not match source task'
   end
