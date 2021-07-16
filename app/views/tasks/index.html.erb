@@ -32,7 +32,7 @@
         <div class='row text-center'>
           <%= link_to 'Show', task_path(task), class: 'col text-decoration-none text-info' %>
           <%= link_to 'Edit', edit_task_path(task), class: 'col text-decoration-none' %>
-          <%= link_to 'Delete', task_path(task), method: :delete, class: 'col text-decoration-none text-danger' %>
+          <%= link_to 'Delete', task_path(task), method: :delete, class: 'col text-decoration-none text-danger', data: { confirm: "Are you sure you want to delete task #{task.title} (#{task.slug})?" } %>
         </div>
       </div>
     </div>
