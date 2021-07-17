@@ -1,4 +1,6 @@
 <%= form_with model: task do |form| %>
+  <%= hidden_field_tag :referer_path, @referer_path %>
+
   <% if task.errors.present? %>
     <p>
       Unable to <%= task.persisted? ? 'update' : 'create' %> task:

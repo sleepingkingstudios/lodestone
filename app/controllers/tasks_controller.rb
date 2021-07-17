@@ -7,9 +7,10 @@ class TasksController < ApplicationController
     @task = build_task.value
 
     if @task.save
-      redirect_to task_path(@task)
+      redirect_to(referer_path || task_path(@task))
     else
-      @projects = Project.all.order(:name)
+      @projects     = Project.all.order(:name)
+      @referer_path = referer_path
 
       render :new
     end
@@ -28,8 +29,9 @@ class TasksController < ApplicationController
   end
 
   def new
-    @projects = Project.all.order(:name)
-    @task     = Task.new
+    @projects     = Project.all.order(:name)
+    @task         = Task.new
+    @referer_path = referer_path
   end
 
   def index
@@ -69,6 +71,16 @@ class TasksController < ApplicationController
 
   def project_id
     params.require(:project_id)
+  end
+
+  def referer_path
+    return params[:referer_path] if params[:referer_path].present?
+
+    return nil unless request.referer&.start_with?(root_url)
+
+    referer = request.referer[root_url.size..]
+    referer = "/#{referer}" unless referer.start_with?('/')
+    referer
   end
 
   def task_params
