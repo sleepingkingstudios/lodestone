@@ -2,7 +2,7 @@
   <h1 class='d-inline-block'><%= @project&.name || 'All Tasks' %></h1>
 
   <div class='float-end mt-3'>
-    <%= link_to 'Create Task', new_task_path, class: 'btn btn-outline-primary btn-sm' %>
+    <%= link_to 'Create Task', @project ? new_project_task_path(@project) : new_task_path, class: 'btn btn-outline-primary btn-sm' %>
   </div>
 </div>
 

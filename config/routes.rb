@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :projects do
     resource :board
+
+    resources :tasks, only: %i[new]
   end
 
   resources :tasks do

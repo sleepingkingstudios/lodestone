@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
   def new
     @projects     = Project.all.order(:name)
-    @task         = Task.new
+    @task         = Task.new(project: params[:project_id] ? project : nil)
     @referer_path = referer_path
   end
 
