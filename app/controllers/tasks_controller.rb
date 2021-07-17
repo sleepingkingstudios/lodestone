@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     @task = build_task.value
 
     if @task.save
-      redirect_to(referer_path || task_path(@task))
+      redirect_to(redirect_board_path(referer_path) || task_path(@task))
     else
       @projects     = Project.all.order(:name)
       @referer_path = referer_path
@@ -69,8 +69,18 @@ class TasksController < ApplicationController
     Project.find(project_id)
   end
 
+  def project_board_path?(path)
+    path =~ %r{/projects/[a-z0-9-]+/board}
+  end
+
   def project_id
     params.require(:project_id)
+  end
+
+  def redirect_board_path(referer)
+    return referer unless @task.project && project_board_path?(referer)
+
+    project_board_path(@task.project)
   end
 
   def referer_path
