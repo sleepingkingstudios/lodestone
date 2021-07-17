@@ -17,11 +17,27 @@
       <div class='d-flex' style='flex-direction: column; min-height: 100vh;'>
         <header class='mb-2'>
           <p class='display-4 mb-0 text-center text-md-start'>
-            Lodestone
+            <%= link_to 'Lodestone', root_path, class: 'text-dark text-decoration-none' %>
             <small class='d-none d-md-inline text-muted' style="font-size: .75em; font-weight: 300;">Project Manager</small>
           </p>
 
-          <hr />
+          <nav>
+            <ul class='nav fs-5'>
+              <li class='nav-item'>
+                <%= link_to 'Board', board_path, class: 'nav-link text-dark' %>
+              </li>
+
+              <li class='nav-item'>
+                <%= link_to 'Projects', projects_path, class: 'nav-link text-dark' %>
+              </li>
+
+              <li class='nav-item'>
+                <%= link_to 'Tasks', tasks_path, class: 'nav-link text-dark' %>
+              </li>
+            </ul>
+          </nav>
+
+          <hr class='mt-1' />
         </header>
 
         <main style="flex: 1 1;">
