@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resource :board
 
-  resources :projects
+  resources :projects do
+    resource :board
+  end
 
   resources :tasks do
     resources :relationships,
