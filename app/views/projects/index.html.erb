@@ -30,6 +30,7 @@
       <div class='col-2'><%= project.project_type.capitalize %></div>
       <div class='col-3'>
         <div class='row text-center'>
+          <%= link_to 'Board', project_board_path(project), class: 'col text-decoration-none text-success' %>
           <%= link_to 'Show', project_path(project), class: 'col text-decoration-none text-info' %>
           <%= link_to 'Edit', edit_project_path(project), class: 'col text-decoration-none' %>
           <%= link_to 'Delete', project_path(project), method: :delete, class: 'col text-decoration-none text-danger', data: { confirm: "Are you sure you want to delete project #{project.name}?" } %>
