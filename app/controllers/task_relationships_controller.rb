@@ -1,10 +1,17 @@
 # frozen_string_literal: true
 
+require 'commands/task_relationships/assign'
+require 'commands/task_relationships/build'
+
 class TaskRelationshipsController < ApplicationController
   def create
-    @relationship = TaskRelationship.new(relationship_params)
+    @relationship =
+      Commands::TaskRelationships::Build
+      .new
+      .call(attributes: relationship_params)
+      .value
 
-    if @relationship.save
+    if @relationship&.save
       redirect_to task_path(@relationship.source_task_id)
     else
       @source_task  = Task.find(source_task_id)
@@ -35,7 +42,11 @@ class TaskRelationshipsController < ApplicationController
 
   def update
     @relationship = TaskRelationship.find(params[:id])
-    @relationship.assign_attributes(relationship_params)
+
+    Commands::TaskRelationships::Assign
+      .new
+      .call(attributes: relationship_params, entity: @relationship)
+      .value
 
     if @relationship.save
       redirect_to task_path(@relationship.source_task_id)
