@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :task_relationship, class: 'TaskRelationship' do
     blocking          { false }
-    relationship_type { TaskRelationship::RelationshipTypes::DEPENDS_ON }
+    relationship_type { TaskRelationship::RelationshipTypes::DEPENDS_ON.key }
   end
 end

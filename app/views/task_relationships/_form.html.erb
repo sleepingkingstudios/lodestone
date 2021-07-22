@@ -32,7 +32,7 @@
     <div class='form-group col-sm-4 mb-2'>
       <%= form.label :relationship_type, 'Relationship Type', class: 'form-label' %>
 
-      <% relationship_type_options = TaskRelationship::RelationshipTypes.map { |key, value| [key.to_s.titleize, value] } %>
+      <% relationship_type_options = TaskRelationship::RelationshipTypes.values.map { |type| [type.name.titleize, type.key] } %>
       <%= form.select :relationship_type, options_for_select(relationship_type_options, selected: relationship.relationship_type), {}, class: 'form-select' %>
     </div>
 
