@@ -8,7 +8,7 @@ class TaskRelationshipsController < ApplicationController
       redirect_to task_path(@relationship.source_task_id)
     else
       @source_task  = Task.find(source_task_id)
-      @tasks        = Task.all
+      @tasks        = grouped_tasks
 
       render :new
     end
@@ -23,13 +23,13 @@ class TaskRelationshipsController < ApplicationController
 
   def edit
     @source_task  = Task.find(source_task_id)
-    @tasks        = Task.all
+    @tasks        = grouped_tasks
     @relationship = TaskRelationship.find(params[:id])
   end
 
   def new
     @source_task  = Task.find(source_task_id)
-    @tasks        = Task.all
+    @tasks        = grouped_tasks
     @relationship = TaskRelationship.new(source_task: @source_task)
   end
 
@@ -41,13 +41,22 @@ class TaskRelationshipsController < ApplicationController
       redirect_to task_path(@relationship.source_task_id)
     else
       @source_task  = Task.find(source_task_id)
-      @tasks        = Task.all
+      @tasks        = grouped_tasks
 
       render :edit
     end
   end
 
   private
+
+  def grouped_tasks # rubocop:disable Metrics::MethodLength
+    projects = Project.all.order(:name)
+    tasks    = Task.all.order(created_at: :desc)
+
+    projects.map do |project|
+      [project.name, tasks.select { |task| task.project_id == project.id }]
+    end
+  end
 
   def relationship_params
     params.require(:task_relationship).permit(
