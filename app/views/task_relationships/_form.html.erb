@@ -15,33 +15,25 @@
   <% end %>
 
   <div class='row justify-content-start'>
-    <% task_options = tasks.map { |task| ["#{task.slug}: #{task.title}", task.id] } %>
+    <% task_options = tasks.map { |project_name, project_tasks| [project_name, project_tasks.map { |task| ["#{task.title} (#{task.slug})", task.id] }] } %>
 
-    <div class='form-group col-sm-6 mb-2'>
+    <div class='form-group col-sm-5 mb-2'>
       <%= form.label :source_task_id, 'Source Task', class: 'form-label' %>
 
-      <%= form.select :source_task_id, options_for_select(task_options, selected: relationship.source_task_id), {}, class: 'form-select' %>
-    </div>
-
-    <div class='form-group col-sm-6 mb-2'>
-      <%= form.label :target_task_id, 'Target Task', class: 'form-label' %>
-
-      <%= form.select :target_task_id, options_for_select(task_options, selected: relationship.target_task_id), { prompt: '' }, class: 'form-select' %>
-    </div>
-
-    <div class='form-group col-sm-4 mb-2'>
-      <%= form.label :relationship_type, 'Relationship Type', class: 'form-label' %>
-
-      <% relationship_type_options = TaskRelationship::RelationshipTypes.map { |key, value| [key.to_s.titleize, value] } %>
-      <%= form.select :relationship_type, options_for_select(relationship_type_options, selected: relationship.relationship_type), {}, class: 'form-select' %>
+      <%= form.select :source_task_id, grouped_options_for_select(task_options, selected: relationship.source_task_id), {}, class: 'form-select' %>
     </div>
 
     <div class='form-group col-sm-2 mb-2'>
-      <%= form.label :blocking, class: 'form-label' %>
+      <%= form.label :relationship_type, 'Relationship Type', class: 'form-label' %>
 
-      <div class='form-check pt-2'>
-        <%= form.check_box :blocking, class: 'form-check-input' %>
-      </div>
+      <% relationship_type_options = TaskRelationship::RelationshipTypes.values.map { |type| [type.name.titleize, type.key] } %>
+      <%= form.select :relationship_type, options_for_select(relationship_type_options, selected: relationship.relationship_type), {}, class: 'form-select' %>
+    </div>
+
+    <div class='form-group col-sm-5 mb-2'>
+      <%= form.label :target_task_id, 'Target Task', class: 'form-label' %>
+
+      <%= form.select :target_task_id, grouped_options_for_select(task_options, selected: relationship.target_task_id), { prompt: '' }, class: 'form-select' %>
     </div>
   </div>
 

@@ -53,13 +53,7 @@
     </div>
   </div>
 
-  <%= render partial: 'task_relationships/table', locals: { inverse: false, relationships: @relationships } %>
-</div>
-
-<div class='mb-4'>
-  <h3>Inverse Relationships</h3>
-
-  <%= render partial: 'task_relationships/table', locals: { inverse: true, relationships: @inverse_relationships } %>
+  <%= render partial: 'task_relationships/table', locals: { inverse_relationships: @inverse_relationships, relationships: @relationships } %>
 </div>
 
 <p>
