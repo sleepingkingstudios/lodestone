@@ -1,4 +1,4 @@
-<% link_classes = { 'done' => 'secondary', 'icebox' => 'info', 'in_progress' => 'success', 'todo' => 'primary' } %>
+<% link_classes = { 'archived' => 'secondary', 'done' => 'secondary', 'icebox' => 'info', 'in_progress' => 'success', 'to_do' => 'primary', 'wont_do' => 'danger' } %>
 <div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
   <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
     <div class='col-2'>Status</div>
@@ -31,7 +31,11 @@
         <%= link_to task.title, task_path(task), class: "text-decoration-none #{text_class}" %>
       </div>
 
-      <div class='col-2'><%= task.status.titleize %></div>
+      <div class='col-2'>
+        <% status = Task::Statuses.values.find { |value| value.key == task.status } %>
+
+        <%= status.name.titleize %>
+      </div>
 
       <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
 

@@ -38,7 +38,7 @@
     <div class='form-group col-sm-4 mb-2'>
       <%= form.label :status, 'Status', class: 'form-label' %>
 
-      <% status_options = Task::Statuses.map { |key, value| [key.to_s.split('_').map(&:capitalize).join(' '), value] } %>
+      <% status_options = Task::Statuses.values.map { |value| [value.name.titleize, value.key] } %>
       <%= form.select :status, options_for_select(status_options, selected: task.status), {}, class: 'form-select' %>
     </div>
 

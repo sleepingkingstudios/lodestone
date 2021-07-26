@@ -77,7 +77,7 @@ RSpec.describe TaskRelationship, type: :model do
 
     include_examples 'should define immutable constant', :RelationshipTypes
 
-    it 'should enumerate the status keys' do
+    it 'should enumerate the type keys' do
       expect(described_class::RelationshipTypes.keys).to be == expected_keys
     end
 
