@@ -1,3 +1,4 @@
+<% link_classes = { 'archived' => 'secondary', 'done' => 'secondary', 'icebox' => 'info', 'in_progress' => 'success', 'to_do' => 'primary', 'wont_do' => 'danger' } %>
 <div>
   <h1 class='d-inline-block'><%= @task.title %></h1>
 
@@ -28,8 +29,11 @@
 </div>
 
 <div class='row mb-2'>
+  <% status = Task::Statuses.values.find { |value| value.key == @task.status } %>
+  <% text_class = "text-#{link_classes[@task.status]}" %>
+
   <div class='col-2 fw-bold'>Status</div>
-  <div class='col-10'><%= @task.status.split('_').map(&:capitalize).join(' ') %></div>
+  <div class="col-10 <%= text_class %>"><%= status.name.titleize %></div>
 </div>
 
 <div class='mb-4'>
