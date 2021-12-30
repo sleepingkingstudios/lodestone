@@ -127,7 +127,7 @@ RSpec.describe TaskRelationship, type: :model do
   describe '#relationship_type' do
     include_examples 'should define attribute',
       :relationship_type,
-      default: described_class::RelationshipTypes::RELATES_TO.key
+      default: described_class::RelationshipTypes::DEPENDS_ON.key
   end
 
   describe '#source_task' do

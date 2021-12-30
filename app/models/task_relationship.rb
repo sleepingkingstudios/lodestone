@@ -27,7 +27,7 @@ class TaskRelationship < ApplicationRecord
   ### Attributes
   attribute :relationship_type,
     :string,
-    default: RelationshipTypes::RELATES_TO.key
+    default: RelationshipTypes::DEPENDS_ON.key
 
   ### Associations
   belongs_to :source_task,
