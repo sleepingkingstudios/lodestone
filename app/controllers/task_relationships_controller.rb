@@ -61,10 +61,12 @@ class TaskRelationshipsController < ApplicationController
   private
 
   def grouped_tasks # rubocop:disable Metrics::MethodLength
-    projects = Project.all.order(:name)
-    tasks    = Task.all.order(created_at: :desc)
+    current_project = @source_task.project
+    projects        =
+      Project.all.where('id != ?', current_project.id).order(:name)
+    tasks           = Task.all.order(created_at: :desc)
 
-    projects.map do |project|
+    [current_project, *projects].map do |project|
       [project.name, tasks.select { |task| task.project_id == project.id }]
     end
   end
