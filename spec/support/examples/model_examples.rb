@@ -36,9 +36,10 @@ module Spec::Support::Examples
         end
 
         context "when the attributes include #{attr_name}" do
-          if value == DEFAULT_VALUE
+          case value
+          when DEFAULT_VALUE
             let(:expected) { attributes.fetch(attr_name.intern) }
-          elsif value.is_a?(Proc)
+          when Proc
             let(:attributes) { super().merge(attr_name => expected) }
             let(:expected)   { instance_exec(&value) }
           else

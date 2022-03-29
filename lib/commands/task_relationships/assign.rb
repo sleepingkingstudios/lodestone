@@ -5,6 +5,7 @@ require 'cuprum'
 require 'commands/task_relationships'
 
 module Commands::TaskRelationships
+  # Updates the attributes for a task relationship.
   class Assign < Cuprum::Command
     private
 

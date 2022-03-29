@@ -7,6 +7,8 @@ require 'support/examples/model_examples'
 RSpec.describe Task, type: :model do
   include Spec::Support::Examples::ModelExamples
 
+  subject(:task) { described_class.new(attributes) }
+
   shared_context 'when the task has a project' do
     let(:attributes) { super().merge(project: project) }
 
@@ -42,8 +44,6 @@ RSpec.describe Task, type: :model do
       relationships.each(&:save!)
     end
   end
-
-  subject(:task) { described_class.new(attributes) }
 
   let(:project) { FactoryBot.build(:project, name: 'Xanadu') }
   let(:attributes) do

@@ -3,8 +3,9 @@
 require 'commands/task_relationships/assign'
 require 'commands/task_relationships/build'
 
+# Controller for managing task relationships.
 class TaskRelationshipsController < ApplicationController
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     @relationship =
       Commands::TaskRelationships::Build
       .new
@@ -40,7 +41,7 @@ class TaskRelationshipsController < ApplicationController
     @relationship = TaskRelationship.new(source_task: @source_task)
   end
 
-  def update
+  def update # rubocop:disable Metrics/MethodLength
     @relationship = TaskRelationship.find(params[:id])
 
     Commands::TaskRelationships::Assign
@@ -60,10 +61,10 @@ class TaskRelationshipsController < ApplicationController
 
   private
 
-  def grouped_tasks # rubocop:disable Metrics::MethodLength
+  def grouped_tasks
     current_project = @source_task.project
     projects        =
-      Project.all.where('id != ?', current_project.id).order(:name)
+      Project.all.where.not(id: current_project.id).order(:name)
     tasks           = Task.all.order(created_at: :desc)
 
     [current_project, *projects].map do |project|

@@ -3,7 +3,7 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   NewCops: enable
 
 Layout/ArgumentAlignment:
@@ -31,8 +31,17 @@ Metrics/ModuleLength:
   Exclude:
     - spec/**/*_examples.rb
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 RSpec/ExampleWording:
   Enabled: false
+
+RSpec/FactoryBot/SyntaxMethods:
+  Enabled: false
+
+RSpec/HookArgument:
+  EnforcedStyle: example
 
 Style/ClassAndModuleChildren:
   Enabled: false

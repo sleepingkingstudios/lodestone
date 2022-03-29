@@ -5,6 +5,7 @@ require 'cuprum'
 require 'commands/task_relationships'
 
 module Commands::TaskRelationships
+  # Builds a task relationship with the given tasks.
   class Build < Cuprum::Command
     private
 

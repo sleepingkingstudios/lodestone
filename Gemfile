@@ -46,9 +46,9 @@ group :test do
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 4.0'
   gem 'rspec-sleeping_king_studios', '~> 2.5'
-  gem 'rubocop', '~> 1.8.0'
-  gem 'rubocop-rails', '~> 2.9.1'
-  gem 'rubocop-rspec', '~> 2.1.0'
+  gem 'rubocop', '~> 1.26'
+  gem 'rubocop-rails', '~> 2.14'
+  gem 'rubocop-rspec', '~> 2.9'
   gem 'simplecov', '~> 0.21'
 end
 

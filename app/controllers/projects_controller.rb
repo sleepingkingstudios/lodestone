@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing projects.
 class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
