@@ -14,8 +14,8 @@ gem 'pg', '~> 1.1' # Use postgresql as the database for Active Record
 gem 'puma', '~> 5.0'
 
 # Assets
-gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails', '>= 6' # Use SCSS for stylesheets
+gem 'sprockets-rails', require: 'sprockets/railtie'
 
 gem 'bcrypt', '~> 3.1.7'
 
