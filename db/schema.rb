@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_09_213515) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_07_09_213515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
     t.string "slug", default: "", null: false
     t.boolean "active", default: true, null: false
@@ -30,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_07_09_213515) do
   end
 
   create_table "task_relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "relationship_type", default: "", null: false
     t.boolean "blocking", default: false, null: false
     t.uuid "source_task_id"
@@ -41,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_07_09_213515) do
   end
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title", default: "", null: false
     t.string "slug", default: "", null: false
     t.text "description", default: "", null: false

@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'rails', '~> 6.1.1'
+gem 'rails', '~> 7.0'
 
 gem 'pg', '~> 1.1' # Use postgresql as the database for Active Record
 
@@ -26,7 +26,9 @@ gem 'cuprum',
   git:    'https://github.com/sleepingkingstudios/cuprum'
 
 group :development, :test do
-  gem 'annotate', '~> 3.1'
+  gem 'annotate',
+    group: :development,
+    git:   'https://github.com/sleepingkingstudios/annotate_models'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.1'
