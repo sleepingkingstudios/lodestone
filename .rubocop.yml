@@ -14,6 +14,11 @@ Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
 
+Layout/LineLength:
+  IgnoredPatterns:
+    - '\A\s*#'
+  Max: 80
+
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
   IndentationWidth: ~
@@ -42,6 +47,9 @@ RSpec/FactoryBot/SyntaxMethods:
 
 RSpec/HookArgument:
   EnforcedStyle: example
+
+RSpec/NestedGroups:
+  Max: 5
 
 Style/ClassAndModuleChildren:
   Enabled: false

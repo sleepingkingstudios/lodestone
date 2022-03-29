@@ -8,11 +8,31 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum
-  revision: 63a9c815c917b77b22f206a1230ad7fdc4d15e19
+  revision: 3b5c109cf9052866f67d90f09ebe03b824ede919
   branch: main
   specs:
-    cuprum (0.10.0)
+    cuprum (1.0.0)
       sleeping_king_studios-tools (~> 1.0)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/cuprum-collections
+  revision: 67b23dd7648f8175cd96936c472c1d4bf216f028
+  branch: main
+  specs:
+    cuprum-collections (0.2.0)
+      cuprum (>= 0.11, < 2.0)
+      stannum (~> 0.2)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/cuprum-rails
+  revision: 81adc81b3bccce75f8a8bd4f5a18ef02c94495fe
+  branch: main
+  specs:
+    cuprum-rails (0.1.0)
+      cuprum (>= 0.11.0, < 2.0)
+      cuprum-collections (~> 0.2)
+      rails (>= 6.0, < 8)
+      stannum (~> 0.2)
 
 GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
@@ -255,6 +275,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stannum (0.2.0)
+      sleeping_king_studios-tools (~> 1.0, >= 1.0.2)
     strscan (3.0.1)
     thor (1.2.1)
     tilt (2.0.10)
@@ -275,6 +297,8 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   cuprum!
+  cuprum-collections!
+  cuprum-rails!
   factory_bot_rails (~> 6.1)
   listen (~> 3.3)
   pg (~> 1.1)
