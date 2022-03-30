@@ -78,6 +78,9 @@ RSpec/FactoryBot/SyntaxMethods:
 RSpec/HookArgument:
   EnforcedStyle: example
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 RSpec/NestedGroups:
   Max: 5
 

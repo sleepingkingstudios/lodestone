@@ -1,61 +1,28 @@
 # frozen_string_literal: true
 
-# Controller for managing projects.
-class ProjectsController < ApplicationController
-  def create
-    @project = Project.new(project_params)
-
-    if @project.save
-      redirect_to project_path(@project)
-    else
-      render :new
-    end
-  end
-
-  def destroy
-    Project.find(params[:id]).destroy
-
-    redirect_to projects_path
-  end
-
-  def edit
-    @project = Project.find(params[:id])
-  end
-
-  def index
-    @projects = Project.order(:name)
-  end
-
-  def new
-    @project = Project.new
-  end
-
-  def show
-    @project = Project.find(params[:id])
-  end
-
-  def update
-    @project = Project.find(params[:id])
-    @project.assign_attributes(project_params)
-
-    if @project.save
-      redirect_to project_path(@project)
-    else
-      render :edit
-    end
-  end
-
-  private
-
-  def project_params
-    params.require(:project).permit(
-      :active,
-      :description,
-      :name,
-      :project_type,
-      :public,
-      :repository,
-      :slug
+# Controller for managing Project entities.
+class ProjectsController < BaseController
+  def self.resource # rubocop:disable Metrics/MethodLength
+    Cuprum::Rails::Resource.new(
+      default_order:        :name,
+      permitted_attributes: %w[
+        active
+        description
+        name
+        project_type
+        public
+        repository
+        slug
+      ],
+      resource_class:       ::Project
     )
   end
+
+  action :create,  Actions::Projects::Create
+  action :destroy, Cuprum::Rails::Actions::Destroy, member: true
+  action :edit,    Cuprum::Rails::Actions::Edit,    member: true
+  action :index,   Cuprum::Rails::Actions::Index
+  action :new,     Cuprum::Rails::Actions::New
+  action :show,    Cuprum::Rails::Actions::Show,    member: true
+  action :update,  Cuprum::Rails::Actions::Update,  member: true
 end
