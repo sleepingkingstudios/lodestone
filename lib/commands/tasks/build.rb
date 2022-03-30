@@ -6,6 +6,7 @@ require 'commands/projects/next_index'
 require 'commands/tasks'
 
 module Commands::Tasks
+  # Builds a task model instance with the given project and attributes.
   class Build < Cuprum::Command
     private
 

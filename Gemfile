@@ -24,6 +24,12 @@ gem 'sleeping_king_studios-tools', '~> 1.0'
 gem 'cuprum',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum'
+gem 'cuprum-collections',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/cuprum-collections'
+gem 'cuprum-rails',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/cuprum-rails'
 
 group :development, :test do
   gem 'annotate',
@@ -44,11 +50,11 @@ end
 
 group :test do
   gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 4.0'
-  gem 'rspec-sleeping_king_studios', '~> 2.5'
-  gem 'rubocop', '~> 1.8.0'
-  gem 'rubocop-rails', '~> 2.9.1'
-  gem 'rubocop-rspec', '~> 2.1.0'
+  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-sleeping_king_studios', '~> 2.7'
+  gem 'rubocop', '~> 1.26'
+  gem 'rubocop-rails', '~> 2.14'
+  gem 'rubocop-rspec', '~> 2.9'
   gem 'simplecov', '~> 0.21'
 end
 

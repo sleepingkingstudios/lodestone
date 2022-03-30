@@ -8,11 +8,31 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum
-  revision: 63a9c815c917b77b22f206a1230ad7fdc4d15e19
+  revision: 3b5c109cf9052866f67d90f09ebe03b824ede919
   branch: main
   specs:
-    cuprum (0.10.0)
+    cuprum (1.0.0)
       sleeping_king_studios-tools (~> 1.0)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/cuprum-collections
+  revision: 67b23dd7648f8175cd96936c472c1d4bf216f028
+  branch: main
+  specs:
+    cuprum-collections (0.2.0)
+      cuprum (>= 0.11, < 2.0)
+      stannum (~> 0.2)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/cuprum-rails
+  revision: bb47a519c50400b629e03b391973600e1e8240e3
+  branch: main
+  specs:
+    cuprum-rails (0.1.0)
+      cuprum (>= 0.11.0, < 2.0)
+      cuprum-collections (~> 0.2)
+      rails (>= 6.0, < 8)
+      stannum (~> 0.2)
 
 GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
@@ -91,7 +111,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    ast (2.4.1)
+    ast (2.4.2)
     bcrypt (3.1.16)
     builder (3.2.4)
     byebug (11.1.3)
@@ -145,8 +165,8 @@ GEM
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    parallel (1.20.1)
-    parser (3.0.0.0)
+    parallel (1.22.1)
+    parser (3.1.1.0)
       ast (~> 2.4.1)
     pg (1.2.3)
     puma (5.6.2)
@@ -181,12 +201,12 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rainbow (3.0.0)
+    rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (2.0.3)
+    regexp_parser (2.2.1)
     rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -200,37 +220,36 @@ GEM
     rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
-    rspec-rails (4.0.2)
-      actionpack (>= 4.2)
-      activesupport (>= 4.2)
-      railties (>= 4.2)
+    rspec-rails (5.1.1)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
       rspec-core (~> 3.10)
       rspec-expectations (~> 3.10)
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
-    rspec-sleeping_king_studios (2.6.0)
+    rspec-sleeping_king_studios (2.7.0)
       hashdiff (~> 0.3.8)
       rspec (~> 3.4)
       sleeping_king_studios-tools (>= 0.8.0, < 2)
     rspec-support (3.10.2)
-    rubocop (1.8.0)
+    rubocop (1.26.1)
       parallel (~> 1.10)
-      parser (>= 3.0.0.0)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.2.0, < 2.0)
+      rubocop-ast (>= 1.16.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.4.0)
-      parser (>= 2.7.1.5)
-    rubocop-rails (2.9.1)
+    rubocop-ast (1.16.0)
+      parser (>= 3.1.1.0)
+    rubocop-rails (2.14.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
-      rubocop (>= 0.90.0, < 2.0)
-    rubocop-rspec (2.1.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
+      rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.9.0)
+      rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -256,13 +275,15 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stannum (0.2.0)
+      sleeping_king_studios-tools (~> 1.0, >= 1.0.2)
     strscan (3.0.1)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.0.0)
+    unicode-display_width (2.1.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -276,17 +297,19 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   cuprum!
+  cuprum-collections!
+  cuprum-rails!
   factory_bot_rails (~> 6.1)
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0)
   rspec (~> 3.10)
-  rspec-rails (~> 4.0)
-  rspec-sleeping_king_studios (~> 2.5)
-  rubocop (~> 1.8.0)
-  rubocop-rails (~> 2.9.1)
-  rubocop-rspec (~> 2.1.0)
+  rspec-rails (~> 5.0)
+  rspec-sleeping_king_studios (~> 2.7)
+  rubocop (~> 1.26)
+  rubocop-rails (~> 2.14)
+  rubocop-rspec (~> 2.9)
   sass-rails (>= 6)
   simplecov (~> 0.21)
   sleeping_king_studios-tasks!

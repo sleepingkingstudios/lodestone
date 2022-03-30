@@ -238,7 +238,7 @@ module Spec::Support::Examples::Models
           end
         end
 
-        before do
+        before(:example) do
           attributes =
             FactoryBot
             .attributes_for(factory_name)
@@ -281,15 +281,14 @@ module Spec::Support::Examples::Models
           context "with #{tools.array_tools.humanize_list(attributes_list)}" do
             let(:scoped_attributes) do
               scope_attributes
-                .map do |key, value|
+                .to_h do |key, value|
                   value = instance_exec(&value) if value.is_a?(Proc)
 
                   [key, value]
                 end
-                .to_h
             end
 
-            before do
+            before(:example) do
               described_class.create!(
                 attributes
                   .merge(attr_name => value)

@@ -7,6 +7,8 @@ require 'support/examples/model_examples'
 RSpec.describe TaskRelationship, type: :model do
   include Spec::Support::Examples::ModelExamples
 
+  subject(:relationship) { described_class.new(attributes) }
+
   shared_context 'when the relationship has a source task' do
     let(:project)     { FactoryBot.build(:project) }
     let(:source_task) { FactoryBot.build(:task, project: project) }
@@ -35,8 +37,6 @@ RSpec.describe TaskRelationship, type: :model do
     include_context 'when the relationship has a source task'
     include_context 'when the relationship has a target task'
   end
-
-  subject(:relationship) { described_class.new(attributes) }
 
   let(:attributes) do
     {

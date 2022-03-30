@@ -3,8 +3,35 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   NewCops: enable
+
+RSpec:
+  Language:
+    ExampleGroups:
+      Regular:
+        - context
+        - describe
+        - wrap_context
+      Skipped:
+        - xcontext
+        - xdescribe
+        - xwrap_context
+      Focused:
+        - fcontext
+        - fdescribe
+        - fwrap_context
+    Includes:
+      Examples:
+        - finclude_contract
+        - finclude_examples
+        - fwrap_examples
+        - include_contract
+        - include_examples
+        - wrap_examples
+        - xinclude_contract
+        - xinclude_examples
+        - xwrap_examples
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
@@ -13,6 +40,11 @@ Layout/ArgumentAlignment:
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
+
+Layout/LineLength:
+  IgnoredPatterns:
+    - '\A\s*#'
+  Max: 80
 
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
@@ -31,8 +63,26 @@ Metrics/ModuleLength:
   Exclude:
     - spec/**/*_examples.rb
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/BeNil:
+  Enabled: false
+
 RSpec/ExampleWording:
   Enabled: false
+
+RSpec/FactoryBot/SyntaxMethods:
+  Enabled: false
+
+RSpec/HookArgument:
+  EnforcedStyle: example
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 5
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -40,4 +90,4 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Exclude:
     - db/migrate/*.rb
-    - spec/**/*_examples.rb
+    - spec/**/*.rb

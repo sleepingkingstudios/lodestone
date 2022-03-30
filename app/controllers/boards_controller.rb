@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing task boards.
 class BoardsController < ApplicationController
   def show
     @project = project

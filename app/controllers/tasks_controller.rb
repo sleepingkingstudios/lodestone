@@ -2,6 +2,7 @@
 
 require 'commands/tasks/build'
 
+# Controller for managing tasks.
 class TasksController < ApplicationController
   def create
     @task = build_task.value

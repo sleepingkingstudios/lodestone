@@ -5,6 +5,7 @@ require 'cuprum'
 require 'commands/projects'
 
 module Commands::Projects
+  # Determines the next index for a project's tasks.
   class NextIndex < Cuprum::Command
     def initialize(project:)
       super()

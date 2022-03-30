@@ -21,7 +21,7 @@
 
     <div class='form-group col-sm-4 mb-2'>
       <%= form.label :slug, class: 'form-label' %>
-      <%= form.text_field :slug, class: 'form-control' %>
+      <%= form.text_field :slug, class: 'form-control', disabled: project.persisted? %>
     </div>
 
     <div class='form-group col-sm-4 mb-2'>
