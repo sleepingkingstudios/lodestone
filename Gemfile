@@ -50,8 +50,8 @@ end
 
 group :test do
   gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 4.0'
-  gem 'rspec-sleeping_king_studios', '~> 2.5'
+  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-sleeping_king_studios', '~> 2.7'
   gem 'rubocop', '~> 1.26'
   gem 'rubocop-rails', '~> 2.14'
   gem 'rubocop-rspec', '~> 2.9'

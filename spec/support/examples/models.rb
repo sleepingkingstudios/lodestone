@@ -3,5 +3,5 @@
 require 'support/examples'
 
 module Spec::Support::Examples
-  module Models; end # rubocop:disable Style/Documentation
+  module Models; end
 end

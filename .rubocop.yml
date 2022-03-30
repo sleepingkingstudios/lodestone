@@ -6,6 +6,33 @@ AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
 
+RSpec:
+  Language:
+    ExampleGroups:
+      Regular:
+        - context
+        - describe
+        - wrap_context
+      Skipped:
+        - xcontext
+        - xdescribe
+        - xwrap_context
+      Focused:
+        - fcontext
+        - fdescribe
+        - fwrap_context
+    Includes:
+      Examples:
+        - finclude_contract
+        - finclude_examples
+        - fwrap_examples
+        - include_contract
+        - include_examples
+        - wrap_examples
+        - xinclude_contract
+        - xinclude_examples
+        - xwrap_examples
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
   IndentationWidth: ~
@@ -39,6 +66,9 @@ Metrics/ModuleLength:
 Rails/I18nLocaleTexts:
   Enabled: false
 
+RSpec/BeNil:
+  Enabled: false
+
 RSpec/ExampleWording:
   Enabled: false
 
@@ -57,4 +87,4 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Exclude:
     - db/migrate/*.rb
-    - spec/**/*_examples.rb
+    - spec/**/*.rb
