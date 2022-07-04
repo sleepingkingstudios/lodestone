@@ -19,6 +19,7 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'commonmarker',                '~> 0.23'
 gem 'sleeping_king_studios-tools', '~> 1.0'
 
 gem 'cuprum',

@@ -37,15 +37,7 @@
 </div>
 
 <div class='mb-4'>
-  <% @task.description.split(/\n{2,}/).each do |paragraph| %>
-    <p>
-      <% paragraph.split("\n").each.with_index do |line, index| %>
-        <% unless index.zero? %><br><% end %>
-
-        <%= line %>
-      <% end %>
-    </p>
-  <% end %>
+  <%= CommonMarker.render_html(@task.description, :DEFAULT, %i[table tasklist strikethrough tagfilter]).html_safe %>
 </div>
 
 <div class='mb-4'>

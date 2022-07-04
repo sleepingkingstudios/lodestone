@@ -43,15 +43,7 @@
   </div>
 </div>
 
-<% @project.description.split(/\n{2,}/).each do |paragraph| %>
-  <p>
-    <% paragraph.split("\n").each.with_index do |line, index| %>
-      <% unless index.zero? %><br><% end %>
-
-      <%= line %>
-    <% end %>
-  </p>
-<% end %>
+<%= CommonMarker.render_html(@project.description, :DEFAULT, %i[table tasklist strikethrough tagfilter]).html_safe %>
 
 <p>
   <%= link_to 'Back to Projects', projects_path, class: 'text-decoration-none' %>
