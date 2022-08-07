@@ -83,12 +83,36 @@ RSpec.describe TaskRelationship, type: :model do
   end
 
   describe '::RelationshipTypes' do
-    let(:expected_keys) { %i[DEPENDS_ON RELATES_TO] }
+    let(:expected_keys) do
+      %i[
+        BELONGS_TO
+        DEPENDS_ON
+        RELATES_TO
+      ]
+    end
 
     include_examples 'should define immutable constant', :RelationshipTypes
 
     it 'should enumerate the type keys' do
       expect(described_class::RelationshipTypes.keys).to be == expected_keys
+    end
+
+    describe '::BELONGS_TO' do
+      let(:expected_attributes) do
+        {
+          blocks_complete: true,
+          blocks_start:    false,
+          key:             'belongs_to',
+          inverse_name:    'has child',
+          name:            'belongs to'
+        }
+      end
+
+      it 'should store the relationship type' do
+        expect(described_class::RelationshipTypes::BELONGS_TO)
+          .to be_a(described_class::RelationshipType)
+          .and(have_attributes(expected_attributes))
+      end
     end
 
     describe '::DEPENDS_ON' do
