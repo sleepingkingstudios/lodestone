@@ -5,21 +5,30 @@ require 'sleeping_king_studios/tools/toolbox/constant_map'
 # Represents a relation between two tasks.
 class TaskRelationship < ApplicationRecord
   # @api private
-  RelationshipType = Struct.new(:key, :name, :inverse_name, :blocking)
+  RelationshipType = Struct.new(
+    :key,
+    :name,
+    :inverse_name,
+    :blocks_complete,
+    :blocks_start,
+    keyword_init: true
+  )
 
   RelationshipTypes = SleepingKingStudios::Tools::Toolbox::ConstantMap.new(
     {
       DEPENDS_ON: RelationshipType.new(
-        'depends_on',
-        'depends on',
-        'dependency of',
-        true
+        key:             'depends_on',
+        name:            'depends on',
+        inverse_name:    'dependency of',
+        blocks_complete: true,
+        blocks_start:    true
       ),
       RELATES_TO: RelationshipType.new(
-        'relates_to',
-        'relates to',
-        'related to',
-        false
+        key:             'relates_to',
+        name:            'relates to',
+        inverse_name:    'related to',
+        blocks_complete: false,
+        blocks_start:    false
       )
     }
   ).freeze
@@ -39,7 +48,12 @@ class TaskRelationship < ApplicationRecord
     inverse_of: :inverse_relationships
 
   ### Validations
-  validates :blocking,
+  validates :blocks_complete,
+    exclusion: {
+      in:      [nil],
+      message: I18n.t('errors.messages.blank')
+    }
+  validates :blocks_start,
     exclusion: {
       in:      [nil],
       message: I18n.t('errors.messages.blank')
@@ -64,8 +78,9 @@ end
 # Table name: task_relationships
 #
 #  id                :uuid             not null, primary key
-#  blocking          :boolean          default(FALSE), not null
-#  relationship_type :string           default(""), not null
+#  blocks_complete   :boolean          default(FALSE), not null
+#  blocks_start      :boolean          default(FALSE), not null
+#  relationship_type :string           default("depends_on"), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  source_task_id    :uuid

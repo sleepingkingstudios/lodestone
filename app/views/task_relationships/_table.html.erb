@@ -4,7 +4,8 @@
     <div class='col-2'>Type</div>
     <div class='col-4'>Task</div>
     <div class='col-2'>Status</div>
-    <div class='col-2'>Blocking</div>
+    <div class='col-1'>Blocks Start</div>
+    <div class='col-1'>Blocks Complete</div>
   </div>
 
   <% if relationships.blank? && inverse_relationships.blank? %>
@@ -37,7 +38,9 @@
         <%= status.name.titleize %>
       </div>
 
-      <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
+      <div class='col-1'><%= relationship.blocks_start ? 'Yes' : 'No' %></div>
+
+      <div class='col-1'><%= relationship.blocks_complete ? 'Yes' : 'No' %></div>
 
       <div class='col-2'>
         <div class='row text-center'>
@@ -70,7 +73,9 @@
 
       <div class='col-2'><%= task.status.titleize %></div>
 
-      <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
+      <div class='col-1'><%= relationship.blocks_start ? 'Yes' : 'No' %></div>
+
+      <div class='col-1'><%= relationship.blocks_complete ? 'Yes' : 'No' %></div>
 
       <div class='col-2'>
         <div class='row text-center'>

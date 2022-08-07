@@ -24,7 +24,10 @@ module Commands::TaskRelationships
 
       return {} if relationship_type.blank?
 
-      { blocking: relationship_type.blocking }
+      {
+        blocks_complete: relationship_type.blocks_complete,
+        blocks_start:    relationship_type.blocks_start
+      }
     end
   end
 end
