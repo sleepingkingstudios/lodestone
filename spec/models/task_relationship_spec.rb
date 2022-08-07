@@ -40,24 +40,22 @@ RSpec.describe TaskRelationship, type: :model do
 
   let(:attributes) do
     {
-      blocking:          false,
       relationship_type: described_class::RelationshipTypes::DEPENDS_ON.key
     }
   end
 
   describe '::RelationshipType' do
     subject(:relationship_type) do
-      described_class::RelationshipType
-        .new('testing', 'tests', 'tested by', false)
+      described_class::RelationshipType.new(
+        key:          'testing',
+        name:         'tests',
+        inverse_name: 'tested by'
+      )
     end
 
     include_examples 'should define constant',
       :RelationshipType,
       -> { an_instance_of Class }
-
-    describe '#blocking' do
-      include_examples 'should define reader', :blocking, false
-    end
 
     describe '#inverse_name' do
       include_examples 'should define reader', :inverse_name, 'tested by'
@@ -73,7 +71,7 @@ RSpec.describe TaskRelationship, type: :model do
   end
 
   describe '::RelationshipTypes' do
-    let(:expected_keys) { %i[DEPENDS_ON RELATES_TO] }
+    let(:expected_keys) { %i[BELONGS_TO DEPENDS_ON RELATES_TO] }
 
     include_examples 'should define immutable constant', :RelationshipTypes
 
@@ -81,10 +79,25 @@ RSpec.describe TaskRelationship, type: :model do
       expect(described_class::RelationshipTypes.keys).to be == expected_keys
     end
 
+    describe '::BELONGS_TO' do
+      let(:expected_attributes) do
+        {
+          key:          'belongs_to',
+          inverse_name: 'has child',
+          name:         'belongs to'
+        }
+      end
+
+      it 'should store the relationship type' do
+        expect(described_class::RelationshipTypes::BELONGS_TO)
+          .to be_a(described_class::RelationshipType)
+          .and(have_attributes(expected_attributes))
+      end
+    end
+
     describe '::DEPENDS_ON' do
       let(:expected_attributes) do
         {
-          blocking:     true,
           key:          'depends_on',
           inverse_name: 'dependency of',
           name:         'depends on'
@@ -101,7 +114,6 @@ RSpec.describe TaskRelationship, type: :model do
     describe '::RELATES_TO' do
       let(:expected_attributes) do
         {
-          blocking:     false,
           key:          'relates_to',
           inverse_name: 'related to',
           name:         'relates to'
@@ -119,10 +131,6 @@ RSpec.describe TaskRelationship, type: :model do
   include_examples 'should define primary key'
 
   include_examples 'should define timestamps'
-
-  describe '#blocking' do
-    include_examples 'should define attribute', :blocking, default: false
-  end
 
   describe '#relationship_type' do
     include_examples 'should define attribute',
@@ -177,8 +185,6 @@ RSpec.describe TaskRelationship, type: :model do
         end
       end
     end
-
-    include_examples 'should validate the presence of', :blocking
 
     include_examples 'should validate the presence of', :relationship_type
 

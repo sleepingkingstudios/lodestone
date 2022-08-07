@@ -2,9 +2,9 @@
 <div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
   <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
     <div class='col-2'>Type</div>
+    <div class='col-2'>Project</div>
     <div class='col-4'>Task</div>
     <div class='col-2'>Status</div>
-    <div class='col-2'>Blocking</div>
   </div>
 
   <% if relationships.blank? && inverse_relationships.blank? %>
@@ -25,6 +25,10 @@
         <%= relationship_type.name.titleize %>
       </div>
 
+      <div class='col-2'>
+        <%= link_to task.project.name, project_path(task.project), class: "text-decoration-none" %>
+      </div>
+
       <div class='col-4'>
         <% text_class = "text-#{link_classes[task.status]}" %>
 
@@ -36,8 +40,6 @@
 
         <%= status.name.titleize %>
       </div>
-
-      <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
 
       <div class='col-2'>
         <div class='row text-center'>
@@ -62,6 +64,10 @@
         <%= relationship_type.inverse_name.titleize %>
       </div>
 
+      <div class='col-2'>
+        <%= link_to task.project.name, project_path(task.project), class: "text-decoration-none" %>
+      </div>
+
       <div class='col-4'>
         <% text_class = "text-#{link_classes[task.status]}" %>
 
@@ -69,8 +75,6 @@
       </div>
 
       <div class='col-2'><%= task.status.titleize %></div>
-
-      <div class='col-2'><%= relationship.blocking ? 'Yes' : 'No' %></div>
 
       <div class='col-2'>
         <div class='row text-center'>

@@ -148,6 +148,7 @@ RSpec.describe Task, type: :model do
       {
         BUGFIX:        'bugfix',
         CHORE:         'chore',
+        EPIC:          'epic',
         FEATURE:       'feature',
         INVESTIGATION: 'investigation',
         RELEASE:       'release'
@@ -171,6 +172,13 @@ RSpec.describe Task, type: :model do
       it 'should store the value' do
         expect(described_class::TaskTypes::CHORE)
           .to be == 'chore'
+      end
+    end
+
+    describe '::EPIC' do
+      it 'should store the value' do
+        expect(described_class::TaskTypes::EPIC)
+          .to be == 'epic'
       end
     end
 
@@ -203,8 +211,64 @@ RSpec.describe Task, type: :model do
 
   include_examples 'should define timestamps'
 
+  describe '#bugfix?' do
+    include_examples 'should define predicate', :bugfix?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::BUGFIX
+        end
+
+        it { expect(task.bugfix?).to be expected }
+      end
+    end
+  end
+
+  describe '#chore?' do
+    include_examples 'should define predicate', :chore?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::CHORE
+        end
+
+        it { expect(task.chore?).to be expected }
+      end
+    end
+  end
+
   describe '#description' do
     include_examples 'should define attribute', :description, default: ''
+  end
+
+  describe '#epic?' do
+    include_examples 'should define predicate', :epic?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::EPIC
+        end
+
+        it { expect(task.epic?).to be expected }
+      end
+    end
+  end
+
+  describe '#feature?' do
+    include_examples 'should define predicate', :feature?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::FEATURE
+        end
+
+        it { expect(task.feature?).to be expected }
+      end
+    end
   end
 
   describe '#inverse_relationships' do
@@ -214,6 +278,20 @@ RSpec.describe Task, type: :model do
       let(:expected) { inverse_relationships }
 
       it { expect(task.inverse_relationships).to contain_exactly(*expected) }
+    end
+  end
+
+  describe '#investigation?' do
+    include_examples 'should define predicate', :investigation?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::INVESTIGATION
+        end
+
+        it { expect(task.investigation?).to be expected }
+      end
     end
   end
 
@@ -244,6 +322,20 @@ RSpec.describe Task, type: :model do
 
     wrap_context 'when the task has relationships' do
       it { expect(task.relationships).to contain_exactly(*relationships) }
+    end
+  end
+
+  describe '#release?' do
+    include_examples 'should define predicate', :release?
+
+    described_class::TaskTypes.each_value do |task_type|
+      context %(when the task type is "#{task_type}") do
+        let(:expected) do
+          task.task_type == described_class::TaskTypes::RELEASE
+        end
+
+        it { expect(task.release?).to be expected }
+      end
     end
   end
 

@@ -1,16 +1,9 @@
 # frozen_string_literal: true
 
-require 'commands/task_relationships/assign'
-require 'commands/task_relationships/build'
-
 # Controller for managing task relationships.
 class TaskRelationshipsController < ApplicationController
-  def create # rubocop:disable Metrics/MethodLength
-    @relationship =
-      Commands::TaskRelationships::Build
-      .new
-      .call(attributes: relationship_params)
-      .value
+  def create
+    @relationship = TaskRelationship.new(relationship_params)
 
     if @relationship&.save
       redirect_to task_path(@relationship.source_task_id)
@@ -41,13 +34,9 @@ class TaskRelationshipsController < ApplicationController
     @relationship = TaskRelationship.new(source_task: @source_task)
   end
 
-  def update # rubocop:disable Metrics/MethodLength
+  def update
     @relationship = TaskRelationship.find(params[:id])
-
-    Commands::TaskRelationships::Assign
-      .new
-      .call(attributes: relationship_params, entity: @relationship)
-      .value
+    @relationship.assign_attributes(relationship_params)
 
     if @relationship.save
       redirect_to task_path(@relationship.source_task_id)
@@ -74,7 +63,6 @@ class TaskRelationshipsController < ApplicationController
 
   def relationship_params
     params.require(:task_relationship).permit(
-      :blocking,
       :relationship_type,
       :source_task_id,
       :target_task_id

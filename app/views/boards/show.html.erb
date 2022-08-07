@@ -8,7 +8,7 @@
 
 <div class='row mt-3'>
   <% link_classes = { 'done' => 'secondary', 'icebox' => 'info', 'in_progress' => 'success', 'to_do' => 'primary' } %>
-  <% icon_classes = { 'bugfix' => 'bug', 'chore' => 'wrench', 'feature' => 'gear', 'investigation' => 'search', 'release' => 'award' } %>
+  <% icon_classes = { 'bugfix' => 'bug', 'chore' => 'wrench', 'epic' => 'lightbulb', 'feature' => 'gear', 'investigation' => 'search', 'release' => 'award' } %>
   <% %w[icebox to_do in_progress done].each do |status| %>
     <% text_class = "text-#{link_classes[status]}" %>
 

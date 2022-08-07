@@ -22,6 +22,7 @@ class Task < ApplicationRecord
     {
       BUGFIX:        'bugfix',
       CHORE:         'chore',
+      EPIC:          'epic',
       FEATURE:       'feature',
       INVESTIGATION: 'investigation',
       RELEASE:       'release'
@@ -67,6 +68,36 @@ class Task < ApplicationRecord
     inclusion: { in: TaskTypes.values },
     presence:  true
   validates :title, presence: true
+
+  # @return [Boolean] true if the task is a bugfix, otherwise false.
+  def bugfix?
+    task_type == TaskTypes::BUGFIX
+  end
+
+  # @return [Boolean] true if the task is a chore, otherwise false.
+  def chore?
+    task_type == TaskTypes::CHORE
+  end
+
+  # @return [Boolean] true if the task is an epic, otherwise false.
+  def epic?
+    task_type == TaskTypes::EPIC
+  end
+
+  # @return [Boolean] true if the task is a feature, otherwise false.
+  def feature?
+    task_type == TaskTypes::FEATURE
+  end
+
+  # @return [Boolean] true if the task is an investigation, otherwise false.
+  def investigation?
+    task_type == TaskTypes::INVESTIGATION
+  end
+
+  # @return [Boolean] true if the task is an investigation, otherwise false.
+  def release?
+    task_type == TaskTypes::RELEASE
+  end
 end
 
 # == Schema Information
