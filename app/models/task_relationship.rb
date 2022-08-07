@@ -5,21 +5,24 @@ require 'sleeping_king_studios/tools/toolbox/constant_map'
 # Represents a relation between two tasks.
 class TaskRelationship < ApplicationRecord
   # @api private
-  RelationshipType = Struct.new(:key, :name, :inverse_name, :blocking)
+  RelationshipType = Struct.new(:key, :name, :inverse_name, keyword_init: true)
 
   RelationshipTypes = SleepingKingStudios::Tools::Toolbox::ConstantMap.new(
     {
+      BELONGS_TO: RelationshipType.new(
+        key:          'belongs_to',
+        name:         'belongs to',
+        inverse_name: 'has child'
+      ),
       DEPENDS_ON: RelationshipType.new(
-        'depends_on',
-        'depends on',
-        'dependency of',
-        true
+        key:          'depends_on',
+        name:         'depends on',
+        inverse_name: 'dependency of'
       ),
       RELATES_TO: RelationshipType.new(
-        'relates_to',
-        'relates to',
-        'related to',
-        false
+        key:          'relates_to',
+        name:         'relates to',
+        inverse_name: 'related to'
       )
     }
   ).freeze
@@ -39,11 +42,6 @@ class TaskRelationship < ApplicationRecord
     inverse_of: :inverse_relationships
 
   ### Validations
-  validates :blocking,
-    exclusion: {
-      in:      [nil],
-      message: I18n.t('errors.messages.blank')
-    }
   validates :relationship_type,
     inclusion: { in: RelationshipTypes.values.map(&:key) },
     presence:  true
@@ -64,8 +62,7 @@ end
 # Table name: task_relationships
 #
 #  id                :uuid             not null, primary key
-#  blocking          :boolean          default(FALSE), not null
-#  relationship_type :string           default(""), not null
+#  relationship_type :string           default("depends_on"), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  source_task_id    :uuid

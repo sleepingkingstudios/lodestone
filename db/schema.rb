@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_07_09_213515) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_07_062031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -32,7 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2021_07_09_213515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "relationship_type", default: "", null: false
-    t.boolean "blocking", default: false, null: false
     t.uuid "source_task_id"
     t.uuid "target_task_id"
     t.index ["source_task_id"], name: "index_task_relationships_on_source_task_id"
