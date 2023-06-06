@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.4'
 
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.0.4', '>= 7.0.4.1'
 
 gem 'pg', '~> 1.1' # Use postgresql as the database for Active Record
 
@@ -19,7 +19,7 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'commonmarker',                '~> 0.23'
+gem 'commonmarker',                '~> 0.23', '>= 0.23.9'
 gem 'sleeping_king_studios-tools', '~> 1.0'
 
 gem 'cuprum',
