@@ -8,31 +8,31 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum
-  revision: 3b5c109cf9052866f67d90f09ebe03b824ede919
+  revision: 98393b4397fe5bd707b05e78fb558bc7d6b29806
   branch: main
   specs:
-    cuprum (1.0.0)
+    cuprum (1.1.0)
       sleeping_king_studios-tools (~> 1.0)
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-collections
-  revision: 67b23dd7648f8175cd96936c472c1d4bf216f028
+  revision: 8b9684bfe9b84da75934bd473c7f1bbdeb632c52
   branch: main
   specs:
-    cuprum-collections (0.2.0)
-      cuprum (>= 0.11, < 2.0)
-      stannum (~> 0.2)
+    cuprum-collections (0.3.0.rc.0)
+      cuprum (~> 1.1)
+      stannum (~> 0.3)
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: bb47a519c50400b629e03b391973600e1e8240e3
+  revision: 4bcba783fcc14f6f6ba12b33e9c1914b7ffbf9e9
   branch: main
   specs:
-    cuprum-rails (0.1.0)
-      cuprum (>= 0.11.0, < 2.0)
+    cuprum-rails (0.2.0.alpha)
+      cuprum (~> 1.1)
       cuprum-collections (~> 0.2)
       rails (>= 6.0, < 8)
-      stannum (~> 0.2)
+      stannum (~> 0.3)
 
 GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
@@ -165,7 +165,7 @@ GEM
     parallel (1.22.1)
     parser (3.1.1.0)
       ast (~> 2.4.1)
-    pg (1.2.3)
+    pg (1.5.3)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -265,7 +265,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.2)
-    sleeping_king_studios-tools (1.0.2)
+    sleeping_king_studios-tools (1.1.1)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -273,8 +273,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stannum (0.2.0)
-      sleeping_king_studios-tools (~> 1.0, >= 1.0.2)
+    stannum (0.3.0)
+      sleeping_king_studios-tools (~> 1.1.0)
     thor (1.2.2)
     tilt (2.0.10)
     timeout (0.3.2)
@@ -299,7 +299,7 @@ DEPENDENCIES
   cuprum-rails!
   factory_bot_rails (~> 6.1)
   listen (~> 3.3)
-  pg (~> 1.1)
+  pg (~> 1.5)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.1)
   rspec (~> 3.10)
@@ -317,7 +317,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.0.4p208
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.3.6
