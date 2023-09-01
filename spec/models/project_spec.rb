@@ -96,7 +96,7 @@ RSpec.describe Project, type: :model do
 
       before(:example) { tasks.each(&:save!) }
 
-      it { expect(project.tasks).to contain_exactly(*tasks) }
+      it { expect(project.tasks).to match_array(tasks) }
     end
   end
 

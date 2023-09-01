@@ -49,7 +49,7 @@ module Spec::Support::Examples
 
           it { expect(subject.public_send(attr_name)).to be == expected }
         end
-      end
+      end # rubocop:disable RSpec/EmptyLineAfterExampleGroup
     alias_shared_examples 'should define attribute', 'should have attribute'
 
     shared_examples 'should have primary key' do
@@ -58,7 +58,7 @@ module Spec::Support::Examples
           :id,
           value: '00000000-0000-0000-0000-000000000000'
       end
-    end
+    end # rubocop:disable RSpec/EmptyLineAfterExampleGroup
     alias_shared_examples 'should define primary key', 'should have primary key'
 
     shared_examples 'should have slug' do |other_attributes: {}|
@@ -100,7 +100,7 @@ module Spec::Support::Examples
           :slug,
           attributes: other_attributes
       end
-    end
+    end # rubocop:disable RSpec/EmptyLineAfterExampleGroup
     alias_shared_examples 'should define slug', 'should have slug'
 
     shared_examples 'should have timestamps' do
@@ -111,7 +111,7 @@ module Spec::Support::Examples
       describe '#updated_at' do
         include_examples 'should have reader', :updated_at
       end
-    end
+    end # rubocop:disable RSpec/EmptyLineAfterExampleGroup
     alias_shared_examples 'should define timestamps', 'should have timestamps'
   end
 end

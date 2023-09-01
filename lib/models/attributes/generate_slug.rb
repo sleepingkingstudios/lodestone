@@ -62,7 +62,7 @@ module Models::Attributes
     def slugify_value(value)
       value
         .strip
-        .yield_self { |str| tools.string_tools.underscore(str) }
+        .then { |str| tools.string_tools.underscore(str) }
         .split(/[\s\-_]+/)
         .join('-')
         .gsub(EXCLUDED_CHARACTERS_PATTERN, '')

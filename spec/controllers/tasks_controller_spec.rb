@@ -3,5 +3,5 @@
 require 'rails_helper'
 
 RSpec.describe TasksController do
-  pending
+  pending # rubocop:disable RSpec/PendingWithoutReason
 end
