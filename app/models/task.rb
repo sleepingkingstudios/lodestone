@@ -30,8 +30,8 @@ class Task < ApplicationRecord
   ).freeze
 
   ### Attributes
-  attribute :status,    :string, default: Statuses::ICEBOX.key
-  attribute :task_type, :string, default: TaskTypes::FEATURE
+  attribute :status,    :string, default: -> { Statuses::ICEBOX.key }
+  attribute :task_type, :string, default: -> { TaskTypes::FEATURE }
 
   ### Associations
   belongs_to :project

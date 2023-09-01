@@ -3,5 +3,5 @@
 require 'rails_helper'
 
 RSpec.describe BoardsController, type: :controller do
-  pending
+  pending # rubocop:disable RSpec/PendingWithoutReason
 end

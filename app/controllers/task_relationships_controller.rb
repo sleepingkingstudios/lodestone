@@ -2,6 +2,18 @@
 
 # Controller for managing task relationships.
 class TaskRelationshipsController < ApplicationController
+  def new
+    @source_task  = Task.find(source_task_id)
+    @tasks        = grouped_tasks
+    @relationship = TaskRelationship.new(source_task: @source_task)
+  end
+
+  def edit
+    @source_task  = Task.find(source_task_id)
+    @tasks        = grouped_tasks
+    @relationship = TaskRelationship.find(params[:id])
+  end
+
   def create
     @relationship = TaskRelationship.new(relationship_params)
 
@@ -13,25 +25,6 @@ class TaskRelationshipsController < ApplicationController
 
       render :new
     end
-  end
-
-  def destroy
-    @relationship = TaskRelationship.find(params[:id])
-    @relationship.destroy
-
-    redirect_to task_path(@relationship.source_task_id)
-  end
-
-  def edit
-    @source_task  = Task.find(source_task_id)
-    @tasks        = grouped_tasks
-    @relationship = TaskRelationship.find(params[:id])
-  end
-
-  def new
-    @source_task  = Task.find(source_task_id)
-    @tasks        = grouped_tasks
-    @relationship = TaskRelationship.new(source_task: @source_task)
   end
 
   def update
@@ -46,6 +39,13 @@ class TaskRelationshipsController < ApplicationController
 
       render :edit
     end
+  end
+
+  def destroy
+    @relationship = TaskRelationship.find(params[:id])
+    @relationship.destroy
+
+    redirect_to task_path(@relationship.source_task_id)
   end
 
   private

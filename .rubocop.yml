@@ -1,4 +1,5 @@
 require:
+  - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
 
@@ -33,6 +34,9 @@ RSpec:
         - xinclude_examples
         - xwrap_examples
 
+FactoryBot/SyntaxMethods:
+  Enabled: false
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
   IndentationWidth: ~
@@ -42,7 +46,7 @@ Layout/HashAlignment:
   EnforcedHashRocketStyle: table
 
 Layout/LineLength:
-  IgnoredPatterns:
+  AllowedPatterns:
     - '\A\s*#'
   Max: 80
 
@@ -72,9 +76,6 @@ RSpec/BeNil:
 RSpec/ExampleWording:
   Enabled: false
 
-RSpec/FactoryBot/SyntaxMethods:
-  Enabled: false
-
 RSpec/HookArgument:
   EnforcedStyle: example
 
@@ -83,6 +84,9 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/NestedGroups:
   Max: 5
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false

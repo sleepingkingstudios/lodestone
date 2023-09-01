@@ -277,7 +277,7 @@ RSpec.describe Task, type: :model do
     wrap_context 'when the task has relationships' do
       let(:expected) { inverse_relationships }
 
-      it { expect(task.inverse_relationships).to contain_exactly(*expected) }
+      it { expect(task.inverse_relationships).to match_array(expected) }
     end
   end
 
@@ -321,7 +321,7 @@ RSpec.describe Task, type: :model do
     include_examples 'should define reader', :relationships, []
 
     wrap_context 'when the task has relationships' do
-      it { expect(task.relationships).to contain_exactly(*relationships) }
+      it { expect(task.relationships).to match_array(relationships) }
     end
   end
 

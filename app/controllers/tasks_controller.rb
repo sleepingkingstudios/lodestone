@@ -4,6 +4,27 @@ require 'commands/tasks/build'
 
 # Controller for managing tasks.
 class TasksController < ApplicationController
+  def index
+    @tasks = Task.all.includes(:project).order(:slug)
+  end
+
+  def show
+    @task                  = Task.find(params[:id])
+    @relationships         = @task.relationships.includes(:target_task)
+    @inverse_relationships = @task.inverse_relationships.includes(:source_task)
+  end
+
+  def new
+    @projects     = Project.all.order(:name)
+    @task         = Task.new(project: params[:project_id] ? project : nil)
+    @referer_path = referer_path
+  end
+
+  def edit
+    @projects = Project.all.order(:name)
+    @task     = Task.find(params[:id])
+  end
+
   def create
     @task = build_task.value
 
@@ -17,34 +38,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-
-    redirect_to tasks_path
-  end
-
-  def edit
-    @projects = Project.all.order(:name)
-    @task     = Task.find(params[:id])
-  end
-
-  def new
-    @projects     = Project.all.order(:name)
-    @task         = Task.new(project: params[:project_id] ? project : nil)
-    @referer_path = referer_path
-  end
-
-  def index
-    @tasks = Task.all.includes(:project).order(:slug)
-  end
-
-  def show
-    @task                  = Task.find(params[:id])
-    @relationships         = @task.relationships.includes(:target_task)
-    @inverse_relationships = @task.inverse_relationships.includes(:source_task)
-  end
-
   def update
     @task = Task.find(params[:id])
     @task.assign_attributes(task_params)
@@ -56,6 +49,13 @@ class TasksController < ApplicationController
 
       render :edit
     end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    redirect_to tasks_path
   end
 
   private

@@ -8,9 +8,7 @@ require 'cuprum/rails/rspec/actions/create_contracts'
 RSpec.describe Actions::Projects::Create do
   include Cuprum::Rails::RSpec::Actions::CreateContracts
 
-  subject(:action) do
-    described_class.new(repository: repository, resource: resource)
-  end
+  subject(:action) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
   let(:resource) do

@@ -3,5 +3,5 @@
 require 'commands/tasks/build'
 
 RSpec.describe Commands::Tasks::Build do
-  pending
+  pending # rubocop:disable RSpec/PendingWithoutReason
 end
