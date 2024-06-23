@@ -38,13 +38,13 @@ jobs:
 
     steps:
     # Downloads a copy of the code in your repository before running CI tests
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     # Sets up the Ruby environment and runs `bundle install'.
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2.2
+        ruby-version: 3.3.2
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
         cache-version: 1
 
@@ -75,13 +75,13 @@ jobs:
 
     steps:
     # Downloads a copy of the code in your repository before running CI tests
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     # Sets up the Ruby environment and runs `bundle install'.
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2.2
+        ruby-version: 3.3.2
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
         cache-version: 1
 
