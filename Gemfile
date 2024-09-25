@@ -4,14 +4,14 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.4'
+ruby '3.3.5'
 
 gem 'rails', '~> 7.0.8', '>= 7.0.8.4'
 
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 
 # Use Puma as the app server
-gem 'puma', '~> 5.6', '>= 5.6.7'
+gem 'puma', '~> 6.4', '>= 6.4.3'
 
 # Assets
 gem 'sass-rails', '>= 6' # Use SCSS for stylesheets
