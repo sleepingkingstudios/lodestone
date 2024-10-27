@@ -53,8 +53,8 @@ class TaskRelationshipsController < ApplicationController
   def grouped_tasks
     current_project = @source_task.project
     projects        =
-      Project.all.where.not(id: current_project.id).order(:name)
-    tasks           = Task.all.order(created_at: :desc)
+      Project.where.not(id: current_project.id).order(:name)
+    tasks           = Task.order(created_at: :desc)
 
     [current_project, *projects].map do |project|
       [project.name, tasks.select { |task| task.project_id == project.id }]

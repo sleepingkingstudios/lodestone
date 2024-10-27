@@ -10,7 +10,7 @@ module Actions
         'slug' => step { generate_slug(attributes) }
       })
 
-      super(attributes: attributes)
+      super
     end
 
     def generate_slug(attributes)
@@ -32,7 +32,7 @@ module Actions
         })
       end
 
-      super(attributes: attributes)
+      super
     end
   end
 end

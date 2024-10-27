@@ -5,7 +5,7 @@ require 'commands/tasks/build'
 # Controller for managing tasks.
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.includes(:project).order(:slug)
+    @tasks = Task.includes(:project).order(:slug)
   end
 
   def show
@@ -15,13 +15,13 @@ class TasksController < ApplicationController
   end
 
   def new
-    @projects     = Project.all.order(:name)
+    @projects     = Project.order(:name)
     @task         = Task.new(project: params[:project_id] ? project : nil)
     @referer_path = referer_path
   end
 
   def edit
-    @projects = Project.all.order(:name)
+    @projects = Project.order(:name)
     @task     = Task.find(params[:id])
   end
 
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to(redirect_board_path(referer_path) || task_path(@task))
     else
-      @projects     = Project.all.order(:name)
+      @projects     = Project.order(:name)
       @referer_path = referer_path
 
       render :new
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to task_path(@task)
     else
-      @projects = Project.all.order(:name)
+      @projects = Project.order(:name)
 
       render :edit
     end
