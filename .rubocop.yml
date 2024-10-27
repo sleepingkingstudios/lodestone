@@ -2,6 +2,7 @@ require:
   - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   TargetRubyVersion: 3.0
@@ -73,6 +74,9 @@ Rails/I18nLocaleTexts:
 RSpec/BeNil:
   Enabled: false
 
+RSpec/Eq:
+  Enabled: false
+
 RSpec/ExampleWording:
   Enabled: false
 
@@ -85,7 +89,7 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NestedGroups:
   Max: 5
 
-RSpec/Rails/InferredSpecType:
+RSpecRails/InferredSpecType:
   Enabled: false
 
 Style/ClassAndModuleChildren:

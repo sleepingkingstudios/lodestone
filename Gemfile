@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.3.5'
 
-gem 'rails', '~> 7.0.8', '>= 7.0.8.4'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.6'
 
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 
@@ -53,9 +53,11 @@ group :test do
   gem 'rspec', '~> 3.10'
   gem 'rspec-rails', '~> 5.0'
   gem 'rspec-sleeping_king_studios', '~> 2.7'
-  gem 'rubocop', '~> 1.26'
-  gem 'rubocop-rails', '~> 2.14'
-  gem 'rubocop-rspec', '~> 2.9'
+  gem 'rubocop', '~> 1.67'
+  gem 'rubocop-factory_bot', '~> 2.26'
+  gem 'rubocop-rails', '~> 2.27'
+  gem 'rubocop-rspec', '~> 3.2'
+  gem 'rubocop-rspec_rails', '~> 2.30'
   gem 'simplecov', '~> 0.21'
 end
 
