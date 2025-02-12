@@ -1,24 +1,9 @@
-# README
+# Lodestone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local Setup
 
-Things you may want to cover:
+Set up the authentication credentials for the `development` and `test` environments:
 
-* Ruby version
+- `bundle exec rails credentials:edit --enviroment development`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+See `config/credentials/example.yml` for a sample credentials file./

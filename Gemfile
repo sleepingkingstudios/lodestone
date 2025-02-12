@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.6'
+ruby '3.3.7'
 
 gem 'rails', '~> 7.0.8', '>= 7.0.8.7'
 
@@ -50,13 +50,13 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 3.10'
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec', '~> 3.13'
+  gem 'rspec-rails', '~> 7.1'
   gem 'rspec-sleeping_king_studios', '~> 2.7'
-  gem 'rubocop', '~> 1.67'
+  gem 'rubocop', '~> 1.71'
   gem 'rubocop-factory_bot', '~> 2.26'
-  gem 'rubocop-rails', '~> 2.27'
-  gem 'rubocop-rspec', '~> 3.2'
+  gem 'rubocop-rails', '~> 2.29'
+  gem 'rubocop-rspec', '~> 3.4'
   gem 'rubocop-rspec_rails', '~> 2.30'
   gem 'simplecov', '~> 0.21'
 end
