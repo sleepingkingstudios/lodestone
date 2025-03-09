@@ -17,5 +17,29 @@ FactoryBot.define do
     project_index do
       (Task.order(project_index: :desc).first&.project_index || 0) + 1
     end
+
+    trait :archived do
+      status { Task::Statuses::ARCHIVED }
+    end
+
+    trait :done do
+      status { Task::Statuses::DONE }
+    end
+
+    trait :icebox do
+      status { Task::Statuses::ICEBOX }
+    end
+
+    trait :in_progress do
+      status { Task::Statuses::IN_PROGRESS }
+    end
+
+    trait :to_do do
+      status { Task::Statuses::TO_DO }
+    end
+
+    trait :wont_do do
+      status { Task::Statuses::WONT_DO }
+    end
   end
 end
