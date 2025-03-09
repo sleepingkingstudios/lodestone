@@ -14,7 +14,7 @@ RSpec.describe BaseController, type: :controller do
   describe '.repository' do
     subject(:repository) { described_class.repository }
 
-    it { expect(repository).to be_a Cuprum::Rails::Repository }
+    it { expect(repository).to be_a Cuprum::Rails::Records::Repository }
   end
 
   describe '.responders' do

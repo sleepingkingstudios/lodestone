@@ -1,5 +1,29 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id            :uuid             not null, primary key
+#  description   :text             default(""), not null
+#  project_index :integer          not null
+#  slug          :string           default(""), not null
+#  status        :string           default("icebox"), not null
+#  task_type     :string           default("feature"), not null
+#  title         :string           default(""), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  project_id    :uuid
+#
+# Indexes
+#
+#  index_tasks_on_project_id  (project_id)
+#  index_tasks_on_slug        (slug) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (project_id => projects.id)
+#
 require 'rails_helper'
 
 require 'support/examples/model_examples'

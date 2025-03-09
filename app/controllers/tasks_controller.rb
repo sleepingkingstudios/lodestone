@@ -95,11 +95,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(
-      :description,
-      :status,
-      :task_type,
-      :title
-    )
+    params.expect(task: %i[description status task_type title])
   end
 end
