@@ -11,6 +11,14 @@ gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 gem 'puma', '~> 6.4', '>= 6.4.3'
 gem 'rails', '~> 8.0.1'
 
+# Engines
+gem 'librum-core',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/librum-core'
+gem 'librum-iam',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/librum-iam'
+
 # Assets
 gem 'commonmarker', '~> 0.23', '~> 0.23.10'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -25,7 +33,12 @@ gem 'cuprum-collections',
 gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'
-gem 'sleeping_king_studios-tools', '~> 1.0'
+gem 'sleeping_king_studios-tools',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/sleeping_king_studios-tools'
+gem 'stannum',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/stannum'
 
 group :development, :test do
   gem 'annotaterb', '~> 4.14'
@@ -45,7 +58,9 @@ end
 group :test do
   gem 'rspec', '~> 3.13'
   gem 'rspec-rails', '~> 7.1'
-  gem 'rspec-sleeping_king_studios', '~> 2.7'
+  gem 'rspec-sleeping_king_studios',
+    branch: 'main',
+    git:    'https://github.com/sleepingkingstudios/rspec-sleeping_king_studios'
   gem 'rubocop', '~> 1.71'
   gem 'rubocop-factory_bot', '~> 2.26'
   gem 'rubocop-rails', '~> 2.29'
