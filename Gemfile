@@ -6,21 +6,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.3.7'
 
-gem 'rails', '~> 7.2.2'
-
+gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
-
-# Use Puma as the app server
 gem 'puma', '~> 6.4', '>= 6.4.3'
+gem 'rails', '~> 8.0.1'
 
 # Assets
+gem 'commonmarker', '~> 0.23', '~> 0.23.10'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
-gem 'bcrypt', '~> 3.1.7'
-
-gem 'commonmarker',                '~> 0.23', '~> 0.23.10'
-gem 'sleeping_king_studios-tools', '~> 1.0'
-
+# Commands
 gem 'cuprum',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum'
@@ -30,12 +25,11 @@ gem 'cuprum-collections',
 gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'
+gem 'sleeping_king_studios-tools', '~> 1.0'
 
 group :development, :test do
-  gem 'annotate',
-    group: :development,
-    git:   'https://github.com/sleepingkingstudios/annotate_models'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'annotaterb', '~> 4.14'
+
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.1'
   gem 'thor', '~> 1.0'

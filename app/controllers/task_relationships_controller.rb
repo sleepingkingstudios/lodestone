@@ -62,10 +62,8 @@ class TaskRelationshipsController < ApplicationController
   end
 
   def relationship_params
-    params.require(:task_relationship).permit(
-      :relationship_type,
-      :source_task_id,
-      :target_task_id
+    params.expect(
+      task_relationship: %i[relationship_type source_task_id target_task_id]
     )
   end
 

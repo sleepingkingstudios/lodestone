@@ -5,6 +5,7 @@ class ProjectsController < BaseController
   def self.resource # rubocop:disable Metrics/MethodLength
     Cuprum::Rails::Resource.new(
       default_order:        :name,
+      entity_class:         ::Project,
       permitted_attributes: %w[
         active
         description
@@ -13,8 +14,7 @@ class ProjectsController < BaseController
         public
         repository
         slug
-      ],
-      resource_class:       ::Project
+      ]
     )
   end
 

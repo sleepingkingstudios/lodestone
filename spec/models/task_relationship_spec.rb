@@ -1,5 +1,26 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: task_relationships
+#
+#  id                :uuid             not null, primary key
+#  relationship_type :string           default("depends_on"), not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  source_task_id    :uuid
+#  target_task_id    :uuid
+#
+# Indexes
+#
+#  index_task_relationships_on_source_task_id  (source_task_id)
+#  index_task_relationships_on_target_task_id  (target_task_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (source_task_id => tasks.id)
+#  fk_rails_...  (target_task_id => tasks.id)
+#
 require 'rails_helper'
 
 require 'support/examples/model_examples'

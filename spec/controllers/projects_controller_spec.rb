@@ -26,9 +26,9 @@ RSpec.describe ProjectsController, type: :controller do
 
     it { expect(resource.default_order).to be :name }
 
-    it { expect(resource.permitted_attributes).to be == permitted_attributes }
+    it { expect(resource.entity_class).to be == Project }
 
-    it { expect(resource.resource_class).to be == Project }
+    it { expect(resource.permitted_attributes).to be == permitted_attributes }
   end
 
   include_contract 'should define action',

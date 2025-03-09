@@ -1,5 +1,24 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: projects
+#
+#  id           :uuid             not null, primary key
+#  active       :boolean          default(TRUE), not null
+#  description  :text             default(""), not null
+#  name         :string           default(""), not null
+#  project_type :string           default(""), not null
+#  public       :boolean          default(TRUE), not null
+#  repository   :string           default(""), not null
+#  slug         :string           default(""), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_projects_on_slug  (slug) UNIQUE
+#
 require 'rails_helper'
 
 require 'support/examples/model_examples'
