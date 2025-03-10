@@ -6,6 +6,10 @@ require 'commands/tasks/build'
 class TasksController < ApplicationController
   def index
     @tasks = Task.includes(:project).order(:slug)
+
+    if Task::Statuses.values.any? { |status| status.key == params[:status] }
+      @tasks = @tasks.select { |task| task.status == params[:status] }
+    end
   end
 
   def show

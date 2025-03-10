@@ -6,37 +6,54 @@
   </div>
 </div>
 
-<div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
-  <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
-    <div class='col-2'>Task</div>
-    <div class='col-3'>Title</div>
-    <div class='col-2'>Task Type</div>
-    <div class='col-2'>Status</div>
-  </div>
+<p>Current Page: <%= SecureRandom.uuid %></p>
 
-  <% if @tasks.blank? %>
-    <div class='row p-1 py-2'>
-      <div class='col-12'>
-        There are no tasks matching the criteria.
-      </div>
+<%= turbo_frame_tag "tasks_table" do %>
+  <div class='container mb-1' style='border-bottom: 1px solid #dee2e6'>
+    <div class='row'>
+      <p>
+        <strong>Status:</strong>
+
+        <a href="?">All</a>
+
+        <% Task::Statuses.each_value do |status| %>
+          <a class="mx-2" href="?status=<%= status.key %>"><%= status.name.titleize %></a>
+        <% end %>
+      </a>
     </div>
-  <% end %>
 
-  <% @tasks&.each do |task| %>
-    <% status = Task::Statuses.values.find { |value| value.key == task.status } %>
+    <div class='row fw-bold p-1 py-2' style='border-bottom: 1px solid #dee2e6; border-top: 1px solid #dee2e6;'>
+      <div class='col-2'>Task</div>
+      <div class='col-3'>Title</div>
+      <div class='col-2'>Task Type</div>
+      <div class='col-2'>Status</div>
+    </div>
 
-    <div class='row p-1 py-2'>
-      <div class='col-2 font-monospace'><%= task.slug %></div>
-      <div class='col-3'><%= task.title %></div>
-      <div class='col-2'><%= task.task_type.capitalize %></div>
-      <div class='col-2'><%= status.name.titleize %></div>
-      <div class='col-3'>
-        <div class='row text-center'>
-          <%= link_to 'Show', task_path(task), class: 'col text-decoration-none text-info' %>
-          <%= link_to 'Edit', edit_task_path(task), class: 'col text-decoration-none' %>
-          <%= link_to 'Delete', task_path(task), method: :delete, class: 'col text-decoration-none text-danger', data: { confirm: "Are you sure you want to delete task #{task.title} (#{task.slug})?" } %>
+    <% if @tasks.blank? %>
+      <div class='row p-1 py-2'>
+        <div class='col-12'>
+          There are no tasks matching the criteria.
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+
+    <% @tasks&.each do |task| %>
+      <% status = Task::Statuses.values.find { |value| value.key == task.status } %>
+
+      <div class='row p-1 py-2'>
+        <div class='col-2 font-monospace'><%= task.slug %></div>
+        <div class='col-3'><%= task.title %></div>
+        <div class='col-2'><%= task.task_type.capitalize %></div>
+        <div class='col-2'><%= status.name.titleize %></div>
+        <div class='col-3'>
+          <div class='row text-center'>
+            <%= link_to 'Show', task_path(task), data: { turbo_frame: '_top' }, class: 'col text-decoration-none text-info' %>
+            <%= link_to 'Edit', edit_task_path(task), data: { turbo_frame: '_top' }, class: 'col text-decoration-none' %>
+            <% confirm = "Are you sure you want to delete task #{task.title} (#{task.slug})?" %>
+            <%= link_to 'Delete', task_path(task), data: { confirm:, turbo_confirm: confirm, turbo_frame: '_top', turbo_method: 'delete' }, method: :delete, class: 'col text-decoration-none text-danger' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
