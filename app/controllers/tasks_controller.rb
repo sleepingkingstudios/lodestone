@@ -5,11 +5,7 @@ require 'commands/tasks/build'
 # Controller for managing tasks.
 class TasksController < ApplicationController
   def index
-    @tasks = Task.includes(:project).order(:slug)
-
-    if Task::Statuses.values.any? { |status| status.key == params[:status] }
-      @tasks = @tasks.select { |task| task.status == params[:status] }
-    end
+    @tasks = query_tasks
   end
 
   def show
@@ -33,7 +29,15 @@ class TasksController < ApplicationController
     @task = build_task.value
 
     if @task.save
-      redirect_to(redirect_board_path(referer_path) || task_path(@task))
+      respond_to do |format|
+        format.html do
+          redirect_to(redirect_board_path(referer_path) || task_path(@task))
+        end
+
+        format.turbo_stream do
+          @tasks = query_tasks
+        end
+      end
     else
       @projects     = Project.order(:name)
       @referer_path = referer_path
@@ -80,6 +84,16 @@ class TasksController < ApplicationController
 
   def project_id
     params.require(:project_id)
+  end
+
+  def query_tasks
+    tasks = Task.includes(:project).order(:slug)
+
+    if Task::Statuses.values.any? { |status| status.key == params[:status] }
+      tasks = tasks.select { |task| task.status == params[:status] }
+    end
+
+    tasks
   end
 
   def redirect_board_path(referer)

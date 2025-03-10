@@ -1,6 +1,8 @@
-<h1>Create Task</h1>
+<%= turbo_frame_tag "tasks_workflow" do %>
+  <h1>Create Task</h1>
 
-<%= render partial: 'form', locals: { projects: @projects, task: @task } %>
+  <%= render partial: 'form', locals: { projects: @projects, task: @task } %>
+<% end %>
 
 <p>
   <%= link_to 'Back to Tasks', tasks_path, class: 'text-decoration-none' %>
