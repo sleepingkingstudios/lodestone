@@ -12,8 +12,11 @@ gem 'puma', '~> 6.4', '>= 6.4.3'
 gem 'rails', '~> 8.0.1'
 
 # Assets
-gem 'commonmarker', '~> 0.23', '~> 0.23.10'
-gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'commonmarker', '~> 0.23'
+gem 'importmap-rails', '~> 2.1'
+gem 'propshaft', '~> 1.1'
+gem 'stimulus-rails', '~> 1.3'
+gem 'turbo-rails', '~> 2.0'
 
 # Commands
 gem 'cuprum',
