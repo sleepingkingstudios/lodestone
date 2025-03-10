@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2022_08_07_062031) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_10_202007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -26,6 +26,25 @@ ActiveRecord::Schema[8.0].define(version: 2022_08_07_062031) do
     t.string "project_type", default: "", null: false
     t.string "repository", default: "", null: false
     t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "saga_tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "saga_id"
+    t.uuid "task_id"
+    t.index ["saga_id"], name: "index_saga_tasks_on_saga_id"
+    t.index ["task_id"], name: "index_saga_tasks_on_task_id"
+  end
+
+  create_table "sagas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "slug", default: "", null: false
+    t.string "status", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sagas_on_name", unique: true
+    t.index ["slug"], name: "index_sagas_on_slug", unique: true
   end
 
   create_table "task_relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
