@@ -11,6 +11,14 @@ gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 gem 'puma', '~> 6.4', '>= 6.4.3'
 gem 'rails', '~> 8.0.1'
 
+# Engines
+gem 'librum-core',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/librum-core'
+gem 'librum-iam',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/librum-iam'
+
 # Assets
 gem 'commonmarker', '~> 0.23'
 gem 'importmap-rails', '~> 2.1'
@@ -53,7 +61,9 @@ end
 group :test do
   gem 'rspec', '~> 3.13'
   gem 'rspec-rails', '~> 7.1'
-  gem 'rspec-sleeping_king_studios', '~> 2.7'
+  gem 'rspec-sleeping_king_studios',
+    branch: 'main',
+    git:    'https://github.com/sleepingkingstudios/rspec-sleeping_king_studios'
   gem 'rubocop', '~> 1.71'
   gem 'rubocop-factory_bot', '~> 2.26'
   gem 'rubocop-rails', '~> 2.29'

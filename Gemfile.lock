@@ -27,6 +27,48 @@ GIT
       stannum (~> 0.3)
 
 GIT
+  remote: https://github.com/sleepingkingstudios/librum-core
+  revision: b2a479d533889b0da866d6b39bb7767ac3954570
+  branch: main
+  specs:
+    librum-core (0.1.0.alpha.1)
+      cuprum (~> 1.2)
+      cuprum-collections
+      cuprum-rails
+      diffy (~> 3.4.2)
+      importmap-rails (~> 2.1)
+      pg (~> 1.5)
+      rails (~> 8.0.1)
+      stannum (~> 0.3)
+      stimulus-rails (~> 1.3)
+      view_component (~> 3.21)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/librum-iam
+  revision: f078c32dac65d3c1ede04df212e8a193fb23ab76
+  branch: main
+  specs:
+    librum-iam (0.1.0.alpha.1)
+      bcrypt (~> 3.1.20)
+      cuprum (~> 1.2)
+      cuprum-rails (~> 0.1)
+      jwt (~> 2.10)
+      librum-core
+      pg (~> 1.5)
+      rails (~> 8.0.1)
+      view_component (~> 3.21)
+
+GIT
+  remote: https://github.com/sleepingkingstudios/rspec-sleeping_king_studios
+  revision: 7b069c845b6b16c5b9b28bca45b2bcdd7ded77bd
+  branch: main
+  specs:
+    rspec-sleeping_king_studios (2.8.0.alpha)
+      hashdiff (~> 1.1)
+      rspec (~> 3.4)
+      sleeping_king_studios-tools (>= 1.2.0.alpha, < 2)
+
+GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
   revision: 62ed8fa709b7a29def6eeb3aa6274f7f5bbbff72
   specs:
@@ -37,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tools
-  revision: f1349604bfa889ecff1536b43301b9ce3adb166a
+  revision: 5bd4ec3f807df6cbd288348151f439dfcca11ad0
   branch: main
   specs:
     sleeping_king_studios-tools (1.2.0.rc.1)
@@ -53,29 +95,29 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (8.0.1)
-      actionpack (= 8.0.1)
-      activesupport (= 8.0.1)
+    actioncable (8.0.2)
+      actionpack (= 8.0.2)
+      activesupport (= 8.0.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (8.0.1)
-      actionpack (= 8.0.1)
-      activejob (= 8.0.1)
-      activerecord (= 8.0.1)
-      activestorage (= 8.0.1)
-      activesupport (= 8.0.1)
+    actionmailbox (8.0.2)
+      actionpack (= 8.0.2)
+      activejob (= 8.0.2)
+      activerecord (= 8.0.2)
+      activestorage (= 8.0.2)
+      activesupport (= 8.0.2)
       mail (>= 2.8.0)
-    actionmailer (8.0.1)
-      actionpack (= 8.0.1)
-      actionview (= 8.0.1)
-      activejob (= 8.0.1)
-      activesupport (= 8.0.1)
+    actionmailer (8.0.2)
+      actionpack (= 8.0.2)
+      actionview (= 8.0.2)
+      activejob (= 8.0.2)
+      activesupport (= 8.0.2)
       mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (8.0.1)
-      actionview (= 8.0.1)
-      activesupport (= 8.0.1)
+    actionpack (8.0.2)
+      actionview (= 8.0.2)
+      activesupport (= 8.0.2)
       nokogiri (>= 1.8.5)
       rack (>= 2.2.4)
       rack-session (>= 1.0.1)
@@ -83,35 +125,35 @@ GEM
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
       useragent (~> 0.16)
-    actiontext (8.0.1)
-      actionpack (= 8.0.1)
-      activerecord (= 8.0.1)
-      activestorage (= 8.0.1)
-      activesupport (= 8.0.1)
+    actiontext (8.0.2)
+      actionpack (= 8.0.2)
+      activerecord (= 8.0.2)
+      activestorage (= 8.0.2)
+      activesupport (= 8.0.2)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (8.0.1)
-      activesupport (= 8.0.1)
+    actionview (8.0.2)
+      activesupport (= 8.0.2)
       builder (~> 3.1)
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activejob (8.0.1)
-      activesupport (= 8.0.1)
+    activejob (8.0.2)
+      activesupport (= 8.0.2)
       globalid (>= 0.3.6)
-    activemodel (8.0.1)
-      activesupport (= 8.0.1)
-    activerecord (8.0.1)
-      activemodel (= 8.0.1)
-      activesupport (= 8.0.1)
+    activemodel (8.0.2)
+      activesupport (= 8.0.2)
+    activerecord (8.0.2)
+      activemodel (= 8.0.2)
+      activesupport (= 8.0.2)
       timeout (>= 0.4.0)
-    activestorage (8.0.1)
-      actionpack (= 8.0.1)
-      activejob (= 8.0.1)
-      activerecord (= 8.0.1)
-      activesupport (= 8.0.1)
+    activestorage (8.0.2)
+      actionpack (= 8.0.2)
+      activejob (= 8.0.2)
+      activerecord (= 8.0.2)
+      activesupport (= 8.0.2)
       marcel (~> 1.0)
-    activesupport (8.0.1)
+    activesupport (8.0.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -127,7 +169,7 @@ GEM
     annotaterb (4.14.0)
     ast (2.4.2)
     base64 (0.2.0)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     builder (3.3.0)
@@ -138,7 +180,8 @@ GEM
     crass (1.0.6)
     date (3.4.1)
     diff-lcs (1.6.0)
-    docile (1.4.0)
+    diffy (3.4.3)
+    docile (1.4.1)
     drb (2.2.1)
     erubi (1.13.1)
     factory_bot (6.5.1)
@@ -146,10 +189,17 @@ GEM
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    ffi (1.17.1)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hashdiff (0.3.9)
+    hashdiff (1.1.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -161,8 +211,11 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.10.1)
+    json (2.10.2)
+    jwt (2.10.1)
+      base64
     language_server-protocol (3.17.0.4)
+    lint_roller (1.1.0)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -176,9 +229,9 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    method_source (1.1.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
-    minitest (5.25.4)
+    minitest (5.25.5)
     net-imap (0.5.6)
       date
       net-protocol
@@ -189,14 +242,27 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.3)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.18.3-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.3-aarch64-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.3-arm-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.3-arm-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.3-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.26.3)
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
-    pg (1.5.4)
+    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -208,7 +274,7 @@ GEM
     psych (5.2.3)
       date
       stringio
-    puma (6.4.3)
+    puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.12)
@@ -219,20 +285,20 @@ GEM
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
-    rails (8.0.1)
-      actioncable (= 8.0.1)
-      actionmailbox (= 8.0.1)
-      actionmailer (= 8.0.1)
-      actionpack (= 8.0.1)
-      actiontext (= 8.0.1)
-      actionview (= 8.0.1)
-      activejob (= 8.0.1)
-      activemodel (= 8.0.1)
-      activerecord (= 8.0.1)
-      activestorage (= 8.0.1)
-      activesupport (= 8.0.1)
+    rails (8.0.2)
+      actioncable (= 8.0.2)
+      actionmailbox (= 8.0.2)
+      actionmailer (= 8.0.2)
+      actionpack (= 8.0.2)
+      actiontext (= 8.0.2)
+      actionview (= 8.0.2)
+      activejob (= 8.0.2)
+      activemodel (= 8.0.2)
+      activerecord (= 8.0.2)
+      activestorage (= 8.0.2)
+      activesupport (= 8.0.2)
       bundler (>= 1.15.0)
-      railties (= 8.0.1)
+      railties (= 8.0.2)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -240,9 +306,9 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    railties (8.0.1)
-      actionpack (= 8.0.1)
-      activesupport (= 8.0.1)
+    railties (8.0.2)
+      actionpack (= 8.0.2)
+      activesupport (= 8.0.2)
       irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
@@ -278,14 +344,11 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-sleeping_king_studios (2.7.0)
-      hashdiff (~> 0.3.8)
-      rspec (~> 3.4)
-      sleeping_king_studios-tools (>= 0.8.0, < 2)
     rspec-support (3.13.2)
-    rubocop (1.71.2)
+    rubocop (1.73.2)
       json (~> 2.3)
-      language_server-protocol (>= 3.17.0)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
@@ -293,27 +356,31 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
+    rubocop-ast (1.38.1)
       parser (>= 3.3.1.0)
-    rubocop-factory_bot (2.26.1)
-      rubocop (~> 1.61)
-    rubocop-rails (2.29.1)
+    rubocop-factory_bot (2.27.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+    rubocop-rails (2.30.3)
       activesupport (>= 4.2.0)
+      lint_roller (~> 1.1)
       rack (>= 1.1)
-      rubocop (>= 1.52.0, < 2.0)
-      rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (3.4.0)
-      rubocop (~> 1.61)
-    rubocop-rspec_rails (2.30.0)
-      rubocop (~> 1.61)
-      rubocop-rspec (~> 3, >= 3.0.1)
+      rubocop (>= 1.72.1, < 2.0)
+      rubocop-ast (>= 1.38.0, < 2.0)
+    rubocop-rspec (3.5.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+    rubocop-rspec_rails (2.31.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.72, >= 1.72.1)
+      rubocop-rspec (~> 3.5)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.12.3)
+    simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
@@ -330,6 +397,10 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.3)
     useragent (0.16.11)
+    view_component (3.21.0)
+      activesupport (>= 5.2.0, < 8.1)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)
@@ -337,7 +408,14 @@ GEM
     zeitwerk (2.7.2)
 
 PLATFORMS
-  ruby
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
+  arm64-darwin
+  x86_64-darwin
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   annotaterb (~> 4.14)
@@ -349,6 +427,8 @@ DEPENDENCIES
   cuprum-rails!
   factory_bot_rails (~> 6.4)
   importmap-rails (~> 2.1)
+  librum-core!
+  librum-iam!
   listen (~> 3.3)
   pg (~> 1.5)
   propshaft (~> 1.1)
@@ -356,7 +436,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rspec (~> 3.13)
   rspec-rails (~> 7.1)
-  rspec-sleeping_king_studios (~> 2.7)
+  rspec-sleeping_king_studios!
   rubocop (~> 1.71)
   rubocop-factory_bot (~> 2.26)
   rubocop-rails (~> 2.29)
@@ -375,4 +455,4 @@ RUBY VERSION
    ruby 3.4.2p28
 
 BUNDLED WITH
-   2.3.6
+   2.6.5
