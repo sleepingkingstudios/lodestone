@@ -1,11 +1,14 @@
-require:
+plugins:
   - rubocop-factory_bot
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
 
+inherit_gem:
+  rspec-sleeping_king_studios: config/rubocop-rspec.yml
+
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.4
   NewCops: enable
 
 RSpec:
