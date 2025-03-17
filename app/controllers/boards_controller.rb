@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 # Controller for managing task boards.
-class BoardsController < ApplicationController
-  def show
-    @project = project
-    @tasks   = grouped_tasks
+class BoardsController < Librum::Core::ViewController
+  def self.resource
+    @resource ||=
+      Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)
   end
+
+  responder :html, Cuprum::Rails::Responders::Html::Resource
+
+  action :show,
+    Cuprum::Rails::Action.subclass(command_class: Boards::Commands::Show),
+    member: false
 
   private
 
