@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lodestone</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%# @todo: Remove this once all pages are migrated to the Bulma layout. %>
+    <meta name="turbo-visit-control" content="reload">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar is-success" role="navigation" aria-label="main navigation" data-controller="navbar">
+      <div class="container is-max-desktop">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <span class="title icon-text is-size-4">
+              <span class="icon mr-1">
+                <i class="fas fa-compass fa-lg"></i>
+              </span>
+              Lodestone
+            </span>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-action="click->navbar#toggle" data-navbar-target="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="primary-navigation" class="navbar-menu" data-navbar-target="menu">
+          <div class="navbar-start has-text-weight-semibold">
+            <a href="/projects" class="navbar-item" data-turbo-frame="_top">
+              Projects
+            </a>
+            <a href="/tasks" class="navbar-item" data-turbo-frame="_top">
+              Tasks
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="section" style="flex: 1;">
+      <div class="container is-max-desktop">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="container is-max-desktop">
+          <p class="has-text-centered is-italic mt-1">
+            Soufflons&nbsp;Nous-mêmes&nbsp;Notre&nbsp;Forge
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
