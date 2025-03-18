@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: 584758db42b3f441854a2959fe8dadfd1d92c229
+  revision: a6349f370e1e26f9a67c34af6be87c01275dfdd5
   branch: main
   specs:
     cuprum-rails (0.3.0.alpha)
