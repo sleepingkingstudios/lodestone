@@ -24,7 +24,7 @@ gem 'commonmarker', '~> 0.23'
 gem 'importmap-rails', '~> 2.1'
 gem 'propshaft', '~> 1.1'
 gem 'stimulus-rails', '~> 1.3'
-gem 'turbo-rails', '~> 2.0'
+# gem 'turbo-rails', '~> 2.0'
 
 # Commands
 gem 'cuprum',
