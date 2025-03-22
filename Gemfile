@@ -28,7 +28,10 @@ gem 'cuprum-collections',
 gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'
-gem 'sleeping_king_studios-tools', '~> 1.0'
+gem 'sleeping_king_studios-tools', '~> 1.2'
+gem 'stannum',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/stannum'
 
 group :development, :test do
   gem 'annotaterb', '~> 4.14'

@@ -14,5 +14,6 @@ class BaseController < ApplicationController
 
   default_format :html
 
-  responder :html, Cuprum::Rails::Responders::Html::Resource
+  responder :html,         Cuprum::Rails::Responders::Html::Resource
+  responder :turbo_stream, Cuprum::Rails::Responders::Html::Resource
 end
