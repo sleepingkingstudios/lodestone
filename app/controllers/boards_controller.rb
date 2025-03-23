@@ -12,6 +12,8 @@ class BoardsController < Librum::Core::ViewController
   responder :html, Cuprum::Rails::Responders::Html::Resource
 
   action :show,
-    Cuprum::Rails::Action.subclass(command_class: Boards::Commands::Show),
+    Cuprum::Rails::Action.subclass(
+      command_class: Lodestone::Boards::Commands::Show
+    ),
     member: false
 end

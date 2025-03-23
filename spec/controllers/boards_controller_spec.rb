@@ -32,6 +32,6 @@ RSpec.describe BoardsController, type: :controller do
   include_deferred 'should define action',
     :show,
     Cuprum::Rails::Action,
-    command_class: Boards::Commands::Show,
+    command_class: Lodestone::Boards::Commands::Show,
     member:        false
 end
