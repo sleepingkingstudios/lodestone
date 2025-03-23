@@ -2,7 +2,7 @@
 
 require 'cuprum/rails/command'
 
-module Boards::Commands
+module Lodestone::Boards::Commands
   # Command for displaying a board.
   class Show < Cuprum::Rails::Command
     validate :project_id
