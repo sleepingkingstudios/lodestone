@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'librum/core/commands/resources/new'
+
 # Controller for managing Project entities.
 class ProjectsController < BaseController
   def self.resource # rubocop:disable Metrics/MethodLength
@@ -18,11 +20,27 @@ class ProjectsController < BaseController
     )
   end
 
-  action :create,  Actions::Projects::Create
-  action :destroy, Cuprum::Rails::Actions::Destroy, member: true
-  action :edit,    Cuprum::Rails::Actions::Edit,    member: true
-  action :index,   Cuprum::Rails::Actions::Index
-  action :new,     Cuprum::Rails::Actions::New
-  action :show,    Cuprum::Rails::Actions::Show,    member: true
-  action :update,  Cuprum::Rails::Actions::Update,  member: true
+  action :create,
+    Cuprum::Rails::Actions::Resources::Create
+      .subclass(command_class: Librum::Core::Commands::Resources::Create)
+  action :destroy,
+    Cuprum::Rails::Actions::Resources::Destroy
+      .subclass(command_class: Librum::Core::Commands::Resources::Destroy),
+    member: true
+  action :edit,
+    Cuprum::Rails::Actions::Resources::Edit
+      .subclass(command_class: Librum::Core::Commands::Resources::Edit),
+    member: true
+  action :index, Cuprum::Rails::Actions::Resources::Index
+  action :new,
+    Cuprum::Rails::Actions::Resources::New
+      .subclass(command_class: Librum::Core::Commands::Resources::New)
+  action :show,
+    Cuprum::Rails::Actions::Resources::Show
+      .subclass(command_class: Librum::Core::Commands::Resources::Show),
+    member: true
+  action :update,
+    Cuprum::Rails::Actions::Resources::Update
+      .subclass(command_class: Librum::Core::Commands::Resources::Update),
+    member: true
 end

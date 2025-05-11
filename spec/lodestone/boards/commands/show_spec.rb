@@ -4,7 +4,7 @@ require 'rails_helper'
 
 require 'cuprum/rails/records/repository'
 
-RSpec.describe Boards::Commands::Show do
+RSpec.describe Lodestone::Boards::Commands::Show do
   subject(:command) { described_class.new(repository:) }
 
   let(:repository) { Cuprum::Rails::Records::Repository.new }

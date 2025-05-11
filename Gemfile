@@ -27,9 +27,7 @@ gem 'stimulus-rails', '~> 1.3'
 # gem 'turbo-rails', '~> 2.0'
 
 # Commands
-gem 'cuprum',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/cuprum'
+gem 'cuprum', '~> 1.3'
 gem 'cuprum-collections',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-collections'
@@ -59,9 +57,7 @@ end
 group :test do
   gem 'rspec', '~> 3.13'
   gem 'rspec-rails', '~> 7.1'
-  gem 'rspec-sleeping_king_studios',
-    branch: 'main',
-    git:    'https://github.com/sleepingkingstudios/rspec-sleeping_king_studios'
+  gem 'rspec-sleeping_king_studios', '~> 2.8'
   gem 'rubocop', '~> 1.71'
   gem 'rubocop-factory_bot', '~> 2.26'
   gem 'rubocop-rails', '~> 2.29'
