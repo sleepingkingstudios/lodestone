@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/sleepingkingstudios/cuprum
-  revision: f05634b4228dd9ac15917a384ab1bf5cee608d46
-  branch: main
-  specs:
-    cuprum (1.3.0.alpha.0)
-      sleeping_king_studios-tools (~> 1.0)
-
-GIT
   remote: https://github.com/sleepingkingstudios/cuprum-collections
   revision: 620df63020b5185d945596b97f36e8bc5d3f83b1
   branch: main
@@ -17,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: a6349f370e1e26f9a67c34af6be87c01275dfdd5
+  revision: 0186a7fba153a1627a3f5fd84a503bff84b642f7
   branch: main
   specs:
     cuprum-rails (0.3.0.alpha)
@@ -28,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: b2a479d533889b0da866d6b39bb7767ac3954570
+  revision: 31fc4ba321d8f14e299169b99964132447c22569
   branch: main
   specs:
     librum-core (0.1.0.alpha.1)
@@ -57,16 +49,6 @@ GIT
       pg (~> 1.5)
       rails (~> 8.0.1)
       view_component (~> 3.21)
-
-GIT
-  remote: https://github.com/sleepingkingstudios/rspec-sleeping_king_studios
-  revision: 8a1934b63f8555c4f008ce8d709fcd6af9c15e2a
-  branch: main
-  specs:
-    rspec-sleeping_king_studios (2.8.0.rc.0)
-      hashdiff (~> 1.1)
-      rspec (~> 3.4)
-      sleeping_king_studios-tools (>= 1.2.0.alpha, < 2)
 
 GIT
   remote: https://github.com/sleepingkingstudios/sleeping_king_studios-tasks
@@ -169,8 +151,10 @@ GEM
     byebug (11.1.3)
     commonmarker (0.23.11)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.0)
+    connection_pool (2.5.3)
     crass (1.0.6)
+    cuprum (1.3.0)
+      sleeping_king_studios-tools (~> 1.2)
     date (3.4.1)
     diff-lcs (1.6.0)
     diffy (3.4.3)
@@ -200,7 +184,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.8.0)
-    irb (1.15.1)
+    irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -212,7 +196,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.6)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -264,14 +248,14 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.2.3)
+    psych (5.2.5)
       date
       stringio
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.12)
-    rack-session (2.1.0)
+    rack (3.1.14)
+    rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
@@ -312,10 +296,10 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.12.0)
+    rdoc (6.13.1)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
-    reline (0.6.0)
+    reline (0.6.1)
       io-console (~> 0.5)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -337,6 +321,10 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
+    rspec-sleeping_king_studios (2.8.1)
+      hashdiff (~> 1.1)
+      rspec (~> 3.4)
+      sleeping_king_studios-tools (~> 1.2)
     rspec-support (3.13.2)
     rubocop (1.74.0)
       json (~> 2.3)
@@ -378,7 +366,7 @@ GEM
     sleeping_king_studios-tools (1.2.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.1.5)
+    stringio (3.1.7)
     thor (1.3.2)
     timeout (0.4.3)
     tzinfo (2.0.6)
@@ -413,7 +401,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   commonmarker (~> 0.23)
-  cuprum!
+  cuprum (~> 1.3)
   cuprum-collections!
   cuprum-rails!
   factory_bot_rails (~> 6.4)
@@ -427,7 +415,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rspec (~> 3.13)
   rspec-rails (~> 7.1)
-  rspec-sleeping_king_studios!
+  rspec-sleeping_king_studios (~> 2.8)
   rubocop (~> 1.71)
   rubocop-factory_bot (~> 2.26)
   rubocop-rails (~> 2.29)

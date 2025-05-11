@@ -12,7 +12,7 @@ module Lodestone::Boards::Commands
     def find_project(project_id)
       return nil if project_id.blank?
 
-      Librum::Core::Models::Queries::FindOne
+      Librum::Core::Commands::Queries::FindEntity
         .new(collection: projects_collection)
         .call(value: project_id)
     end

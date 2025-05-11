@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-require 'support/contracts/controller_contracts'
+require 'cuprum/rails/rspec/deferred/controller_examples'
 
 RSpec.describe ProjectsController, type: :controller do
-  include Spec::Support::Contracts::ControllerContracts
+  include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   describe '.resource' do
     subject(:resource) { described_class.resource }
@@ -31,38 +31,45 @@ RSpec.describe ProjectsController, type: :controller do
     it { expect(resource.permitted_attributes).to be == permitted_attributes }
   end
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :create,
-    Actions::Projects::Create,
-    member: false
+    Cuprum::Rails::Actions::Resources::Create,
+    command_class: Librum::Core::Commands::Resources::Create,
+    member:        false
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :destroy,
-    Cuprum::Rails::Actions::Destroy,
-    member: true
+    Cuprum::Rails::Actions::Resources::Destroy,
+    command_class: Librum::Core::Commands::Resources::Destroy,
+    member:        true
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :edit,
-    Cuprum::Rails::Actions::Edit,
-    member: true
+    Cuprum::Rails::Actions::Resources::Edit,
+    command_class: Librum::Core::Commands::Resources::Edit,
+    member:        true
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :index,
-    Cuprum::Rails::Actions::Index,
-    member: false
+    Cuprum::Rails::Actions::Resources::Index,
+    command_class: Cuprum::Rails::Commands::Resources::Index,
+    member:        false
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :new,
-    Cuprum::Rails::Actions::New,
-    member: false
+    Cuprum::Rails::Actions::Resources::New,
+    command_class: Librum::Core::Commands::Resources::New,
+    member:        false
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :show,
-    Cuprum::Rails::Actions::Show,
-    member: true
+    Cuprum::Rails::Actions::Resources::Show,
+    command_class: Librum::Core::Commands::Resources::Show,
+    member:        true
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :update,
-    Cuprum::Rails::Actions::Update,
-    member: true
+    Cuprum::Rails::Actions::Resources::Update,
+    command_class: Librum::Core::Commands::Resources::Update,
+    member:        true
 end
