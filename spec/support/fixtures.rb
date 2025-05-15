@@ -40,7 +40,7 @@ module Spec::Support
     TASKS_FIXTURES = [
       {
         'id'            => '0196c6d6-86d2-7f20-9dc9-e37c6a03150b',
-        'project_id'    => '0196c6d2-9904-735a-8034-364fe2a7976f',
+        'project_id'    => PROJECTS_FIXTURES.first['id'],
         'title'         => 'Feature Task',
         'slug'          => 'feature-task',
         'description'   => 'An example task',
@@ -50,7 +50,7 @@ module Spec::Support
       }.freeze,
       {
         'id'            => '0196c6d8-68a4-7ff1-ac50-a678077ed555',
-        'project_id'    => '0196c6d2-9904-735a-8034-364fe2a7976f',
+        'project_id'    => PROJECTS_FIXTURES.first['id'],
         'title'         => 'Chore Task',
         'slug'          => 'chore-task',
         'description'   => 'An example task',
@@ -60,7 +60,7 @@ module Spec::Support
       }.freeze,
       {
         'id'            => '0196c6d9-01d4-78ee-89aa-12597c264fb6',
-        'project_id'    => '0196c6d2-9904-735a-8034-364fe2a7976f',
+        'project_id'    => PROJECTS_FIXTURES.first['id'],
         'title'         => 'Bugfix Task',
         'slug'          => 'bugfix-task',
         'description'   => 'An example task',
@@ -70,7 +70,7 @@ module Spec::Support
       }.freeze,
       {
         'id'            => '0196c6da-3a79-7f5a-9d70-6bf064cc4a5c',
-        'project_id'    => '0196c6d2-9904-735a-8034-364fe2a7976f',
+        'project_id'    => PROJECTS_FIXTURES.first['id'],
         'title'         => 'Release Task',
         'slug'          => 'release-task',
         'description'   => 'An example task',
@@ -80,7 +80,7 @@ module Spec::Support
       }.freeze,
       {
         'id'            => '0196c6da-61b3-7c2d-a29d-de2041f6243a',
-        'project_id'    => '0196c6d3-f533-7f5e-8aca-5c0d2058a35b',
+        'project_id'    => PROJECTS_FIXTURES[1]['id'],
         'title'         => 'Cancelled Task',
         'slug'          => 'cancelled-task',
         'description'   => 'An example task',

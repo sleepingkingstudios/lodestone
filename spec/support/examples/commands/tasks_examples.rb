@@ -35,6 +35,30 @@ module Spec::Support::Examples::Commands
       let(:fixtures_data) { Spec::Support::Fixtures::TASKS_FIXTURES }
 
       ##########################################################################
+      ###                         Querying Parameters                        ###
+      ##########################################################################
+
+      let(:invalid_primary_key_value) do
+        SecureRandom.uuid
+      end
+      let(:resource_scope) do
+        project_id = Spec::Support::Fixtures::PROJECTS_FIXTURES.first['id']
+
+        Cuprum::Collections::Scope.new({ 'project_id' => project_id })
+      end
+      let(:non_matching_scope) do
+        project_id = SecureRandom.uuid
+
+        Cuprum::Collections::Scope.new({ 'project_id' => project_id })
+      end
+      let(:unique_scope) do
+        Cuprum::Collections::Scope.new({
+          'status' => Task::Statuses::WONT_DO.key
+        })
+      end
+      let(:order) { { 'title' => 'asc' } }
+
+      ##########################################################################
       ###                         Resource Parameters                        ###
       ##########################################################################
 
