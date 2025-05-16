@@ -22,10 +22,10 @@
     </div>
 
     <div class='form-group col-sm-4 mb-2'>
-      <%= label :project_id, 'Project', class: 'form-label' %>
+      <%= label :task_project_id, 'Project', class: 'form-label' %>
 
       <% project_options = projects.map { |project| [project.name, project.id] }%>
-      <%= select_tag :project_id, options_for_select(project_options, selected: task.project&.id), disabled: task.persisted?, class: 'form-select', prompt: '' %>
+      <%= form.select :project_id, options_for_select(project_options, selected: task.project&.id), { include_blank: task.project.blank? }, disabled: task.persisted?, class: 'form-select', prompt: '' %>
     </div>
 
     <div class='form-group col-sm-4 mb-2'>

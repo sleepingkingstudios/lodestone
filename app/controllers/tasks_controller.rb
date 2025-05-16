@@ -1,100 +1,70 @@
 # frozen_string_literal: true
 
-require 'commands/tasks/build'
+require 'cuprum/rails/actions/middleware/associations/find'
+require 'cuprum/rails/actions/middleware/resources/find'
 
 # Controller for managing tasks.
-class TasksController < ApplicationController
-  def index
-    @tasks = Task.includes(:project).order(:slug)
+class TasksController < BaseController
+  def self.resource # rubocop:disable Metrics/MethodLength
+    Cuprum::Rails::Resource.new(
+      default_order:        :slug,
+      entity_class:         ::Task,
+      permitted_attributes: %w[
+        description
+        project_id
+        slug
+        status
+        task_type
+        title
+      ]
+    )
   end
 
-  def show
-    @task                  = Task.find(params[:id])
-    @relationships         = @task.relationships.includes(:target_task)
-    @inverse_relationships = @task.inverse_relationships.includes(:source_task)
-  end
+  middleware \
+    Cuprum::Rails::Actions::Middleware::Resources::Find.new(
+      entity_class:      Project,
+      order:             { name: :asc },
+      only_form_actions: true
+    ),
+    only: %i[create new edit update]
+  middleware \
+    Cuprum::Rails::Actions::Middleware::Associations::Find.new(
+      association_type: :has_many,
+      entity_class:     TaskRelationship,
+      foreign_key_name: :source_task_id,
+      name:             'relationships'
+    ),
+    only: %i[show]
+  middleware \
+    Cuprum::Rails::Actions::Middleware::Associations::Find.new(
+      association_type: :has_many,
+      entity_class:     TaskRelationship,
+      foreign_key_name: :target_task_id,
+      name:             'inverse_relationships'
+    ),
+    only: %i[show]
 
-  def new
-    @projects     = Project.order(:name)
-    @task         = Task.new(project: params[:project_id] ? project : nil)
-    @referer_path = referer_path
-  end
-
-  def edit
-    @projects = Project.order(:name)
-    @task     = Task.find(params[:id])
-  end
-
-  def create
-    @task = build_task.value
-
-    if @task.save
-      redirect_to(redirect_board_path(referer_path) || task_path(@task))
-    else
-      @projects     = Project.order(:name)
-      @referer_path = referer_path
-
-      render :new
-    end
-  end
-
-  def update
-    @task = Task.find(params[:id])
-    @task.assign_attributes(task_params)
-
-    if @task.save
-      redirect_to task_path(@task)
-    else
-      @projects = Project.order(:name)
-
-      render :edit
-    end
-  end
-
-  def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-
-    redirect_to tasks_path
-  end
-
-  private
-
-  def build_task
-    Commands::Tasks::Build
-      .new
-      .call(attributes: task_params, project: project)
-  end
-
-  def project
-    Project.find(project_id)
-  end
-
-  def project_board_path?(path)
-    path =~ %r{/projects/[a-z0-9-]+/board}
-  end
-
-  def project_id
-    params.require(:project_id)
-  end
-
-  def redirect_board_path(referer)
-    return referer unless @task.project && project_board_path?(referer)
-
-    project_board_path(@task.project)
-  end
-
-  def referer_path
-    return params[:referer_path] if params[:referer_path].present?
-
-    return nil unless request.referer&.start_with?(root_url)
-
-    referer = request.referer[root_url.size..]
-    referer = "/#{referer}" unless referer.start_with?('/')
-    referer
-  end
-
-  def task_params
-    params.expect(task: %i[description status task_type title])
-  end
+  action :create,
+    Cuprum::Rails::Actions::Resources::Create
+      .subclass(command_class: Lodestone::Tasks::Commands::Create)
+  action :destroy,
+    Cuprum::Rails::Actions::Resources::Destroy
+      .subclass(command_class: Librum::Core::Commands::Resources::Destroy),
+    member: true
+  action :edit,
+    Cuprum::Rails::Actions::Resources::Edit
+      .subclass(command_class: Lodestone::Tasks::Commands::Edit),
+    member: true
+  action :index, Cuprum::Rails::Actions::Resources::Index
+  action :new,
+    Cuprum::Rails::Actions::Resources::New
+      .subclass(command_class: Lodestone::Tasks::Commands::New)
+  action :show,
+    Cuprum::Rails::Actions::Resources::Show
+      .subclass(command_class: Librum::Core::Commands::Resources::Show),
+    member: true
+  action :update,
+    Cuprum::Rails::Actions::Resources::Update
+      .subclass(command_class: Lodestone::Tasks::Commands::Update),
+    member: true
 end
