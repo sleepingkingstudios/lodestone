@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-collections
-  revision: 620df63020b5185d945596b97f36e8bc5d3f83b1
+  revision: abfa94eb5f5ec676ed04c1a6bb4dd38fd37aeaf3
   branch: main
   specs:
     cuprum-collections (0.5.0.alpha)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: 0186a7fba153a1627a3f5fd84a503bff84b642f7
+  revision: f3af2904e0840b685f5a2e2a2397229a2bfa3f69
   branch: main
   specs:
     cuprum-rails (0.3.0.alpha)
