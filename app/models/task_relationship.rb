@@ -9,17 +9,22 @@ class TaskRelationship < ApplicationRecord
 
   RelationshipTypes = SleepingKingStudios::Tools::Toolbox::ConstantMap.new(
     {
-      BELONGS_TO: RelationshipType.new(
+      BELONGS_TO:  RelationshipType.new(
         key:          'belongs_to',
         name:         'belongs to',
         inverse_name: 'has child'
       ),
-      DEPENDS_ON: RelationshipType.new(
+      DEPENDS_ON:  RelationshipType.new(
         key:          'depends_on',
         name:         'depends on',
         inverse_name: 'dependency of'
       ),
-      RELATES_TO: RelationshipType.new(
+      MERGED_INTO: RelationshipType.new(
+        key:          'merged_into',
+        name:         'merged into',
+        inverse_name: 'merged from'
+      ),
+      RELATES_TO:  RelationshipType.new(
         key:          'relates_to',
         name:         'relates to',
         inverse_name: 'related to'

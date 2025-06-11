@@ -92,7 +92,14 @@ RSpec.describe TaskRelationship, type: :model do
   end
 
   describe '::RelationshipTypes' do
-    let(:expected_keys) { %i[BELONGS_TO DEPENDS_ON RELATES_TO] }
+    let(:expected_keys) do
+      %i[
+        BELONGS_TO
+        DEPENDS_ON
+        MERGED_INTO
+        RELATES_TO
+      ]
+    end
 
     include_examples 'should define immutable constant', :RelationshipTypes
 
@@ -111,6 +118,22 @@ RSpec.describe TaskRelationship, type: :model do
 
       it 'should store the relationship type' do
         expect(described_class::RelationshipTypes::BELONGS_TO)
+          .to be_a(described_class::RelationshipType)
+          .and(have_attributes(expected_attributes))
+      end
+    end
+
+    describe '::MERGED_INTO' do
+      let(:expected_attributes) do
+        {
+          key:          'merged_into',
+          inverse_name: 'merged from',
+          name:         'merged into'
+        }
+      end
+
+      it 'should store the relationship type' do
+        expect(described_class::RelationshipTypes::MERGED_INTO)
           .to be_a(described_class::RelationshipType)
           .and(have_attributes(expected_attributes))
       end
