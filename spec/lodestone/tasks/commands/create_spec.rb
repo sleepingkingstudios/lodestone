@@ -13,12 +13,13 @@ RSpec.describe Lodestone::Tasks::Commands::Create do
   subject(:command) { described_class.new(repository:, resource:) }
 
   let(:expected_slug) do
-    next matched_attributes['slug'] if matched_attributes['slug'].present?
+    matched = tools.hash_tools.convert_keys_to_strings(matched_attributes)
 
-    Librum::Core::Commands::Attributes::GenerateSlug
-      .new(attribute_names: %i[title])
-      .call(attributes: matched_attributes)
-      .value
+    next matched['slug'] if matched['slug'].present?
+
+    next if matched['project'].blank?
+
+    "#{matched['project']['slug']}-#{expected_project_index}"
   end
   let(:expected_project_index) do
     project_id =
