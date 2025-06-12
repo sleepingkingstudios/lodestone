@@ -13,6 +13,7 @@ RSpec.describe TasksController, type: :controller do
     let(:permitted_attributes) do
       %w[
         description
+        project
         project_id
         slug
         status

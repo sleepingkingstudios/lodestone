@@ -11,6 +11,7 @@ class TasksController < BaseController
       entity_class:         ::Task,
       permitted_attributes: %w[
         description
+        project
         project_id
         slug
         status
@@ -20,6 +21,7 @@ class TasksController < BaseController
     )
   end
 
+  middleware Lodestone::Tasks::Middleware::FindProject.new
   middleware \
     Cuprum::Rails::Actions::Middleware::Resources::Find.new(
       entity_class:      Project,

@@ -9,7 +9,11 @@ class BaseController < ApplicationController
   include Cuprum::Rails::Controller
 
   def self.repository
-    @repository ||= Cuprum::Rails::Records::Repository.new
+    @repository ||= Cuprum::Rails::Records::Repository.new.tap do |repository|
+      repository.create(entity_class: Project)
+      repository.create(entity_class: Task)
+      repository.create(entity_class: TaskRelationship)
+    end
   end
 
   default_format :html
