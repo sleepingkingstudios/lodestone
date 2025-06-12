@@ -13,22 +13,33 @@ module Lodestone::Tasks::Commands
     end
 
     def build_entity(attributes:)
-      attributes = attributes.merge(
-        'project_index' => step { next_project_index(attributes) }
-      )
+      project_index = step { next_project_index(attributes) }
+
+      attributes = attributes.merge('project_index' => project_index)
 
       super
     end
 
-    def next_project_index(attributes)
-      project_id = attributes['project_id']
+    def generate_slug(attributes)
+      return attributes['slug'] if attributes['slug'].present?
 
-      return nil if project_id.blank?
+      project = attributes['project']
+      index   = attributes['project_index']
+
+      return nil if project.blank? || index.blank?
+
+      "#{project['slug']}-#{index}"
+    end
+
+    def next_project_index(attributes)
+      project = attributes['project']
+
+      return nil if project.blank?
 
       result = collection.find_matching.call(
         limit: 1,
         order: { project_index: :desc },
-        where: { project_id: }
+        where: { project_id: project['id'] }
       )
       last_task = result.success? ? result.value.first : nil
 

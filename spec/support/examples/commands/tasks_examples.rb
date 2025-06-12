@@ -22,7 +22,16 @@ module Spec::Support::Examples::Commands
         }
       end
       let(:permitted_attributes) do
-        %w[description project_id project_index slug status task_type title]
+        %w[
+          description
+          project
+          project_id
+          project_index
+          slug
+          status
+          task_type
+          title
+        ]
       end
       let(:collection_options) { { primary_key_type: String } }
       let(:default_contract) do
@@ -77,10 +86,15 @@ module Spec::Support::Examples::Commands
         Spec::Support::Fixtures::PROJECTS_FIXTURES.first['id']
       end
       let(:valid_attributes) do
+        project = Spec::Support::Fixtures::PROJECTS_FIXTURES.find do |item|
+          item['id'] == valid_project_id
+        end
+
         {
           'title'      => 'Example Task',
           'status'     => Task::Statuses::TO_DO.key,
-          'project_id' => valid_project_id
+          'project_id' => valid_project_id,
+          'project'    => project
         }
       end
     end
