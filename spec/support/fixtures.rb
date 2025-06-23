@@ -12,7 +12,7 @@ module Spec::Support
         'slug'         => 'example-application',
         'project_type' => Project::ProjectTypes::APPLICATION,
         'public'       => true,
-        'repository'   => nil
+        'repository'   => 'http://www.example.com/example-application'
       }.freeze,
       {
         'id'           => '0196c6d3-f533-7f5e-8aca-5c0d2058a35b',
@@ -22,7 +22,7 @@ module Spec::Support
         'slug'         => 'example-library',
         'project_type' => Project::ProjectTypes::LIBRARY,
         'public'       => true,
-        'repository'   => nil
+        'repository'   => ''
       }.freeze,
       {
         'id'           => '0196c6d4-7eae-772f-a226-f283ee0726f5',
@@ -32,7 +32,7 @@ module Spec::Support
         'slug'         => 'inactive-project',
         'project_type' => Project::ProjectTypes::LIBRARY,
         'public'       => true,
-        'repository'   => nil
+        'repository'   => ''
       }.freeze
     ].freeze
 

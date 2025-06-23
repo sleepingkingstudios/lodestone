@@ -64,7 +64,7 @@ RSpec.describe Lodestone::Tasks::Commands::Edit do
             .first
         end
         let(:original_attributes) do
-          matched_entity
+          matched_entity.attributes
         end
         let(:matched_attributes) do
           configured_valid_attributes
@@ -85,7 +85,7 @@ RSpec.describe Lodestone::Tasks::Commands::Edit do
             .value
         end
         let!(:original_attributes) do
-          matched_entity
+          matched_entity.attributes
         end
 
         describe 'with slug: nil' do
@@ -119,7 +119,7 @@ RSpec.describe Lodestone::Tasks::Commands::Edit do
         describe 'with slug: value' do
           let(:slug) { 'custom-slug' }
           let(:original_attributes) do
-            matched_entity
+            matched_entity.attributes
           end
           let(:matched_attributes) do
             configured_valid_attributes.merge('slug' => slug)
@@ -173,7 +173,7 @@ RSpec.describe Lodestone::Tasks::Commands::Edit do
           describe 'with slug: value' do
             let(:slug) { 'custom-slug' }
             let(:original_attributes) do
-              matched_entity
+              matched_entity.attributes
             end
             let(:matched_attributes) do
               configured_valid_attributes.merge('slug' => slug)

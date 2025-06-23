@@ -9,8 +9,52 @@ module Spec::Support::Examples::Commands
   module TasksExamples
     include RSpec::SleepingKingStudios::Deferred::Provider
 
+    deferred_context 'when the collection has many items' do
+      include Cuprum::Rails::RSpec::Deferred::Commands::ResourcesExamples
+
+      include_deferred 'when the collection is defined'
+
+      let(:projects_collection) do
+        repository['projects']
+      end
+      let(:projects_data) do
+        Spec::Support::Fixtures::PROJECTS_FIXTURES
+      end
+      let(:collection_data) do
+        fixtures_data.map { |attributes| Task.new(attributes) }
+      end
+
+      before(:example) do
+        projects_data.each do |attributes|
+          next if projects_collection.query.where(id: attributes['id']).exists? # rubocop:disable Rails/WhereExists
+
+          entity = Project.new(attributes)
+          result = projects_collection.insert_one.call(entity:)
+
+          # :nocov:
+          raise result.error.message if result.failure?
+          # :nocov:
+        end
+
+        collection_data.each do |entity|
+          result = collection.insert_one.call(entity:)
+
+          # :nocov:
+          raise result.error.message if result.failure?
+          # :nocov:
+        end
+      end
+    end
+
     deferred_context 'with parameters for a Task command' do # rubocop:disable RSpec/MultipleMemoizedHelpers
-      let(:repository) { Cuprum::Collections::Basic::Repository.new }
+      let(:repository) do
+        Cuprum::Rails::Records::Repository.new.tap do |repository|
+          repository.create(
+            entity_class:     Project,
+            primary_key_type: String
+          )
+        end
+      end
       let(:resource) do
         Cuprum::Rails::Resource.new(name: 'tasks', **resource_options)
       end
@@ -71,6 +115,15 @@ module Spec::Support::Examples::Commands
       ###                         Resource Parameters                        ###
       ##########################################################################
 
+      let(:empty_attributes) do
+        {
+          'description' => '',
+          'project_id'  => nil,
+          'status'      => Task::Statuses::ICEBOX.key,
+          'task_type'   => Task::TaskTypes::FEATURE,
+          'title'       => ''
+        }
+      end
       let(:extra_attributes) do
         {
           'github_issue_url' => false
@@ -86,15 +139,10 @@ module Spec::Support::Examples::Commands
         Spec::Support::Fixtures::PROJECTS_FIXTURES.first['id']
       end
       let(:valid_attributes) do
-        project = Spec::Support::Fixtures::PROJECTS_FIXTURES.find do |item|
-          item['id'] == valid_project_id
-        end
-
         {
-          'title'      => 'Example Task',
-          'status'     => Task::Statuses::TO_DO.key,
-          'project_id' => valid_project_id,
-          'project'    => project
+          'description' => 'Example description',
+          'title'       => 'Example Task',
+          'status'      => Task::Statuses::TO_DO.key
         }
       end
     end

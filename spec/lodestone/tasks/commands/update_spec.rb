@@ -21,6 +21,24 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
         'slug' => expected_slug
       )
   end
+  let(:expected_error) do
+    return super() if defined?(super())
+
+    attributes = entity_attributes || {}
+    attributes = attributes.merge('slug' => 'other') if attributes.key?('slug')
+    collection = repository[resource.qualified_name]
+    entity     =
+      collection
+      .build_one
+      .call(attributes:)
+      .value || {}
+    result     = collection.validate_one.call(entity:)
+
+    Cuprum::Collections::Errors::FailedValidation.new(
+      entity_class:,
+      errors:       result.error&.errors
+    )
+  end
 
   define_method :tools do
     SleepingKingStudios::Tools::Toolbelt.instance
@@ -28,7 +46,9 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
 
   include_deferred 'with parameters for a Task command'
 
-  include_deferred 'should implement the Update command' do
+  include_deferred 'should implement the Update command',
+    default_contract: true \
+  do
     wrap_deferred 'when the collection has many items' do
       describe 'with primary_key: an invalid slug' do
         let(:invalid_primary_key_value) do
@@ -64,7 +84,7 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
             .first
         end
         let(:original_attributes) do
-          matched_entity
+          matched_entity.attributes
         end
         let(:matched_attributes) do
           configured_valid_attributes
@@ -85,7 +105,7 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
             .value
         end
         let!(:original_attributes) do
-          matched_entity
+          matched_entity.attributes
         end
 
         describe 'with slug: nil' do
@@ -119,7 +139,7 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
         describe 'with slug: value' do
           let(:slug) { 'custom-slug' }
           let(:original_attributes) do
-            matched_entity
+            matched_entity.attributes
           end
           let(:matched_attributes) do
             configured_valid_attributes.merge('slug' => slug)
@@ -173,7 +193,7 @@ RSpec.describe Lodestone::Tasks::Commands::Update do
           describe 'with slug: value' do
             let(:slug) { 'custom-slug' }
             let(:original_attributes) do
-              matched_entity
+              matched_entity.attributes
             end
             let(:matched_attributes) do
               configured_valid_attributes.merge('slug' => slug)
