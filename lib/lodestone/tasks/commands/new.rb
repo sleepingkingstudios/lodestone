@@ -3,37 +3,45 @@
 module Lodestone::Tasks::Commands
   # Builds a Task with generated uuid ID and slug.
   class New < Librum::Core::Commands::Resources::New
-    ATTRIBUTE_NAMES_FOR_SLUG = %i[title].freeze
-    private_constant :ATTRIBUTE_NAMES_FOR_SLUG
-
     private
 
-    def attribute_names_for_slug
-      ATTRIBUTE_NAMES_FOR_SLUG
-    end
+    attr_reader :project
 
     def build_entity(attributes:)
-      project_index = step { next_project_index(attributes) }
+      project_index = step { next_project_index }
 
       attributes = attributes.merge('project_index' => project_index)
 
       super
     end
 
-    def generate_slug(attributes)
-      return attributes['slug'] if attributes['slug'].present?
+    def find_project(attributes)
+      project = attributes.fetch('project', attributes[:project])
 
-      project = attributes['project']
-      index   = attributes['project_index']
+      return project if project.present?
+
+      project_id = attributes.fetch('project_id', attributes[:project_id])
+
+      return nil if project_id.blank?
+
+      Librum::Core::Commands::Queries::FindEntity
+        .new(collection: projects_collection)
+        .call(value: project_id)
+    end
+
+    def generate_slug(attributes)
+      slug = attributes.fetch('slug', attributes[:slug])
+
+      return slug if slug.present?
+
+      index = attributes.fetch('project_index', attributes[:project_index])
 
       return nil if project.blank? || index.blank?
 
-      "#{project['slug']}-#{index}"
+      "#{project.slug}-#{index}"
     end
 
-    def next_project_index(attributes)
-      project = attributes['project']
-
+    def next_project_index
       return nil if project.blank?
 
       result = collection.find_matching.call(
@@ -44,6 +52,20 @@ module Lodestone::Tasks::Commands
       last_task = result.success? ? result.value.first : nil
 
       (last_task&.[]('project_index') || -1) + 1
+    end
+
+    def process(attributes:, **)
+      @project   = step { find_project(attributes) }
+      attributes = attributes.merge(
+        'project'    => project,
+        'project_id' => project&.id
+      )
+
+      super
+    end
+
+    def projects_collection
+      repository['projects']
     end
   end
 end
