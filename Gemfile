@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.4'
+ruby '3.4.5'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
@@ -35,16 +35,14 @@ gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'
 gem 'sleeping_king_studios-tools', '~> 1.2'
-gem 'stannum',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/stannum'
+gem 'stannum', '~> 0.4'
 
 group :development, :test do
   gem 'annotaterb', '~> 4.14'
 
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.4'
-  gem 'thor', '~> 1.0'
+  gem 'thor', '~> 1.4'
 
   gem 'sleeping_king_studios-tasks',
     git: 'https://github.com/sleepingkingstudios/sleeping_king_studios-tasks'
