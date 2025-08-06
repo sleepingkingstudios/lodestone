@@ -1,73 +1,59 @@
 # frozen_string_literal: true
 
 # Controller for managing task relationships.
-class TaskRelationshipsController < ApplicationController
-  def new
-    @source_task  = Task.find(source_task_id)
-    @tasks        = grouped_tasks
-    @relationship = TaskRelationship.new(source_task: @source_task)
-  end
+class TaskRelationshipsController < BaseController
+  # Responder for handling HTML requests.
+  class Responder < Cuprum::Rails::Responders::Html::Resource
+    include Rails.application.routes.url_helpers
 
-  def edit
-    @source_task  = Task.find(source_task_id)
-    @tasks        = grouped_tasks
-    @relationship = TaskRelationship.find(params[:id])
-  end
+    action :create do
+      match(:success) { |result| redirect_to_task(result) }
+    end
 
-  def create
-    @relationship = TaskRelationship.new(relationship_params)
+    action :destroy do
+      match(:success) { |result| redirect_to_task(result) }
+    end
 
-    if @relationship&.save
-      redirect_to task_path(@relationship.source_task_id)
-    else
-      @source_task  = Task.find(source_task_id)
-      @tasks        = grouped_tasks
+    action :update do
+      match(:success) { |result| redirect_to_task(result) }
+    end
 
-      render :new
+    private
+
+    def redirect_to_task(result)
+      relationship = result.value['task_relationship']
+      source_task  = relationship.source_task
+
+      redirect_to task_path(source_task)
     end
   end
 
-  def update
-    @relationship = TaskRelationship.find(params[:id])
-    @relationship.assign_attributes(relationship_params)
-
-    if @relationship.save
-      redirect_to task_path(@relationship.source_task_id)
-    else
-      @source_task  = Task.find(source_task_id)
-      @tasks        = grouped_tasks
-
-      render :edit
-    end
-  end
-
-  def destroy
-    @relationship = TaskRelationship.find(params[:id])
-    @relationship.destroy
-
-    redirect_to task_path(@relationship.source_task_id)
-  end
-
-  private
-
-  def grouped_tasks
-    current_project = @source_task.project
-    projects        =
-      Project.where.not(id: current_project.id).order(:name)
-    tasks           = Task.order(created_at: :desc)
-
-    [current_project, *projects].map do |project|
-      [project.name, tasks.select { |task| task.project_id == project.id }]
-    end
-  end
-
-  def relationship_params
-    params.expect(
-      task_relationship: %i[relationship_type source_task_id target_task_id]
+  def self.resource
+    Cuprum::Rails::Resource.new(
+      entity_class:         ::TaskRelationship,
+      permitted_attributes: %w[
+        relationship_type
+        source_task_id
+        target_task_id
+      ]
     )
   end
 
-  def source_task_id
-    params[:task_id]
-  end
+  responder :html, TaskRelationshipsController::Responder
+
+  middleware Lodestone::TaskRelationships::Middleware::FindTasks.new,
+    only: %i[create edit new update]
+
+  action :create,
+    Cuprum::Rails::Actions::Resources::Create
+  action :destroy,
+    Cuprum::Rails::Actions::Resources::Destroy,
+    member: true
+  action :edit,
+    Cuprum::Rails::Actions::Resources::Edit,
+    member: true
+  action :new,
+    Cuprum::Rails::Actions::Resources::New
+  action :update,
+    Cuprum::Rails::Actions::Resources::Update, member: true
 end
