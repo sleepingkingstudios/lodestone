@@ -141,4 +141,148 @@ RSpec.describe Lodestone::Tasks::Commands::Create do
       end
     end
   end
+
+  describe 'with project_id: nil' do
+    let(:matched_attributes) { valid_attributes.merge(project_id: nil) }
+    let(:expected_attributes) do
+      super()
+        .merge(
+          'project_id' => nil,
+          'created_at' => nil,
+          'updated_at' => nil
+        )
+    end
+
+    define_method :call_command do
+      command.call(attributes: matched_attributes)
+    end
+
+    before(:example) do
+      repository.create(
+        default_contract:,
+        name:             'tasks',
+        primary_key_type: String
+      )
+    end
+
+    include_deferred 'should validate the entity'
+  end
+
+  describe 'with project_id: invalid id' do
+    let(:project_id)         { SecureRandom.uuid }
+    let(:matched_attributes) { valid_attributes.merge(project_id:) }
+    let(:expected_error) do
+      Cuprum::Collections::Errors::NotFound.new(
+        attribute_name:  'id',
+        attribute_value: project_id,
+        collection_name: 'projects',
+        primary_key:     true
+      )
+    end
+
+    define_method :call_command do
+      command.call(attributes: matched_attributes)
+    end
+
+    before(:example) do
+      repository.create(
+        default_contract:,
+        name:             'tasks',
+        primary_key_type: String
+      )
+    end
+
+    it 'should return a failing result' do
+      expect(call_command)
+        .to be_a_failing_result
+        .with_error(expected_error)
+    end
+  end
+
+  describe 'with project_id: invalid slug' do
+    let(:project_id)         { 'invalid-project' }
+    let(:matched_attributes) { valid_attributes.merge(project_id:) }
+    let(:expected_error) do
+      Cuprum::Collections::Errors::NotFound.new(
+        attribute_name:  'slug',
+        attribute_value: project_id,
+        collection_name: 'projects',
+        primary_key:     false
+      )
+    end
+
+    define_method :call_command do
+      command.call(attributes: matched_attributes)
+    end
+
+    before(:example) do
+      repository.create(
+        default_contract:,
+        name:             'tasks',
+        primary_key_type: String
+      )
+    end
+
+    it 'should return a failing result' do
+      expect(call_command)
+        .to be_a_failing_result
+        .with_error(expected_error)
+    end
+  end
+
+  describe 'with project_id: valid id' do
+    let(:project) do
+      attributes = Spec::Support::Fixtures::PROJECTS_FIXTURES.find do |item|
+        item['id'] == valid_project_id
+      end
+
+      Project.new(**attributes)
+    end
+    let(:project_id)             { project.id }
+    let(:empty_attributes)       { super().merge('project_id' => project_id) }
+    let(:invalid_attributes)     { super().merge('project_id' => project_id) }
+    let(:valid_attributes)       { super().merge('project_id' => project_id) }
+    let(:expected_project_index) { 0 }
+    let(:calculated_slug) do
+      "#{project['slug']}-#{expected_project_index}"
+    end
+    let(:expected_attributes) do
+      super()
+        .except('project', :project)
+        .merge('project_id' => project.id)
+    end
+
+    before(:example) { insert('projects', project) }
+
+    include_deferred 'should implement the Create command',
+      default_contract: true
+  end
+
+  describe 'with project_id: valid slug' do
+    let(:project) do
+      attributes = Spec::Support::Fixtures::PROJECTS_FIXTURES.find do |item|
+        item['id'] == valid_project_id
+      end
+
+      Project.new(**attributes)
+    end
+    let(:project_id)             { project.slug }
+    let(:empty_attributes)       { super().merge('project_id' => project_id) }
+    let(:invalid_attributes)     { super().merge('project_id' => project_id) }
+    let(:valid_attributes)       { super().merge('project_id' => project_id) }
+    let(:expected_project_index) { 0 }
+    let(:calculated_slug) do
+      "#{project['slug']}-#{expected_project_index}"
+    end
+    let(:expected_attributes) do
+      super()
+        .except('project', :project)
+        .merge('project_id' => project.id)
+    end
+
+    before(:example) { insert('projects', project) }
+
+    include_deferred 'should implement the Create command',
+      default_contract: true
+  end
 end

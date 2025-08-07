@@ -20,7 +20,9 @@
     <div class='form-group col-sm-5 mb-2'>
       <%= form.label :source_task_id, 'Source Task', class: 'form-label' %>
 
-      <%= form.select :source_task_id, grouped_options_for_select(task_options, selected: relationship.source_task_id), {}, class: 'form-select' %>
+      <%= form.hidden_field :source_task_id, value: relationship.source_task_id %>
+
+      <input type="text" readonly class='form-control' value='<%= @source_task.title %> (<%= source_task.slug %>)'/>
     </div>
 
     <div class='form-group col-sm-2 mb-2'>
