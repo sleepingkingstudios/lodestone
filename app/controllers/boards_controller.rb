@@ -12,8 +12,7 @@ class BoardsController < BaseController
   responder :html, Cuprum::Rails::Responders::Html::Resource
 
   action :show,
-    Cuprum::Rails::Action.subclass(
-      command_class: Lodestone::Boards::Commands::Show
-    ),
-    member: false
+    Cuprum::Rails::Action,
+    command_class: Lodestone::Boards::Commands::Show,
+    member:        false
 end
