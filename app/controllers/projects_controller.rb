@@ -21,26 +21,27 @@ class ProjectsController < BaseController
   end
 
   action :create,
-    Cuprum::Rails::Actions::Resources::Create
-      .subclass(command_class: Librum::Core::Commands::Resources::Create)
+    Cuprum::Rails::Actions::Resources::Create,
+    command_class: Librum::Core::Commands::Resources::Create
   action :destroy,
-    Cuprum::Rails::Actions::Resources::Destroy
-      .subclass(command_class: Librum::Core::Commands::Resources::Destroy),
-    member: true
+    Cuprum::Rails::Actions::Resources::Destroy,
+    command_class: Librum::Core::Commands::Resources::Destroy,
+    member:        true
   action :edit,
-    Cuprum::Rails::Actions::Resources::Edit
-      .subclass(command_class: Librum::Core::Commands::Resources::Edit),
-    member: true
-  action :index, Cuprum::Rails::Actions::Resources::Index
+    Cuprum::Rails::Actions::Resources::Edit,
+    command_class: Librum::Core::Commands::Resources::Edit,
+    member:        true
+  action :index,
+    Cuprum::Rails::Actions::Resources::Index
   action :new,
-    Cuprum::Rails::Actions::Resources::New
-      .subclass(command_class: Librum::Core::Commands::Resources::New)
+    Cuprum::Rails::Actions::Resources::New,
+    command_class: Librum::Core::Commands::Resources::New
   action :show,
-    Cuprum::Rails::Actions::Resources::Show
-      .subclass(command_class: Librum::Core::Commands::Resources::Show),
-    member: true
+    Cuprum::Rails::Actions::Resources::Show,
+    command_class: Librum::Core::Commands::Resources::Show,
+    member:        true
   action :update,
-    Cuprum::Rails::Actions::Resources::Update
-      .subclass(command_class: Librum::Core::Commands::Resources::Update),
-    member: true
+    Cuprum::Rails::Actions::Resources::Update,
+    command_class: Librum::Core::Commands::Resources::Update,
+    member:        true
 end
