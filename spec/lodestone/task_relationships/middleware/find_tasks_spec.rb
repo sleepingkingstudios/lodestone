@@ -311,11 +311,25 @@ RSpec.describe Lodestone::TaskRelationships::Middleware::FindTasks do
             third_project.name  => sort_tasks(third_project_tasks)
           )
         end
+        let(:expected_projects) do
+          [
+            source_project.name,
+            other_project.name,
+            third_project.name
+          ]
+        end
 
         it 'should return a passing result' do
           expect(call_command)
             .to be_a_passing_result
             .with_value(expected_value)
+        end
+
+        it 'should order the projects by name' do
+          result  = call_command
+          grouped = result.value['tasks']
+
+          expect(grouped.keys).to eq(expected_projects)
         end
       end
 

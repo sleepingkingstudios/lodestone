@@ -52,16 +52,16 @@ module Lodestone::TaskRelationships::Middleware
     end
 
     def group_tasks_by_project
-      grouped       = Hash.new { |hsh, key| hsh[key] = [] }
+      grouped       = projects.to_h { |project| [project.name, nil] }
       project_names = projects.to_h { |project| [project.id, project.name] }
 
       tasks.each do |task|
         project_name = project_names[task.project_id]
 
-        grouped[project_name] << task
+        (grouped[project_name] ||= []) << task
       end
 
-      grouped
+      grouped.compact
     end
 
     def merge_request # rubocop:disable Metrics/MethodLength
