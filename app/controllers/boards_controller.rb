@@ -7,11 +7,11 @@ class BoardsController < Librum::Core::ViewController
       Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)
   end
 
-  layout 'application'
-
   responder :html, Cuprum::Rails::Responders::Html::Resource
 
   action :show,
-    Cuprum::Rails::Action.subclass(command_class: Boards::Commands::Show),
+    Cuprum::Rails::Action.subclass(
+      command_class: Boards::Commands::Show,
+    ),
     member: false
 end

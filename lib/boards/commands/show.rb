@@ -29,7 +29,7 @@ module Boards::Commands
       tasks.group_by(&:status)
     end
 
-    def process(project_id: nil, **)
+    def process(project_id: nil, **rest)
       super()
 
       project = step { find_project(project_id) }

@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: 584758db42b3f441854a2959fe8dadfd1d92c229
+  revision: a6349f370e1e26f9a67c34af6be87c01275dfdd5
   branch: main
   specs:
     cuprum-rails (0.3.0.alpha)
@@ -84,6 +84,14 @@ GIT
   specs:
     stannum (0.4.0.alpha)
       sleeping_king_studios-tools (~> 1.1)
+
+PATH
+  remote: ../librum-components
+  specs:
+    librum-components (0.1.0)
+      diffy (~> 3.4)
+      rails (>= 7.0, < 9)
+      view_component (~> 3.21)
 
 GEM
   remote: https://rubygems.org/
@@ -418,6 +426,7 @@ DEPENDENCIES
   cuprum-rails!
   factory_bot_rails (~> 6.4)
   importmap-rails (~> 2.1)
+  librum-components!
   librum-core!
   librum-iam!
   listen (~> 3.3)

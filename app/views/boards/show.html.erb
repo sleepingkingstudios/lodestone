@@ -1,36 +1,42 @@
-<div>
-  <h1 class='d-inline-block'><%= @project&.name || 'All Tasks' %></h1>
+<% link_classes = { 'done' => 'success', 'icebox' => 'info', 'in_progress' => 'warning', 'to_do' => 'link' } %>
+<% icon_classes = { 'bugfix' => 'bug', 'chore' => 'wrench', 'epic' => 'lightbulb', 'feature' => 'gear', 'investigation' => 'search', 'release' => 'award' } %>
 
-  <div class='float-end mt-3'>
-    <%= link_to 'Create Task', @project ? new_project_task_path(@project) : new_task_path, class: 'btn btn-outline-primary btn-sm' %>
+<div class="level">
+  <div class="level-left">
+    <span class="title"><%= @project&.name || 'All Tasks' %></span>
+  </div>
+
+  <div class="level-right">
+    <%= link_to 'Create Task', @project ? new_project_task_path(@project) : new_task_path, class: 'button' %>
   </div>
 </div>
 
-<div class='row mt-3'>
-  <% link_classes = { 'done' => 'secondary', 'icebox' => 'info', 'in_progress' => 'success', 'to_do' => 'primary' } %>
-  <% icon_classes = { 'bugfix' => 'bug', 'chore' => 'wrench', 'epic' => 'lightbulb', 'feature' => 'gear', 'investigation' => 'search', 'release' => 'award' } %>
+<div class="columns">
   <% %w[icebox to_do in_progress done].each do |status| %>
-    <% text_class = "text-#{link_classes[status]}" %>
+  <div class="column">
+    <p class="title is-size-4"><%= status.titleize %></p>
 
-    <div class='col-md-3 mb-3'>
-      <h2><%= status.to_s.titleize %></h2>
+    <% @tasks.fetch(status).each do |task| %>
+      <div class="box">
+        <p>
+          <%= link_to(task.title, task_path(task), class: "has-text-#{link_classes[task.status]}") %>
+        </p>
 
-      <% @tasks.fetch(status, []).each do |task| %>
-        <div class='bg-light border border-2 mb-2 overflow-hidden px-3 py-2 rounded'>
-          <p class='mb-2'>
-            <%= link_to(task.title, task_path(task), class: "text-decoration-none #{text_class}") %>
-          </p>
+        <p>
+          <span class="icon-text">
+            <span class="icon" style="width: 1rem;">
+              <i class="fas fa-<%= icon_classes[task.task_type] %> fa-fw"></i>
+            </span>
 
-          <p class='mb-0'>
-            <i class="bi-<%= icon_classes[task.task_type] %>"></i>
             <%= task.task_type.titleize %>
+          </span>
+        </p>
 
-            <br />
-
-            <span class='font-monospace'><%= task.slug %></span>
-          </p>
-        </div>
-      <% end %>
-    </div>
+        <p>
+          <%= task.slug %>
+        </p>
+      </div>
+    <% end %>
+  </div>
   <% end %>
 </div>
