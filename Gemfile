@@ -9,7 +9,7 @@ ruby '3.4.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 gem 'puma', '~> 6.4', '>= 6.4.3'
-gem 'rails', '~> 8.0.1'
+gem 'rails', '~> 8.0.2', '>= 8.0.2.1'
 
 # Engines
 gem 'librum-core',
