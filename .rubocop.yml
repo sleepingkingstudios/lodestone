@@ -59,6 +59,9 @@ RSpec/ExampleWording:
 RSpec/HookArgument:
   EnforcedStyle: example
 
+RSpec/IncludeExamples:
+  Enabled: false
+
 RSpec/MultipleMemoizedHelpers:
   Max: 10
 
