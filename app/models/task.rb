@@ -25,6 +25,7 @@ class Task < ApplicationRecord
       EPIC:          'epic',
       FEATURE:       'feature',
       INVESTIGATION: 'investigation',
+      MILESTONE:     'milestone',
       RELEASE:       'release'
     }
   ).freeze

@@ -175,6 +175,7 @@ RSpec.describe Task, type: :model do
         EPIC:          'epic',
         FEATURE:       'feature',
         INVESTIGATION: 'investigation',
+        MILESTONE:     'milestone',
         RELEASE:       'release'
       }
     end
