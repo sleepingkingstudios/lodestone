@@ -12,12 +12,12 @@ gem 'puma', '~> 6.4', '>= 6.4.3'
 gem 'rails', '~> 8.0.2', '>= 8.0.2.1'
 
 # Engines
+gem 'librum-components',
+  git: 'https://github.com/sleepingkingstudios/librum-components'
 gem 'librum-core',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/librum-core'
+  git: 'https://github.com/sleepingkingstudios/librum-core'
 gem 'librum-iam',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/librum-iam'
+  git: 'https://github.com/sleepingkingstudios/librum-iam'
 
 # Assets
 gem 'commonmarker', '~> 0.23'
@@ -29,11 +29,11 @@ gem 'stimulus-rails', '~> 1.3'
 # Commands
 gem 'cuprum', '~> 1.3'
 gem 'cuprum-collections',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/cuprum-collections'
+  git: 'https://github.com/sleepingkingstudios/cuprum-collections'
 gem 'cuprum-rails',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/cuprum-rails'
+  git: 'https://github.com/sleepingkingstudios/cuprum-rails'
+gem 'plumbum',
+  git: 'https://github.com/sleepingkingstudios/plumbum'
 gem 'sleeping_king_studios-tools', '~> 1.2'
 gem 'stannum', '~> 0.4'
 
