@@ -1,0 +1,13 @@
+<%= render components::Box.new do %>
+  <p>
+    <%= render_link %>
+  </p>
+
+  <p class="<%= bulma_class_names('mb-0') %>">
+    <%= render_label %>
+  </p>
+
+  <p>
+    <%= task.slug %>
+  </p>
+<% end %>
