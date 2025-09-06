@@ -1,11 +1,25 @@
 # frozen_string_literal: true
 
-Rails.application.config.after_initialize do
-  components    = Lodestone::View::Components
-  configuration = Lodestone::View::CONFIGURATION
-  routes        = Class.new.include(Rails.application.routes.url_helpers).new
+components    = -> { Lodestone::View::Components }
+configuration = -> { Lodestone::View::CONFIGURATION }
+values        =
+  Librum::Components::PROVIDER_KEYS
+  .index_with { |_| Plumbum::UNDEFINED }
+  .merge(components:, configuration:)
+options =
+  if Rails.application.config.enable_reloading
+    { read_only: false }
+  else
+    { write_once: true }
+  end
+provider =
+  Plumbum::ManyProvider
+  .new(values:, **options)
+  .extend(Plumbum::Providers::Lazy)
 
-  Librum::Components::Provider.set('components',    components)
-  Librum::Components::Provider.set('configuration', configuration)
-  Librum::Components::Provider.set('routes',        routes)
+Librum::Components.provider = provider
+
+Rails.application.config.after_routes_loaded do
+  provider.set :routes,
+    Class.new.include(Rails.application.routes.url_helpers).new
 end

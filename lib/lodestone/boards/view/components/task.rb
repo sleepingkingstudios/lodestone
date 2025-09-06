@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'librum/components/bulma/base'
+
 module Lodestone::Boards::View::Components
   # Component rendering a single task for a board.
   class Task < Librum::Components::Bulma::Base
@@ -19,9 +21,9 @@ module Lodestone::Boards::View::Components
     private_constant :ICON_CLASSES
 
     LINK_COLORS = {
-      ::Task::Statuses::DONE        => 'success',
+      ::Task::Statuses::DONE        => 'slate',
       ::Task::Statuses::ICEBOX      => 'info',
-      ::Task::Statuses::IN_PROGRESS => 'warning',
+      ::Task::Statuses::IN_PROGRESS => 'success',
       ::Task::Statuses::TO_DO       => 'link'
     }.freeze
     private_constant :LINK_COLORS

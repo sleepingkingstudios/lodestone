@@ -5,7 +5,10 @@ require 'rails_helper'
 RSpec.describe Lodestone::View do
   describe '::CONFIGURATION' do
     let(:expected_options) do
-      Librum::Components::Bulma::Configuration::DEFAULTS
+      defaults = Librum::Components::Bulma::Configuration::DEFAULTS
+      colors   = [*defaults['colors'], 'slate']
+
+      defaults.merge('colors' => colors)
     end
     let(:configuration) do
       described_class::CONFIGURATION

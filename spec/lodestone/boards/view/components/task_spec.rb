@@ -62,7 +62,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:task_options) do
         super().merge(status: Task::Statuses::DONE)
       end
-      let(:link_color) { 'success' }
+      let(:link_color) { 'slate' }
       let(:icon)       { 'search' }
 
       it { expect(rendered).to match_snapshot(snapshot) }
@@ -82,7 +82,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:task_options) do
         super().merge(status: Task::Statuses::IN_PROGRESS)
       end
-      let(:link_color) { 'warning' }
+      let(:link_color) { 'success' }
       let(:icon)       { 'search' }
 
       it { expect(rendered).to match_snapshot(snapshot) }
