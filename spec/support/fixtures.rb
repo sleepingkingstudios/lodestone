@@ -45,7 +45,7 @@ module Spec::Support
         'slug'          => 'feature-task',
         'description'   => 'An example task',
         'project_index' => 0,
-        'status'        => Task::Statuses::TO_DO.key,
+        'status'        => Task::Statuses::TO_DO,
         'task_type'     => Task::TaskTypes::FEATURE
       }.freeze,
       {
@@ -55,7 +55,7 @@ module Spec::Support
         'slug'          => 'chore-task',
         'description'   => 'An example task',
         'project_index' => 1,
-        'status'        => Task::Statuses::IN_PROGRESS.key,
+        'status'        => Task::Statuses::IN_PROGRESS,
         'task_type'     => Task::TaskTypes::CHORE
       }.freeze,
       {
@@ -65,7 +65,7 @@ module Spec::Support
         'slug'          => 'bugfix-task',
         'description'   => 'An example task',
         'project_index' => 2,
-        'status'        => Task::Statuses::DONE.key,
+        'status'        => Task::Statuses::DONE,
         'task_type'     => Task::TaskTypes::BUGFIX
       }.freeze,
       {
@@ -75,7 +75,7 @@ module Spec::Support
         'slug'          => 'release-task',
         'description'   => 'An example task',
         'project_index' => 3,
-        'status'        => Task::Statuses::ICEBOX.key,
+        'status'        => Task::Statuses::ICEBOX,
         'task_type'     => Task::TaskTypes::RELEASE
       }.freeze,
       {
@@ -85,7 +85,7 @@ module Spec::Support
         'slug'          => 'cancelled-task',
         'description'   => 'An example task',
         'project_index' => 0,
-        'status'        => Task::Statuses::WONT_DO.key,
+        'status'        => Task::Statuses::WONT_DO,
         'task_type'     => Task::TaskTypes::INVESTIGATION
       }.freeze
     ].freeze

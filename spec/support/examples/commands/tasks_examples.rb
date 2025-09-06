@@ -106,7 +106,7 @@ module Spec::Support::Examples::Commands
       end
       let(:unique_scope) do
         Cuprum::Collections::Scope.new({
-          'status' => Task::Statuses::WONT_DO.key
+          'status' => Task::Statuses::WONT_DO
         })
       end
       let(:order) { { 'title' => 'asc' } }
@@ -119,7 +119,7 @@ module Spec::Support::Examples::Commands
         {
           'description' => '',
           'project_id'  => nil,
-          'status'      => Task::Statuses::ICEBOX.key,
+          'status'      => Task::Statuses::ICEBOX,
           'task_type'   => Task::TaskTypes::FEATURE,
           'title'       => ''
         }
@@ -142,7 +142,7 @@ module Spec::Support::Examples::Commands
         {
           'description' => 'Example description',
           'title'       => 'Example Task',
-          'status'      => Task::Statuses::TO_DO.key
+          'status'      => Task::Statuses::TO_DO
         }
       end
     end

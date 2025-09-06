@@ -1,3 +1,4 @@
+<% status_names = { 'archived' => 'Archived', 'done' => 'Done', 'icebox' => 'Icebox', 'in_progress' => 'In Progress', 'to_do' => 'To Do', 'wont_do' => "Won't Do" } %>
 <%= form_with model: task do |form| %>
   <%= hidden_field_tag :referer_path, @referer_path %>
 
@@ -38,7 +39,7 @@
     <div class='form-group col-sm-4 mb-2'>
       <%= form.label :status, 'Status', class: 'form-label' %>
 
-      <% status_options = Task::Statuses.values.map { |value| [value.name.titleize, value.key] } %>
+      <% status_options = Task::Statuses.values.map { |value| [status_names[value], value] } %>
       <%= form.select :status, options_for_select(status_options, selected: task.status), {}, class: 'form-select' %>
     </div>
 
