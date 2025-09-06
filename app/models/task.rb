@@ -4,17 +4,14 @@ require 'sleeping_king_studios/tools/toolbox/constant_map'
 
 # Represents a specific achievable task, such as a bug or feature.
 class Task < ApplicationRecord
-  # @api private
-  Status = Struct.new(:key, :name)
-
   Statuses = SleepingKingStudios::Tools::Toolbox::ConstantMap.new(
     {
-      WONT_DO:     Status.new('wont_do',     "won't do"),
-      ICEBOX:      Status.new('icebox',      'icebox'),
-      TO_DO:       Status.new('to_do',       'to do'),
-      IN_PROGRESS: Status.new('in_progress', 'in progress'),
-      DONE:        Status.new('done',        'done'),
-      ARCHIVED:    Status.new('archived',    'archived')
+      WONT_DO:     'wont_do',
+      ICEBOX:      'icebox',
+      TO_DO:       'to_do',
+      IN_PROGRESS: 'in_progress',
+      DONE:        'done',
+      ARCHIVED:    'archived'
     }
   ).freeze
 
@@ -31,7 +28,7 @@ class Task < ApplicationRecord
   ).freeze
 
   ### Attributes
-  attribute :status,    :string, default: -> { Statuses::ICEBOX.key }
+  attribute :status,    :string, default: -> { Statuses::ICEBOX }
   attribute :task_type, :string, default: -> { TaskTypes::FEATURE }
 
   ### Associations
@@ -63,7 +60,7 @@ class Task < ApplicationRecord
     presence:   true,
     uniqueness: true
   validates :status,
-    inclusion: { in: Statuses.values.map(&:key) },
+    inclusion: { in: Statuses.values },
     presence:  true
   validates :task_type,
     inclusion: { in: TaskTypes.values },

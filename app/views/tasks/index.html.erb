@@ -1,3 +1,4 @@
+<% status_names = { 'archived' => 'Archived', 'done' => 'Done', 'icebox' => 'Icebox', 'in_progress' => 'In Progress', 'to_do' => 'To Do', 'wont_do' => "Won't Do" } %>
 <div>
   <h1 class='d-inline-block'>Tasks</h1>
 
@@ -23,13 +24,13 @@
   <% end %>
 
   <% @tasks&.each do |task| %>
-    <% status = Task::Statuses.values.find { |value| value.key == task.status } %>
+    <% status = Task::Statuses.values.find { |value| value == task.status } %>
 
     <div class='row p-1 py-2'>
       <div class='col-2 font-monospace'><%= task.slug %></div>
       <div class='col-3'><%= task.title %></div>
       <div class='col-2'><%= task.task_type.capitalize %></div>
-      <div class='col-2'><%= status.name.titleize %></div>
+      <div class='col-2'><%= status_names[task.status] %></div>
       <div class='col-3'>
         <div class='row text-center'>
           <%= link_to 'Show', task_path(task), class: 'col text-decoration-none text-info' %>

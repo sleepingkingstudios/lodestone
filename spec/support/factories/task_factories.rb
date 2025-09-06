@@ -11,7 +11,7 @@ FactoryBot.define do
     title        { "Task #{task_index}" }
     slug         { "task-#{task_index}" }
     description  { "The description for task #{task_index}." }
-    status       { Task::Statuses::TO_DO.key }
+    status       { Task::Statuses::TO_DO }
     task_type    { Task::TaskTypes::CHORE }
 
     project_index do

@@ -76,25 +76,9 @@ RSpec.describe Task, type: :model do
       description:   'Implement the example feature.',
       project_index: 0,
       slug:          'xanadu-0',
-      status:        described_class::Statuses::IN_PROGRESS.key,
+      status:        described_class::Statuses::IN_PROGRESS,
       task_type:     described_class::TaskTypes::INVESTIGATION
     }
-  end
-
-  describe '::Status' do
-    subject(:status) { described_class::Status.new('dazed', 'confused') }
-
-    include_examples 'should define constant',
-      :Status,
-      -> { an_instance_of Class }
-
-    describe '#key' do
-      include_examples 'should define reader', :key, 'dazed'
-    end
-
-    describe '#name' do
-      include_examples 'should define reader', :name, 'confused'
-    end
   end
 
   describe '::Statuses' do
@@ -107,62 +91,38 @@ RSpec.describe Task, type: :model do
     end
 
     describe '::ARCHIVED' do
-      let(:expected_attributes) { { key: 'archived', name: 'archived' } }
-
-      it 'should store the status' do
-        expect(described_class::Statuses::ARCHIVED)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+      it 'should store the value' do
+        expect(described_class::Statuses::ARCHIVED).to be == 'archived'
       end
     end
 
     describe '::DONE' do
-      let(:expected_attributes) { { key: 'done', name: 'done' } }
-
       it 'should store the status' do
-        expect(described_class::Statuses::DONE)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+        expect(described_class::Statuses::DONE).to be == 'done'
       end
     end
 
     describe '::ICEBOX' do
-      let(:expected_attributes) { { key: 'icebox', name: 'icebox' } }
-
       it 'should store the status' do
-        expect(described_class::Statuses::ICEBOX)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+        expect(described_class::Statuses::ICEBOX).to be == 'icebox'
       end
     end
 
     describe '::IN_PROGRESS' do
-      let(:expected_attributes) { { key: 'in_progress', name: 'in progress' } }
-
       it 'should store the status' do
-        expect(described_class::Statuses::IN_PROGRESS)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+        expect(described_class::Statuses::IN_PROGRESS).to be == 'in_progress'
       end
     end
 
     describe '::TO_DO' do
-      let(:expected_attributes) { { key: 'to_do', name: 'to do' } }
-
       it 'should store the status' do
-        expect(described_class::Statuses::TO_DO)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+        expect(described_class::Statuses::TO_DO).to be == 'to_do'
       end
     end
 
     describe '::WONT_DO' do
-      let(:expected_attributes) { { key: 'wont_do', name: "won't do" } }
-
       it 'should store the status' do
-        expect(described_class::Statuses::WONT_DO)
-          .to be_a(described_class::Status)
-          .and(have_attributes(expected_attributes))
+        expect(described_class::Statuses::WONT_DO).to be == 'wont_do'
       end
     end
   end
@@ -367,7 +327,7 @@ RSpec.describe Task, type: :model do
   describe '#status' do
     include_examples 'should define attribute',
       :status,
-      default: described_class::Statuses::ICEBOX.key
+      default: described_class::Statuses::ICEBOX
   end
 
   describe '#task_type' do
@@ -418,7 +378,7 @@ RSpec.describe Task, type: :model do
 
     include_examples 'should validate the inclusion of',
       :status,
-      in: described_class::Statuses.values.map(&:key)
+      in: described_class::Statuses.values
 
     include_examples 'should validate the presence of', :task_type, type: String
 
