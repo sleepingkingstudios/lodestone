@@ -1,0 +1,5 @@
+<%= render components::Heading.new(level: 2, size: 4, text: status.titleize) %>
+
+<% tasks&.each do |task| %>
+  <%= render_task(task) %>
+<% end %>

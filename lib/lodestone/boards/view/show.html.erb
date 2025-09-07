@@ -1,0 +1,7 @@
+<%= render_heading %>
+
+<%= render components::Columns.new(columns:) %>
+
+<% if empty_tasks? %>
+  <%= render_empty_message %>
+<% end %>
