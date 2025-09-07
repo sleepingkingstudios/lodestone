@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/components/bulma/base'
-
 module Lodestone::Boards::View::Components
   # Component rendering a single task for a board.
   class Task < Librum::Components::Bulma::Base

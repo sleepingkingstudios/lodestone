@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/components/rspec/deferred/component_examples'
-
 RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
   include Librum::Components::RSpec::Deferred::ComponentExamples
 

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/components/literal'
-
 require 'rails_helper'
 
 RSpec.describe Lodestone::View::Layouts::Page, type: :component do

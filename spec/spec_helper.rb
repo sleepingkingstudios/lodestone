@@ -9,8 +9,7 @@ end
 require 'byebug'
 require 'cuprum/rspec/be_a_result'
 require 'cuprum/rspec/be_callable'
-require 'librum/components/rspec/matchers'
-require 'librum/components/rspec/render_component'
+require 'librum/components'
 require 'plumbum/rspec/stub_provider'
 require 'rspec/sleeping_king_studios/all'
 

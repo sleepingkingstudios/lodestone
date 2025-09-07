@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-components
-  revision: 1404242a065cf5fb1b3472fec0eec785894cdf4d
+  revision: bc62b5ea4d9b75a0a427e88a260625be16f88bc0
   specs:
     librum-components (0.1.0)
       cuprum-rails (~> 0.2)
@@ -26,6 +26,7 @@ GIT
       plumbum (>= 0.1.0.alpha)
       rails (>= 7.0, < 9)
       view_component (~> 3.21)
+      zeitwerk (~> 2.0)
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
