@@ -48,6 +48,7 @@ module Lodestone::View::Layouts
         brand:,
         color:,
         copyright:,
+        max_width:  'widescreen',
         navigation:,
         tagline:,
         title:

@@ -23,7 +23,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
     let(:snapshot) do
       <<~HTML
         <nav class="navbar is-success" role="navigation" aria-label="main navigation" data-controller="librum-components-navbar">
-          <div class="container is-max-desktop">
+          <div class="container is-max-widescreen">
             <div class="navbar-brand">
               <a class="navbar-item" href="/">
                 <span class="icon">
@@ -63,7 +63,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
         </nav>
 
         <main class="section" style="flex: 1;">
-          <div class="container content is-max-desktop">
+          <div class="container content is-max-widescreen">
             <h1>Greetings, Starfighter!</h1>
 
             <p>
@@ -75,7 +75,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
 
         <footer>
           <div class="footer">
-            <div class="container is-max-desktop">
+            <div class="container is-max-widescreen">
               <p class="has-text-centered">
                 <span class="icon-text">
                   Sleeping&nbsp;King&nbsp;Studios is
