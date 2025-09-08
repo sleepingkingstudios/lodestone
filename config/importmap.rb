@@ -7,3 +7,5 @@ pin '@rails/ujs', to: 'rails-ujs.esm.js'
 pin '@hotwired/stimulus', to: 'stimulus.min.js'
 pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
 pin_all_from 'app/javascript/controllers', under: 'controllers'
+pin 'librum-components/controllers/navbar_controller',
+  to: 'librum_components/controllers/navbar_controller.js'
