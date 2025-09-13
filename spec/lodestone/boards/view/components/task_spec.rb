@@ -24,8 +24,8 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
 
     include_deferred 'should validate the type of option',
       :task,
-      expected: ::Task, # rubocop:disable Style/RedundantConstantBase
-      required: true
+      allow_nil: true,
+      expected:  ::Task # rubocop:disable Style/RedundantConstantBase
   end
 
   describe '#call' do
@@ -45,7 +45,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
                 <i class="fa-solid fa-#{icon}"></i>
               </span>
 
-              #{task.task_type.titleize}
+              <span>#{task.task_type.titleize}</span>
             </span>
           </p>
 

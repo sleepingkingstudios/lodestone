@@ -61,9 +61,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
 
           <div class="level-right">
             <div class="level-item">
-              <a class="button" href="#{create_path}">
-                Create Task
-              </a>
+              <a class="button" href="#{create_path}">Create Task</a>
             </div>
           </div>
         </div>
@@ -140,7 +138,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    Chore
+                    <span>Chore</span>
                   </span>
                 </p>
 
@@ -166,7 +164,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    Chore
+                    <span>Chore</span>
                   </span>
                 </p>
 
@@ -188,7 +186,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    Chore
+                    <span>Chore</span>
                   </span>
                 </p>
 

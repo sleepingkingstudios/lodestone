@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lodestone/boards/view/show/column'
+require 'rails_helper'
 
 RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
   include Librum::Components::RSpec::Deferred::ComponentExamples
@@ -60,7 +60,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                Chore
+                <span>Chore</span>
               </span>
             </p>
 
@@ -82,7 +82,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                Chore
+                <span>Chore</span>
               </span>
             </p>
 
@@ -104,7 +104,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                Chore
+                <span>Chore</span>
               </span>
             </p>
 
