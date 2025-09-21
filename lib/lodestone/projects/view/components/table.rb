@@ -10,7 +10,7 @@ module Lodestone::Projects::View::Components
       { key: 'project_type', transform: :titleize },
       {
         key:   'actions',
-        label: "\u0020",
+        label: "\u00A0",
         value: TableActions
       }
     ].freeze
@@ -18,6 +18,8 @@ module Lodestone::Projects::View::Components
     option :data, validate: { array: Project }
 
     option :resource
+
+    option :result
 
     option :routes
 

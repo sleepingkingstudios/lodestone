@@ -45,7 +45,9 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                 Project Type
               </th>
 
-              <th></th>
+              <th>
+                &nbsp;
+              </th>
             </tr>
           </thead>
 
@@ -112,7 +114,9 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                   Project Type
                 </th>
 
-                <th></th>
+                <th>
+                  &nbsp;
+                </th>
               </tr>
             </thead>
 
