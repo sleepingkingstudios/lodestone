@@ -18,7 +18,9 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
     let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
-        <h2 class="is-size-4">To Do</h2>
+        <h2 class="is-size-4">
+          To Do
+        </h2>
       HTML
     end
 
@@ -45,7 +47,9 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
       let(:component_options) { super().merge(tasks:) }
       let(:snapshot) do
         <<~HTML
-          <h2 class="is-size-4">To Do</h2>
+          <h2 class="is-size-4">
+            To Do
+          </h2>
 
           <div class="box">
             <p>
@@ -60,7 +64,9 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                <span>Chore</span>
+                <span>
+                  Chore
+                </span>
               </span>
             </p>
 
@@ -82,7 +88,9 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                <span>Chore</span>
+                <span>
+                  Chore
+                </span>
               </span>
             </p>
 
@@ -104,7 +112,9 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
                   <i class="fa-solid fa-wrench"></i>
                 </span>
 
-                <span>Chore</span>
+                <span>
+                  Chore
+                </span>
               </span>
             </p>
 

@@ -29,15 +29,23 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
         <table class="table is-fullwidth">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>
+                Name
+              </th>
 
-              <th>Active</th>
+              <th>
+                Active
+              </th>
 
-              <th>Public</th>
+              <th>
+                Public
+              </th>
 
-              <th>Project Type</th>
+              <th>
+                Project Type
+              </th>
 
-              <th> </th>
+              <th></th>
             </tr>
           </thead>
 
@@ -88,92 +96,148 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
           <table class="table is-fullwidth">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>
+                  Name
+                </th>
 
-                <th>Active</th>
+                <th>
+                  Active
+                </th>
 
-                <th>Public</th>
+                <th>
+                  Public
+                </th>
 
-                <th>Project Type</th>
+                <th>
+                  Project Type
+                </th>
 
-                <th> </th>
+                <th></th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td>Example Application</td>
+                <td>
+                  Example Application
+                </td>
 
-                <td>True</td>
+                <td>
+                  True
+                </td>
 
-                <td>True</td>
+                <td>
+                  True
+                </td>
 
-                <td>Application</td>
+                <td>
+                  Application
+                </td>
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/board">Board</a>
+                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/board">
+                      Board
+                    </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app">Show</a>
+                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app">
+                      Show
+                    </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/edit">Update</a>
+                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/edit">
+                      Update
+                    </a>
 
                     <form class="is-inline-block" action="/projects/ex-app" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">Destroy</button>
+                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                        Destroy
+                      </button>
                     </form>
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <td>Secret Library</td>
+                <td>
+                  Secret Library
+                </td>
 
-                <td>True</td>
+                <td>
+                  True
+                </td>
 
-                <td>False</td>
+                <td>
+                  False
+                </td>
 
-                <td>Library</td>
+                <td>
+                  Library
+                </td>
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/board">Board</a>
+                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/board">
+                      Board
+                    </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret">Show</a>
+                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret">
+                      Show
+                    </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/edit">Update</a>
+                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/edit">
+                      Update
+                    </a>
 
                     <form class="is-inline-block" action="/projects/secret" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">Destroy</button>
+                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                        Destroy
+                      </button>
                     </form>
                   </div>
                 </td>
               </tr>
 
               <tr>
-                <td>Deprecated Script</td>
+                <td>
+                  Deprecated Script
+                </td>
 
-                <td>False</td>
+                <td>
+                  False
+                </td>
 
-                <td>True</td>
+                <td>
+                  True
+                </td>
 
-                <td>Script</td>
+                <td>
+                  Script
+                </td>
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/board">Board</a>
+                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/board">
+                      Board
+                    </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps">Show</a>
+                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps">
+                      Show
+                    </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/edit">Update</a>
+                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/edit">
+                      Update
+                    </a>
 
                     <form class="is-inline-block" action="/projects/dps" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">Destroy</button>
+                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                        Destroy
+                      </button>
                     </form>
                   </div>
                 </td>

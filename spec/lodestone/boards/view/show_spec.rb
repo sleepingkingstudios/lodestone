@@ -25,19 +25,27 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
       <<~HTML
         <div class="columns">
           <div class="column">
-            <h2 class="is-size-4">Icebox</h2>
+            <h2 class="is-size-4">
+              Icebox
+            </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">To Do</h2>
+            <h2 class="is-size-4">
+              To Do
+            </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">In Progress</h2>
+            <h2 class="is-size-4">
+              In Progress
+            </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">Done</h2>
+            <h2 class="is-size-4">
+              Done
+            </h2>
           </div>
         </div>
 
@@ -56,12 +64,16 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
       <<~HTML
         <div class="level mb-5">
           <div class="level-left">
-            <h1 class="mb-0">#{heading_text}</h1>
+            <h1 class="mb-0">
+              #{heading_text}
+            </h1>
           </div>
 
           <div class="level-right">
             <div class="level-item">
-              <a class="button" href="#{create_path}">Create Task</a>
+              <a class="button" href="#{create_path}">
+                Create Task
+              </a>
             </div>
           </div>
         </div>
@@ -123,7 +135,9 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
         <<~HTML
           <div class="columns">
             <div class="column">
-              <h2 class="is-size-4">Icebox</h2>
+              <h2 class="is-size-4">
+                Icebox
+              </h2>
 
               <div class="box">
                 <p>
@@ -138,7 +152,9 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    <span>Chore</span>
+                    <span>
+                      Chore
+                    </span>
                   </span>
                 </p>
 
@@ -149,7 +165,9 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">To Do</h2>
+              <h2 class="is-size-4">
+                To Do
+              </h2>
 
               <div class="box">
                 <p>
@@ -164,7 +182,9 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    <span>Chore</span>
+                    <span>
+                      Chore
+                    </span>
                   </span>
                 </p>
 
@@ -186,7 +206,9 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
                       <i class="fa-solid fa-wrench"></i>
                     </span>
 
-                    <span>Chore</span>
+                    <span>
+                      Chore
+                    </span>
                   </span>
                 </p>
 
@@ -197,11 +219,15 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">In Progress</h2>
+              <h2 class="is-size-4">
+                In Progress
+              </h2>
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">Done</h2>
+              <h2 class="is-size-4">
+                Done
+              </h2>
             </div>
           </div>
         HTML

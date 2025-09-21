@@ -30,7 +30,9 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
                   <i class="fa-solid fa-compass fa-2xl"></i>
                 </span>
 
-                <span class="title is-size-4">Lodestone</span>
+                <span class="title is-size-4">
+                  Lodestone
+                </span>
               </a>
 
               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-action="click->librum-components-navbar#toggle" data-librum-components-navbar-target="button">
@@ -64,7 +66,9 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
 
         <main class="section" style="flex: 1;">
           <div class="container content is-max-widescreen">
-            <h1>Greetings, Starfighter!</h1>
+            <h1>
+              Greetings, Starfighter!
+            </h1>
 
             <p>
               You have been recruited by the Star League to defend the frontier
