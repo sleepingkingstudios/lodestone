@@ -17,7 +17,8 @@ class ProjectsController < BaseController
         public
         repository
         slug
-      ]
+      ],
+      title_attribute:      'name'
     )
   end
 
