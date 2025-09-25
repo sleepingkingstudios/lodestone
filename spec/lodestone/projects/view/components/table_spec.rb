@@ -5,16 +5,19 @@ require 'rails_helper'
 RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
   include Librum::Components::RSpec::Deferred::ComponentExamples
 
-  subject(:component) { described_class.new(**component_options) }
+  subject(:component) do
+    described_class.new(**required_keywords, **component_options)
+  end
 
   let(:component_options) do
     {
       data:,
-      resource:,
       routes:
     }
   end
-  let(:data) { [] }
+  let(:required_keywords) { { resource:, result: } }
+  let(:data)              { [] }
+  let(:result)            { Cuprum::Result.new }
   let(:resource) do
     Cuprum::Rails::Resource.new(name: 'projects')
   end
@@ -26,7 +29,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
     let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
-        <table class="table is-fullwidth">
+        <table class="table is-fullwidth is-striped">
           <thead>
             <tr>
               <th>
@@ -73,7 +76,8 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
             slug:         'ex-app',
             active:       true,
             public:       true,
-            project_type: Project::ProjectTypes::APPLICATION
+            project_type: Project::ProjectTypes::APPLICATION,
+            description:  'Description for the example application.'
           ),
           FactoryBot.build(
             :project,
@@ -81,7 +85,8 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
             slug:         'secret',
             active:       true,
             public:       false,
-            project_type: Project::ProjectTypes::LIBRARY
+            project_type: Project::ProjectTypes::LIBRARY,
+            description:  'Description for the secret library.'
           ),
           FactoryBot.build(
             :project,
@@ -89,13 +94,14 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
             slug:         'dps',
             active:       false,
             public:       true,
-            project_type: Project::ProjectTypes::SCRIPT
+            project_type: Project::ProjectTypes::SCRIPT,
+            description:  'Description for the deprecated script.'
           )
         ]
       end
       let(:snapshot) do
         <<~HTML
-          <table class="table is-fullwidth">
+          <table class="table is-fullwidth is-striped">
             <thead>
               <tr>
                 <th>
@@ -121,7 +127,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
             </thead>
 
             <tbody>
-              <tr>
+              <tr class="extended-row">
                 <td>
                   Example Application
                 </td>
@@ -164,6 +170,12 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
               </tr>
 
               <tr>
+                <td class="has-text-weight-light" colspan="5">
+                  Description for the example application.
+                </td>
+              </tr>
+
+              <tr class="extended-row">
                 <td>
                   Secret Library
                 </td>
@@ -206,6 +218,12 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
               </tr>
 
               <tr>
+                <td class="has-text-weight-light" colspan="5">
+                  Description for the secret library.
+                </td>
+              </tr>
+
+              <tr class="extended-row">
                 <td>
                   Deprecated Script
                 </td>
@@ -244,6 +262,12 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                       </button>
                     </form>
                   </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="has-text-weight-light" colspan="5">
+                  Description for the deprecated script.
                 </td>
               </tr>
             </tbody>

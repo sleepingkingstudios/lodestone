@@ -3,10 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Lodestone::Projects::View::Components::Block, type: :component do
-  subject(:component) { described_class.new(**component_options) }
+  subject(:component) do
+    described_class.new(**required_keywords, **component_options)
+  end
 
   let(:component_options) { { data: } }
+  let(:required_keywords) { { result: } }
   let(:data)              { nil }
+  let(:result)            { Cuprum::Result.new }
 
   describe '#call' do
     let(:rendered) { pretty_render(component) }

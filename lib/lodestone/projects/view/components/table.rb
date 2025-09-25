@@ -2,7 +2,9 @@
 
 module Lodestone::Projects::View::Components
   # Renders the table for a Projects index view.
-  class Table < Librum::Components::Base
+  class Table < Librum::Components::Views::Resources::Elements::Table
+    include Librum::Components::Bulma::Mixin
+
     COLUMNS = [
       { key: 'name' },
       { key: 'active', type: :boolean },
@@ -14,33 +16,23 @@ module Lodestone::Projects::View::Components
         value: TableActions
       }
     ].freeze
+    private_constant :COLUMNS
 
-    option :data, validate: { array: Project }
-
-    option :resource
-
-    option :result
-
-    option :routes
-
-    def call
-      render components::DataTable.new(
-        columns:,
-        data:,
-        empty_message:,
-        resource:,
-        routes:
-      )
-    end
+    allow_extra_options
 
     private
 
-    def columns
-      COLUMNS
+    def table_class_name
+      class_names(
+        super,
+        bulma_class_names('is-striped')
+      )
     end
 
-    def empty_message
-      'There are no projects matching the criteria.'
+    def table_options
+      super.merge(
+        row_component: Lodestone::Projects::View::Components::TableRow
+      )
     end
   end
 end

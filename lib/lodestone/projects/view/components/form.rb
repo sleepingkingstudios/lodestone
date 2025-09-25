@@ -2,7 +2,9 @@
 
 module Lodestone::Projects::View::Components
   # Renders the create or update form for a project.
-  class Form < Librum::Components::Base
+  class Form < Librum::Components::Views::Resources::Elements::Form
+    allow_extra_options
+
     FIELDS = lambda do |form|
       form.input 'project[name]', col_span: 2
 
@@ -22,52 +24,18 @@ module Lodestone::Projects::View::Components
       form.text_area 'project[description]', col_span: 6
 
       form.buttons(
-        cancel_url: routes.index_path,
+        cancel_url:,
         col_span:   6,
         icon:       'plus',
-        text:       'Create Project'
+        text:       submit_text
       )
     end.freeze
     private_constant :FIELDS
 
-    allow_extra_options
-
-    option :result
-
-    option :resource
-
-    option :routes
-
-    def call
-      component =
-        components::Form
-        .new(
-          action:      form_action,
-          columns:     6,
-          http_method: form_http_method,
-          result:
-        )
-        .build { |form| instance_exec(form, &FIELDS) }
-
-      render(component)
-    end
-
     private
 
-    def action_name
-      result.metadata['action_name']
-    end
-
-    def create_form?
-      action_name == :create || action_name == :new # rubocop:disable Style/MultipleComparison
-    end
-
-    def form_action
-      create_form? ? routes.create_path : routes.update_path
-    end
-
-    def form_http_method
-      create_form? ? :post : :patch
+    def form_options
+      super.merge(columns: 6)
     end
 
     def project_types

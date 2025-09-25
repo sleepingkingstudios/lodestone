@@ -2,7 +2,9 @@
 
 module Lodestone::Projects::View::Components
   # Renders the block for a Projects show view.
-  class Block < Librum::Components::Base
+  class Block < Librum::Components::Views::Resources::Elements::Block
+    allow_extra_options
+
     FIELDS = [
       { key: 'name' },
       { key: 'active', type: :boolean },
@@ -10,14 +12,7 @@ module Lodestone::Projects::View::Components
       { key: 'project_type', transform: :titleize },
       { key: 'repository' }
     ].freeze
-
-    option :data
-
-    option :resource
-
-    option :result
-
-    option :routes
+    private_constant :FIELDS
 
     private
 
