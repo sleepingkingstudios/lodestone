@@ -6,7 +6,8 @@ require 'cuprum/rails/actions/middleware/resources/find'
 # Controller for managing tasks.
 class TasksController < BaseController
   def self.resource # rubocop:disable Metrics/MethodLength
-    Cuprum::Rails::Resource.new(
+    Librum::Components::Resource.new(
+      components:           Lodestone::Tasks::View::Components,
       default_order:        :slug,
       entity_class:         ::Task,
       permitted_attributes: %w[
@@ -17,9 +18,18 @@ class TasksController < BaseController
         status
         task_type
         title
-      ]
+      ],
+      title_attribute:      'title'
     )
   end
+
+  # :nocov:
+  if ENV['PAGE_LAYOUT'] == 'true'
+    layout 'page'
+
+    responder :html, Librum::Core::Responders::Html::ResourceResponder
+  end
+  # :nocov:
 
   middleware Lodestone::Tasks::Middleware::FindProject.new
   middleware \
