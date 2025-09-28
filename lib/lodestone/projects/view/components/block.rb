@@ -11,32 +11,5 @@ module Lodestone::Projects::View::Components
       { key: 'repository' }
     ].freeze
     private_constant :FIELDS
-
-    private
-
-    def render_board_link
-      return if data.blank?
-
-      component = components::Link.new(
-        color: 'link',
-        icon:  'rectangle-list',
-        text:  'Project Board',
-        url:   "/projects/#{data['slug']}/board"
-      )
-
-      content_tag('p') { render(component) }
-    end
-
-    def render_description
-      return if data.blank?
-
-      CommonMarker
-        .render_html(
-          data.description,
-          :DEFAULT,
-          %i[table tasklist strikethrough tagfilter]
-        )
-        .html_safe # rubocop:disable Rails/OutputSafety
-    end
   end
 end
