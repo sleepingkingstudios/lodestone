@@ -7,30 +7,13 @@ module Lodestone::Boards::View::Components
 
     option :task, required: true, validate: ::Task
 
-    ICON_CLASSES = {
-      ::Task::TaskTypes::BUGFIX        => 'bug',
-      ::Task::TaskTypes::CHORE         => 'wrench',
-      ::Task::TaskTypes::EPIC          => 'lightbulb',
-      ::Task::TaskTypes::FEATURE       => 'gear',
-      ::Task::TaskTypes::INVESTIGATION => 'search',
-      ::Task::TaskTypes::MILESTONE     => 'trophy',
-      ::Task::TaskTypes::RELEASE       => 'award'
-    }.freeze
-    private_constant :ICON_CLASSES
-
-    LINK_COLORS = {
-      ::Task::Statuses::DONE        => 'slate',
-      ::Task::Statuses::ICEBOX      => 'info',
-      ::Task::Statuses::IN_PROGRESS => 'success',
-      ::Task::Statuses::TO_DO       => 'link'
-    }.freeze
-    private_constant :LINK_COLORS
-
     private
 
     def render_label
+      icon      =
+        Lodestone::Tasks::View::Components.task_type_icon(task.task_type)
       component = components::Label.new(
-        icon: ICON_CLASSES.fetch(task.task_type),
+        icon:,
         text: task.task_type.titleize
       )
 
@@ -38,8 +21,9 @@ module Lodestone::Boards::View::Components
     end
 
     def render_link
+      color     = Lodestone::Tasks::View::Components.status_color(task.status)
       component = components::Link.new(
-        color: LINK_COLORS.fetch(task.status),
+        color:,
         text:  task.title,
         url:   routes.task_path(task.slug)
       )
