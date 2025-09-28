@@ -19,13 +19,20 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
   let(:data)              { [] }
   let(:result)            { Cuprum::Result.new }
   let(:resource) do
-    Cuprum::Rails::Resource.new(name: 'projects')
+    Librum::Components::Resource.new(name: 'projects', title_attribute: 'name')
   end
   let(:routes) do
     Cuprum::Rails::Routing::PluralRoutes.new(base_path: '/projects')
   end
 
   describe '#call' do
+    let(:data_attributes) do
+      data.map do |project|
+        <<~TEXT.strip
+          data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="#{confirm_message(project.name)}"
+        TEXT
+      end
+    end
     let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
@@ -63,6 +70,11 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
           </tbody>
         </table>
       HTML
+    end
+
+    define_method :confirm_message do |name|
+      "This will permanently delete project #{name}.\\n\\n" \
+        'Confirm deletion?'
     end
 
     it { expect(rendered).to match_snapshot(snapshot) }
@@ -158,7 +170,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                       Update
                     </a>
 
-                    <form class="is-inline-block" action="/projects/ex-app" accept-charset="UTF-8" method="post">
+                    <form class="is-inline-block" #{data_attributes[0]} action="/projects/ex-app" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
                       <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
@@ -206,7 +218,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                       Update
                     </a>
 
-                    <form class="is-inline-block" action="/projects/secret" accept-charset="UTF-8" method="post">
+                    <form class="is-inline-block" #{data_attributes[1]} action="/projects/secret" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
                       <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
@@ -254,7 +266,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                       Update
                     </a>
 
-                    <form class="is-inline-block" action="/projects/dps" accept-charset="UTF-8" method="post">
+                    <form class="is-inline-block" #{data_attributes[2]} action="/projects/dps" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
                       <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">

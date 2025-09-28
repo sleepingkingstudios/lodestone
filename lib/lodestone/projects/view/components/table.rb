@@ -18,8 +18,6 @@ module Lodestone::Projects::View::Components
     ].freeze
     private_constant :COLUMNS
 
-    allow_extra_options
-
     private
 
     def table_class_name

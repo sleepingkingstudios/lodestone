@@ -3,8 +3,6 @@
 module Lodestone::Projects::View::Components
   # Renders the create or update form for a project.
   class Form < Librum::Components::Views::Resources::Elements::Form
-    allow_extra_options
-
     FIELDS = lambda do |form|
       form.input 'project[name]', col_span: 2
 

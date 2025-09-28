@@ -3,8 +3,6 @@
 module Lodestone::Projects::View::Components
   # Renders the actions for a Project table row.
   class TableActions < Librum::Components::Bulma::Resources::TableActions
-    allow_extra_options
-
     private
 
     def actions

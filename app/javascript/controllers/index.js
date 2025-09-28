@@ -4,6 +4,8 @@ import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 
 eagerLoadControllersFrom("controllers", application)
 
-import { NavbarController } from "librum-components/controllers/navbar_controller"
+import { ConfirmFormController } from "librum-components/controllers/confirm-form-controller"
+import { NavbarController } from "librum-components/controllers/navbar-controller"
 
+application.register('librum-components-confirm-form', ConfirmFormController)
 application.register('librum-components-navbar', NavbarController)

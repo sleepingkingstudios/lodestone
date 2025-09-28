@@ -39,13 +39,22 @@ do
   end
   let(:result) { Cuprum::Result.new }
   let(:resource) do
-    Cuprum::Rails::Resource.new(name: 'projects')
+    Librum::Components::Resource.new(name: 'projects', title_attribute: 'name')
   end
   let(:routes) do
     Cuprum::Rails::Routing::PluralRoutes.new(base_path: '/projects')
   end
 
-  describe '#call' do
+  describe '#call' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    let(:confirm_message) do
+      'This will permanently delete project Example Application.\n\n' \
+        'Confirm deletion?'
+    end
+    let(:data_attributes) do
+      <<~TEXT.strip
+        data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="#{confirm_message}"
+      TEXT
+    end
     # Wrap contents in a table to ensure HTML fragment is valid.
     let(:rendered) do
       "<table>#{render_component(component)}</table>"
@@ -85,7 +94,7 @@ do
                     Update
                   </a>
 
-                  <form class="is-inline-block" action="/projects/ex-app" accept-charset="UTF-8" method="post">
+                  <form class="is-inline-block" #{data_attributes} action="/projects/ex-app" accept-charset="UTF-8" method="post">
                     <input type="hidden" name="_method" value="delete" autocomplete="off">
 
                     <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">

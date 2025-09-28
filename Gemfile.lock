@@ -18,11 +18,12 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-components
-  revision: 92f97640358937dd9c22a226e238d5b0eef8e9d7
+  revision: fed9d1a1f98c42c9b562084510d9323aa7d994f8
   specs:
     librum-components (0.1.0)
       cuprum-rails (~> 0.2)
       diffy (~> 3.4)
+      loofah (~> 2.24)
       plumbum (>= 0.1.0.alpha)
       rails (>= 7.0, < 9)
       view_component (~> 3.21)
