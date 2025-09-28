@@ -1,0 +1,15 @@
+<tr class="extended-row">
+  <% columns.each do |column| %>
+    <%=
+      content_tag('td', **table_cell_attributes(column)) do
+        render_cell(column:)
+      end
+    %>
+  <% end %>
+</tr>
+
+<tr>
+  <td class="has-text-weight-light" colspan="<%= columns.size %>">
+    <%= data&.[]('description') %>
+  </td>
+</tr>

@@ -45,7 +45,9 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
                 <i class="fa-solid fa-#{icon}"></i>
               </span>
 
-              <span>#{task.task_type.titleize}</span>
+              <span>
+                #{task.task_type.titleize}
+              </span>
             </span>
           </p>
 

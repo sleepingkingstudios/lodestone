@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Lodestone::Boards::View
-  # View displaying the current board for the project or
+  # View displaying the board for the current project, or the global board.
   class Show < Librum::Components::View
     STATUSES = [
       Task::Statuses::ICEBOX,
