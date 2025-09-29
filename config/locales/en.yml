@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+  lodestone:
+    task_relationships:
+      relationship_types:
+        belongs_to:
+          inverse_name: "Has Child"
+          name: "Belongs To"
+        depends_on:
+          inverse_name: "Dependency Of"
+          name: "Depends On"
+        merged_into:
+          inverse_name: "Merged From"
+          name: "Merged Into"
+        relates_to:
+          inverse_name: "Related To"
+          name: "Relates To"

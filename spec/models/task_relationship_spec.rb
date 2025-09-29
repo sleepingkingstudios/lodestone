@@ -61,34 +61,8 @@ RSpec.describe TaskRelationship, type: :model do
 
   let(:attributes) do
     {
-      relationship_type: described_class::RelationshipTypes::DEPENDS_ON.key
+      relationship_type: described_class::RelationshipTypes::DEPENDS_ON
     }
-  end
-
-  describe '::RelationshipType' do
-    subject(:relationship_type) do
-      described_class::RelationshipType.new(
-        key:          'testing',
-        name:         'tests',
-        inverse_name: 'tested by'
-      )
-    end
-
-    include_examples 'should define constant',
-      :RelationshipType,
-      -> { an_instance_of Class }
-
-    describe '#inverse_name' do
-      include_examples 'should define reader', :inverse_name, 'tested by'
-    end
-
-    describe '#key' do
-      include_examples 'should define reader', :key, 'testing'
-    end
-
-    describe '#name' do
-      include_examples 'should define reader', :name, 'tests'
-    end
   end
 
   describe '::RelationshipTypes' do
@@ -108,66 +82,30 @@ RSpec.describe TaskRelationship, type: :model do
     end
 
     describe '::BELONGS_TO' do
-      let(:expected_attributes) do
-        {
-          key:          'belongs_to',
-          inverse_name: 'has child',
-          name:         'belongs to'
-        }
-      end
-
-      it 'should store the relationship type' do
+      it 'should store the value' do
         expect(described_class::RelationshipTypes::BELONGS_TO)
-          .to be_a(described_class::RelationshipType)
-          .and(have_attributes(expected_attributes))
-      end
-    end
-
-    describe '::MERGED_INTO' do
-      let(:expected_attributes) do
-        {
-          key:          'merged_into',
-          inverse_name: 'merged from',
-          name:         'merged into'
-        }
-      end
-
-      it 'should store the relationship type' do
-        expect(described_class::RelationshipTypes::MERGED_INTO)
-          .to be_a(described_class::RelationshipType)
-          .and(have_attributes(expected_attributes))
+          .to be == 'belongs_to'
       end
     end
 
     describe '::DEPENDS_ON' do
-      let(:expected_attributes) do
-        {
-          key:          'depends_on',
-          inverse_name: 'dependency of',
-          name:         'depends on'
-        }
-      end
-
-      it 'should store the relationship type' do
+      it 'should store the value' do
         expect(described_class::RelationshipTypes::DEPENDS_ON)
-          .to be_a(described_class::RelationshipType)
-          .and(have_attributes(expected_attributes))
+          .to be == 'depends_on'
+      end
+    end
+
+    describe '::MERGED_INTO' do
+      it 'should store the value' do
+        expect(described_class::RelationshipTypes::MERGED_INTO)
+          .to be == 'merged_into'
       end
     end
 
     describe '::RELATES_TO' do
-      let(:expected_attributes) do
-        {
-          key:          'relates_to',
-          inverse_name: 'related to',
-          name:         'relates to'
-        }
-      end
-
-      it 'should store the relationship type' do
+      it 'should store the value' do
         expect(described_class::RelationshipTypes::RELATES_TO)
-          .to be_a(described_class::RelationshipType)
-          .and(have_attributes(expected_attributes))
+          .to be == 'relates_to'
       end
     end
   end
@@ -179,7 +117,7 @@ RSpec.describe TaskRelationship, type: :model do
   describe '#relationship_type' do
     include_examples 'should define attribute',
       :relationship_type,
-      default: described_class::RelationshipTypes::DEPENDS_ON.key
+      default: described_class::RelationshipTypes::DEPENDS_ON
   end
 
   describe '#source_task' do
@@ -234,7 +172,7 @@ RSpec.describe TaskRelationship, type: :model do
 
     include_examples 'should validate the inclusion of',
       :relationship_type,
-      in: described_class::RelationshipTypes.values.map(&:key)
+      in: described_class::RelationshipTypes.values
 
     include_examples 'should validate the presence of',
       :source_task,

@@ -21,9 +21,16 @@
       <% task = relationship.target_task %>
 
       <div class='col-2'>
-        <% relationship_type = TaskRelationship::RelationshipTypes.values.find { |type| type.key == relationship.relationship_type } %>
+        <%=
+          default = 'Unknown Relationship Type'
+          scope   = 'lodestone.task_relationships.relationship_types'
 
-        <%= relationship_type.name.titleize %>
+          I18n.translate(
+            "#{relationship.relationship_type}.name",
+            default:,
+            scope:
+          )
+        %>
       </div>
 
       <div class='col-2'>
@@ -58,9 +65,16 @@
       <% task = relationship.source_task %>
 
       <div class='col-2'>
-        <% relationship_type = TaskRelationship::RelationshipTypes.values.find { |type| type.key == relationship.relationship_type } %>
+        <%=
+          default = 'Unknown Relationship Type'
+          scope   = 'lodestone.task_relationships.relationship_types'
 
-        <%= relationship_type.inverse_name.titleize %>
+          I18n.translate(
+            "#{relationship.relationship_type}.inverse_name",
+            default:,
+            scope:
+          )
+        %>
       </div>
 
       <div class='col-2'>
