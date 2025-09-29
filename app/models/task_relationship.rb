@@ -5,37 +5,19 @@ require 'sleeping_king_studios/tools/toolbox/constant_map'
 # Represents a relation between two tasks.
 class TaskRelationship < ApplicationRecord
   # @api private
-  RelationshipType = Struct.new(:key, :name, :inverse_name, keyword_init: true)
-
   RelationshipTypes = SleepingKingStudios::Tools::Toolbox::ConstantMap.new(
     {
-      BELONGS_TO:  RelationshipType.new(
-        key:          'belongs_to',
-        name:         'belongs to',
-        inverse_name: 'has child'
-      ),
-      DEPENDS_ON:  RelationshipType.new(
-        key:          'depends_on',
-        name:         'depends on',
-        inverse_name: 'dependency of'
-      ),
-      MERGED_INTO: RelationshipType.new(
-        key:          'merged_into',
-        name:         'merged into',
-        inverse_name: 'merged from'
-      ),
-      RELATES_TO:  RelationshipType.new(
-        key:          'relates_to',
-        name:         'relates to',
-        inverse_name: 'related to'
-      )
+      BELONGS_TO:  'belongs_to',
+      DEPENDS_ON:  'depends_on',
+      MERGED_INTO: 'merged_into',
+      RELATES_TO:  'relates_to'
     }
   ).freeze
 
   ### Attributes
   attribute :relationship_type,
     :string,
-    default: -> { RelationshipTypes::DEPENDS_ON.key }
+    default: -> { RelationshipTypes::DEPENDS_ON }
 
   ### Associations
   belongs_to :source_task,
@@ -48,7 +30,7 @@ class TaskRelationship < ApplicationRecord
 
   ### Validations
   validates :relationship_type,
-    inclusion: { in: RelationshipTypes.values.map(&:key) },
+    inclusion: { in: RelationshipTypes.values },
     presence:  true
   validate :target_task_must_not_match_source_task
 

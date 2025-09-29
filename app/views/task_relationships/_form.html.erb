@@ -28,7 +28,11 @@
     <div class='form-group col-sm-2 mb-2'>
       <%= form.label :relationship_type, 'Relationship Type', class: 'form-label' %>
 
-      <% relationship_type_options = TaskRelationship::RelationshipTypes.values.map { |type| [type.name.titleize, type.key] } %>
+      <%
+        relationship_type_options = TaskRelationship::RelationshipTypes.values.map do |type|
+          [I18n.t("lodestone.task_relationships.relationship_types.#{type}.name"), type]
+        end
+      %>
       <%= form.select :relationship_type, options_for_select(relationship_type_options, selected: relationship.relationship_type), {}, class: 'form-select' %>
     </div>
 
