@@ -5,6 +5,18 @@ module Lodestone::Projects::View
   class Show < Librum::Components::Views::Resources::Show
     private
 
+    def render_after_content
+      return if resource_data.blank?
+
+      CommonMarker
+        .render_html(
+          resource_data.description,
+          :DEFAULT,
+          %i[table tasklist strikethrough tagfilter]
+        )
+        .html_safe # rubocop:disable Rails/OutputSafety
+    end
+
     def render_before_content
       return if resource_data.blank?
 
@@ -16,18 +28,6 @@ module Lodestone::Projects::View
       )
 
       content_tag('p') { render(component) }
-    end
-
-    def render_after_content
-      return if resource_data.blank?
-
-      CommonMarker
-        .render_html(
-          resource_data.description,
-          :DEFAULT,
-          %i[table tasklist strikethrough tagfilter]
-        )
-        .html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 end
