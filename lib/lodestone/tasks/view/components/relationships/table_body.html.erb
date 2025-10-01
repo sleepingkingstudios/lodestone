@@ -1,0 +1,25 @@
+<% if relationships.empty? && inverse_relationships.empty? %>
+  <tbody<%= body_attributes.map { |key, value| %( #{key}=#{value}) }.join %>>
+    <tr>
+      <td colspan="<%= columns.size %>">
+        The task has no relationships.
+      </td>
+    </tr>
+  </tbody>
+<% end %>
+
+<% unless relationships.empty? %>
+  <tbody<%= body_attributes.map { |key, value| %( #{key}=#{value}) }.join %>>
+    <% relationships.each do |relationship| %>
+      <%= render_relationship(relationship:) %>
+    <% end %>
+  </tbody>
+<% end %>
+
+<% unless inverse_relationships.empty? %>
+  <tbody<%= body_attributes.map { |key, value| %( #{key}=#{value}) }.join %>>
+    <% inverse_relationships.each do |relationship| %>
+      <%= render_relationship(relationship:) %>
+    <% end %>
+  </tbody>
+<% end %>
