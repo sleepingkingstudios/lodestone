@@ -111,6 +111,9 @@ RSpec.describe Project, type: :model do
     include_examples 'should define reader', :tasks, []
 
     context 'when the project has many tasks' do
+      let(:attributes) do
+        super().merge(id: SecureRandom.uuid)
+      end
       let(:tasks) { Array.new(3) { FactoryBot.build(:task, project: project) } }
 
       before(:example) { tasks.each(&:save!) }

@@ -353,6 +353,8 @@ RSpec.describe Task, type: :model do
       :project,
       message: 'must exist'
 
+    include_examples 'should validate the presence of', :project_id
+
     include_examples 'should validate the numericality of',
       :project_index,
       greater_than_or_equal_to: 0,
