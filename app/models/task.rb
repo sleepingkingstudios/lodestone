@@ -46,6 +46,7 @@ class Task < ApplicationRecord
 
   ### Validations
   validates :description, presence: true
+  validates :project_id,  presence: true # rubocop:disable Rails/RedundantPresenceValidationOnBelongsTo
   validates :project_index,
     numericality: {
       greater_than_or_equal_to: 0,

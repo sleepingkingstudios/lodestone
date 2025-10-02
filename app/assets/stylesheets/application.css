@@ -60,3 +60,12 @@
 .table tr.extended-row td {
   border-bottom: 0;
 }
+
+.table tr.joined-rows td {
+  border-bottom: 0;
+}
+
+.table.multi-body tbody tr:first-child td {
+  border: var(--bulma-content-table-cell-border);
+  border-width: 2px 0 0;
+}

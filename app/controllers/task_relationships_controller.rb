@@ -30,6 +30,8 @@ class TaskRelationshipsController < BaseController
 
   def self.resource
     Cuprum::Rails::Resource.new(
+      actions:              %i[create destroy edit new update],
+      base_path:            '/tasks/:task_id/relationships',
       entity_class:         ::TaskRelationship,
       permitted_attributes: %w[
         relationship_type
