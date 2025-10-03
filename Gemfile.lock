@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-components
-  revision: 38c5d42853f1bcc470212193b957d5ef0ec57ede
+  revision: 669bb17ecda91cad37623bdc1047f654f66fc716
   specs:
     librum-components (0.1.0)
       cuprum-rails (~> 0.2)
