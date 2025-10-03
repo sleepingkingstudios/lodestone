@@ -181,5 +181,7 @@ RSpec.describe TaskRelationship, type: :model do
     include_examples 'should validate the presence of',
       :target_task,
       message: 'must exist'
+
+    include_examples 'should validate the presence of', :target_task_id
   end
 end

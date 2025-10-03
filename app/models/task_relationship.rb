@@ -32,6 +32,7 @@ class TaskRelationship < ApplicationRecord
   validates :relationship_type,
     inclusion: { in: RelationshipTypes.values },
     presence:  true
+  validates :target_task_id, presence: true # rubocop:disable Rails/RedundantPresenceValidationOnBelongsTo
   validate :target_task_must_not_match_source_task
 
   private
