@@ -2,8 +2,18 @@
 
 # Controller for managing task relationships.
 class TaskRelationshipsController < BaseController
+  # :nocov:
+  base_responder = Cuprum::Rails::Responders::Html::Resource
+
+  if ENV['PAGE_LAYOUT'] == 'true'
+    layout 'page'
+
+    base_responder = Librum::Core::Responders::Html::ResourceResponder
+  end
+  # :nocov:
+
   # Responder for handling HTML requests.
-  class Responder < Cuprum::Rails::Responders::Html::Resource
+  class Responder < base_responder
     include Rails.application.routes.url_helpers
 
     action :create do
@@ -28,10 +38,11 @@ class TaskRelationshipsController < BaseController
     end
   end
 
-  def self.resource
-    Cuprum::Rails::Resource.new(
+  def self.resource # rubocop:disable Metrics/MethodLength
+    Librum::Components::Resource.new(
       actions:              %i[create destroy edit new update],
       base_path:            '/tasks/:task_id/relationships',
+      components:           Lodestone::TaskRelationships::View::Components,
       entity_class:         ::TaskRelationship,
       permitted_attributes: %w[
         relationship_type
