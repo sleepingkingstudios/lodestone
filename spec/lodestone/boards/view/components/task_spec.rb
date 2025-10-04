@@ -33,7 +33,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
     let(:snapshot) do
       <<~HTML
         <div class="box">
-          <p>
+          <p class="has-text-overflow-ellipsis">
             <a class="has-text-#{link_color}" href="/tasks/app-1">
               Example Task
             </a>

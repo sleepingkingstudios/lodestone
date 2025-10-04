@@ -140,7 +140,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
               </h2>
 
               <div class="box">
-                <p>
+                <p class="has-text-overflow-ellipsis">
                   <a class="has-text-info" href="/tasks/task-0">
                     Example Task
                   </a>
@@ -170,7 +170,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
               </h2>
 
               <div class="box">
-                <p>
+                <p class="has-text-overflow-ellipsis">
                   <a class="has-text-link" href="/tasks/task-1">
                     Another Task
                   </a>
@@ -194,7 +194,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
               </div>
 
               <div class="box">
-                <p>
+                <p class="has-text-overflow-ellipsis">
                   <a class="has-text-link" href="/tasks/task-2">
                     Third Task
                   </a>
