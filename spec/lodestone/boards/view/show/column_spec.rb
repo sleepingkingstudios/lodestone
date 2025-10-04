@@ -18,7 +18,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
     let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
-        <h2 class="is-size-4">
+        <h2 class="has-text-overflow-ellipsis is-size-4">
           To Do
         </h2>
       HTML
@@ -47,7 +47,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
       let(:component_options) { super().merge(tasks:) }
       let(:snapshot) do
         <<~HTML
-          <h2 class="is-size-4">
+          <h2 class="has-text-overflow-ellipsis is-size-4">
             To Do
           </h2>
 

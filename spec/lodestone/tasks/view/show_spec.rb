@@ -21,7 +21,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
     let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
-        <h1>
+        <h1 class="has-text-overflow-ellipsis">
           Show Task
         </h1>
 
@@ -98,8 +98,8 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
       let(:snapshot) do
         <<~HTML
           <div class="level mb-5">
-            <div class="level-left">
-              <h1 class="mb-0">
+            <div class="level-left level-shrink is-overflow-hidden">
+              <h1 class="mb-0 has-text-overflow-ellipsis">
                 Example Task
               </h1>
             </div>
@@ -194,8 +194,8 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
           </p>
 
           <div class="level mb-5">
-            <div class="level-left">
-              <h2 class="mb-0">
+            <div class="level-left level-shrink is-overflow-hidden">
+              <h2 class="mb-0 has-text-overflow-ellipsis">
                 Relationships
               </h2>
             </div>
@@ -346,8 +346,8 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
       let(:snapshot) do
         <<~HTML
           <div class="level mb-5">
-            <div class="level-left">
-              <h1 class="mb-0">
+            <div class="level-left level-shrink is-overflow-hidden">
+              <h1 class="mb-0 has-text-overflow-ellipsis">
                 Example Task
               </h1>
             </div>
@@ -442,8 +442,8 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
           </p>
 
           <div class="level mb-5">
-            <div class="level-left">
-              <h2 class="mb-0">
+            <div class="level-left level-shrink is-overflow-hidden">
+              <h2 class="mb-0 has-text-overflow-ellipsis">
                 Relationships
               </h2>
             </div>
