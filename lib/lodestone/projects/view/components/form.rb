@@ -24,7 +24,7 @@ module Lodestone::Projects::View::Components
       form.buttons(
         cancel_url:,
         col_span:   6,
-        icon:       'plus',
+        icon:       create_form? ? 'plus' : 'pencil',
         text:       submit_text
       )
     end.freeze

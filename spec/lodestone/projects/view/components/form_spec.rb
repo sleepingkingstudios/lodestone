@@ -603,7 +603,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 <p class="control">
                   <button class="button is-link" type="submit">
                     <span class="icon">
-                      <i class="fa-solid fa-plus"></i>
+                      <i class="fa-solid fa-pencil"></i>
                     </span>
 
                     <span>
@@ -757,7 +757,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                   <p class="control">
                     <button class="button is-link" type="submit">
                       <span class="icon">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-pencil"></i>
                       </span>
 
                       <span>
@@ -931,7 +931,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                   <p class="control">
                     <button class="button is-link" type="submit">
                       <span class="icon">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-pencil"></i>
                       </span>
 
                       <span>
