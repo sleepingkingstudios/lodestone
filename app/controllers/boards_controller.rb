@@ -7,14 +7,6 @@ class BoardsController < BaseController
       Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)
   end
 
-  # :nocov:
-  if ENV['PAGE_LAYOUT'] == 'true'
-    layout 'page'
-
-    responder :html, Librum::Core::Responders::Html::ViewResponder
-  end
-  # :nocov:
-
   action :show,
     Cuprum::Rails::Action,
     command_class: Lodestone::Boards::Commands::Show,

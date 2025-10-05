@@ -22,13 +22,7 @@ class ProjectsController < BaseController
     )
   end
 
-  # :nocov:
-  if ENV['PAGE_LAYOUT'] == 'true'
-    layout 'page'
-
-    responder :html, Librum::Core::Responders::Html::ResourceResponder
-  end
-  # :nocov:
+  responder :html, Librum::Core::Responders::Html::ResourceResponder
 
   action :create,
     Cuprum::Rails::Actions::Resources::Create,

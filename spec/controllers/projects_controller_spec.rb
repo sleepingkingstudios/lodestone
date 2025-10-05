@@ -10,6 +10,9 @@ RSpec.describe ProjectsController, type: :controller do
   describe '.resource' do
     subject(:resource) { described_class.resource }
 
+    let(:components) do
+      Lodestone::Projects::View::Components
+    end
     let(:permitted_attributes) do
       %w[
         active
@@ -22,14 +25,22 @@ RSpec.describe ProjectsController, type: :controller do
       ]
     end
 
-    it { expect(resource).to be_a Cuprum::Rails::Resource }
+    it { expect(resource).to be_a Librum::Components::Resource }
+
+    it { expect(resource.components).to be components }
 
     it { expect(resource.default_order).to be :name }
 
     it { expect(resource.entity_class).to be == Project }
 
     it { expect(resource.permitted_attributes).to be == permitted_attributes }
+
+    it { expect(resource.title_attribute).to be == 'name' }
   end
+
+  include_deferred 'should respond to format',
+    :html,
+    using: Librum::Core::Responders::Html::ResourceResponder
 
   include_deferred 'should define action',
     :create,

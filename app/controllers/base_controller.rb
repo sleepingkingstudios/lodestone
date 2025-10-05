@@ -18,10 +18,12 @@ class BaseController < ApplicationController
 
   default_format :html
 
+  layout 'page'
+
   unless Rails.env.production?
     middleware Cuprum::Rails::Actions::Middleware::LogRequest
     middleware Cuprum::Rails::Actions::Middleware::LogResult
   end
 
-  responder :html, Cuprum::Rails::Responders::Html::Resource
+  responder :html, Librum::Core::Responders::Html::ViewResponder
 end
