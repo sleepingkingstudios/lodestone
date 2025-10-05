@@ -15,13 +15,13 @@ module Lodestone::Boards::View
 
     # @return [Project, nil] the project returned by the controller, if any.
     def project
-      result.value&.[]('project')
+      @project ||= result.value&.[]('project')
     end
 
     # @return [Hash{String=>Array[Task]}] the tasks returned by the controller,
     #   grouped by the task status.
     def tasks
-      result.value&.fetch('tasks', {})
+      @tasks ||= result.value&.fetch('tasks', {})
     end
 
     private
@@ -30,6 +30,7 @@ module Lodestone::Boards::View
       [
         {
           button: true,
+          icon:   'plus',
           text:   'Create Task',
           url:    new_task_path
         }
@@ -71,6 +72,21 @@ module Lodestone::Boards::View
       )
 
       render(component)
+    end
+
+    def render_project_link
+      return if project.blank?
+
+      content_tag('p') do
+        component = components::Link.new(
+          color: 'link',
+          icon:  'arrow-right',
+          text:  'View Project',
+          url:   "/projects/#{project['slug']}"
+        )
+
+        render(component)
+      end
     end
   end
 end
