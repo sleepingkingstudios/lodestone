@@ -19,7 +19,7 @@ module Lodestone::Tasks::View::Components
       form.buttons(
         cancel_url:,
         col_span:   3,
-        icon:       'plus',
+        icon:       create_form? ? 'plus' : 'pencil',
         text:       submit_text
       )
     end

@@ -25,25 +25,25 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
       <<~HTML
         <div class="columns">
           <div class="column">
-            <h2 class="is-size-4">
+            <h2 class="has-text-overflow-ellipsis is-size-4">
               Icebox
             </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">
+            <h2 class="has-text-overflow-ellipsis is-size-4">
               To Do
             </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">
+            <h2 class="has-text-overflow-ellipsis is-size-4">
               In Progress
             </h2>
           </div>
 
           <div class="column">
-            <h2 class="is-size-4">
+            <h2 class="has-text-overflow-ellipsis is-size-4">
               Done
             </h2>
           </div>
@@ -63,8 +63,8 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
     let(:snapshot) do
       <<~HTML
         <div class="level mb-5">
-          <div class="level-left">
-            <h1 class="mb-0">
+          <div class="level-left level-shrink is-overflow-hidden">
+            <h1 class="mb-0 has-text-overflow-ellipsis">
               #{heading_text}
             </h1>
           </div>
@@ -135,7 +135,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
         <<~HTML
           <div class="columns">
             <div class="column">
-              <h2 class="is-size-4">
+              <h2 class="has-text-overflow-ellipsis is-size-4">
                 Icebox
               </h2>
 
@@ -165,7 +165,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">
+              <h2 class="has-text-overflow-ellipsis is-size-4">
                 To Do
               </h2>
 
@@ -219,13 +219,13 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">
+              <h2 class="has-text-overflow-ellipsis is-size-4">
                 In Progress
               </h2>
             </div>
 
             <div class="column">
-              <h2 class="is-size-4">
+              <h2 class="has-text-overflow-ellipsis is-size-4">
                 Done
               </h2>
             </div>
