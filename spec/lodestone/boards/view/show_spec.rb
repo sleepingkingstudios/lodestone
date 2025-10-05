@@ -72,7 +72,13 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
           <div class="level-right">
             <div class="level-item">
               <a class="button" href="#{create_path}">
-                Create Task
+                <span class="icon">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                  Create Task
+                </span>
               </a>
             </div>
           </div>
@@ -102,6 +108,43 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
       end
       let(:empty_message) do
         'There are no matching tasks for project Example Project.'
+      end
+      let(:snapshot) do
+        <<~HTML
+          <div class="level mb-5">
+            <div class="level-left level-shrink is-overflow-hidden">
+              <h1 class="mb-0 has-text-overflow-ellipsis">
+                #{heading_text}
+              </h1>
+            </div>
+
+            <div class="level-right">
+              <div class="level-item">
+                <a class="button" href="#{create_path}">
+                  <span class="icon">
+                    <i class="fa-solid fa-plus"></i>
+                  </span>
+
+                  <span>
+                    Create Task
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            <a class="icon-text has-text-link" href="/projects/example-project">
+              <span class="icon">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+
+              View Project
+            </a>
+          </p>
+
+          #{columns_snapshot.strip}
+        HTML
       end
 
       it { expect(rendered).to match_snapshot(snapshot) }
@@ -249,6 +292,43 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
         end
         let(:create_path) do
           '/projects/example-project/tasks/new'
+        end
+        let(:snapshot) do
+          <<~HTML
+            <div class="level mb-5">
+              <div class="level-left level-shrink is-overflow-hidden">
+                <h1 class="mb-0 has-text-overflow-ellipsis">
+                  #{heading_text}
+                </h1>
+              </div>
+
+              <div class="level-right">
+                <div class="level-item">
+                  <a class="button" href="#{create_path}">
+                    <span class="icon">
+                      <i class="fa-solid fa-plus"></i>
+                    </span>
+
+                    <span>
+                      Create Task
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              <a class="icon-text has-text-link" href="/projects/example-project">
+                <span class="icon">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+                View Project
+              </a>
+            </p>
+
+            #{columns_snapshot.strip}
+          HTML
         end
 
         it { expect(rendered).to match_snapshot(snapshot) }
