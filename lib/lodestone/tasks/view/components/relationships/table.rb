@@ -21,7 +21,7 @@ module Lodestone::Tasks::View::Components::Relationships
         {
           key:   'actions',
           label: "\u00A0",
-          type:  'actions'
+          value: Lodestone::Tasks::View::Components::Relationships::TableActions
         }
       ].freeze
     end.freeze
