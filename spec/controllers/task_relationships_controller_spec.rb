@@ -93,6 +93,9 @@ RSpec.describe TaskRelationshipsController, type: :controller do
   describe '.resource' do
     subject(:resource) { described_class.resource }
 
+    let(:components) do
+      Lodestone::TaskRelationships::View::Components
+    end
     let(:permitted_attributes) do
       %w[
         relationship_type
@@ -101,12 +104,18 @@ RSpec.describe TaskRelationshipsController, type: :controller do
       ]
     end
 
-    it { expect(resource).to be_a Cuprum::Rails::Resource }
+    it { expect(resource).to be_a Librum::Components::Resource }
+
+    it { expect(resource.components).to be components }
 
     it { expect(resource.entity_class).to be == TaskRelationship }
 
     it { expect(resource.permitted_attributes).to be == permitted_attributes }
   end
+
+  include_deferred 'should respond to format',
+    :html,
+    using: described_class::Responder
 
   include_deferred 'should define middleware',
     Lodestone::TaskRelationships::Middleware::FindTasks,

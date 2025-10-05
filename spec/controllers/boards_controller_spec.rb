@@ -27,7 +27,7 @@ RSpec.describe BoardsController, type: :controller do
 
   include_deferred 'should respond to format',
     :html,
-    using: Cuprum::Rails::Responders::Html::Resource
+    using: Librum::Core::Responders::Html::ViewResponder
 
   include_deferred 'should define action',
     :show,

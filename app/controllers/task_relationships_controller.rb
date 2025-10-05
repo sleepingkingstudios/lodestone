@@ -2,18 +2,8 @@
 
 # Controller for managing task relationships.
 class TaskRelationshipsController < BaseController
-  # :nocov:
-  base_responder = Cuprum::Rails::Responders::Html::Resource
-
-  if ENV['PAGE_LAYOUT'] == 'true'
-    layout 'page'
-
-    base_responder = Librum::Core::Responders::Html::ResourceResponder
-  end
-  # :nocov:
-
   # Responder for handling HTML requests.
-  class Responder < base_responder
+  class Responder < Librum::Core::Responders::Html::ResourceResponder
     include Rails.application.routes.url_helpers
 
     action :create do

@@ -20,7 +20,7 @@ RSpec.describe BaseController, type: :controller do
   describe '.responders' do
     include_contract 'should respond to',
       :html,
-      using: Cuprum::Rails::Responders::Html::Resource
+      using: Librum::Core::Responders::Html::ViewResponder
 
     include_contract 'should not respond to', :json
   end

@@ -23,13 +23,7 @@ class TasksController < BaseController
     )
   end
 
-  # :nocov:
-  if ENV['PAGE_LAYOUT'] == 'true'
-    layout 'page'
-
-    responder :html, Librum::Core::Responders::Html::ResourceResponder
-  end
-  # :nocov:
+  responder :html, Librum::Core::Responders::Html::ResourceResponder
 
   middleware Lodestone::Tasks::Middleware::FindProject.new
   middleware \
