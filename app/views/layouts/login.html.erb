@@ -1,0 +1,11 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'librum-components/layouts/page', 'data-turbo-track': 'reload' %>
+<% end %>
+
+<% content_for :body do %>
+  <%= render Lodestone::View::Layouts::Page.new do %>
+    <%= yield %>
+  <% end %>
+<% end %>
+
+<%= render template: "layouts/application" %>
