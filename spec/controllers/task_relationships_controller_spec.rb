@@ -28,7 +28,7 @@ RSpec.describe TaskRelationshipsController, type: :controller do
           Class.new.include(Rails.application.routes.url_helpers).new
         end
         let(:redirect_path) do
-          routes.task_path(source_task)
+          routes.task_path(source_task.slug)
         end
         let(:response) { responder.call(result) }
 

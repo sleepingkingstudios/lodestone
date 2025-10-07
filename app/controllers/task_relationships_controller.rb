@@ -24,7 +24,7 @@ class TaskRelationshipsController < BaseController
       relationship = result.value['task_relationship']
       source_task  = relationship.source_task
 
-      redirect_to task_path(source_task)
+      redirect_to task_path(source_task.slug)
     end
   end
 
