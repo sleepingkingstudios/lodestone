@@ -5,7 +5,7 @@ require 'cuprum/rails/repository'
 require 'cuprum/rails/responders/html/resource'
 
 # Abstract base controller using Cuprum::Rails functionality.
-class BaseController < ApplicationController
+class BaseController < Librum::Core::ViewController
   include Cuprum::Rails::Controller
 
   def self.repository

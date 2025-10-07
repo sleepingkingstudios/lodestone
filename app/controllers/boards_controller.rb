@@ -4,7 +4,7 @@
 class BoardsController < BaseController
   def self.resource
     @resource ||=
-      Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)
+      Librum::Components::Resource.new(name: 'board', singular: true)
   end
 
   action :show,

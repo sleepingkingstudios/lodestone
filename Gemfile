@@ -16,8 +16,8 @@ gem 'librum-components',
   git: 'https://github.com/sleepingkingstudios/librum-components'
 gem 'librum-core',
   git: 'https://github.com/sleepingkingstudios/librum-core'
-gem 'librum-iam',
-  git: 'https://github.com/sleepingkingstudios/librum-iam'
+gem 'librum-iam', path: '../librum-iam'
+  # git: 'https://github.com/sleepingkingstudios/librum-iam'
 
 # Assets
 gem 'commonmarker', '~> 0.23'

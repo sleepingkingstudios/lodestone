@@ -47,20 +47,6 @@ GIT
       view_component (~> 3.21)
 
 GIT
-  remote: https://github.com/sleepingkingstudios/librum-iam
-  revision: f078c32dac65d3c1ede04df212e8a193fb23ab76
-  specs:
-    librum-iam (0.1.0.alpha.1)
-      bcrypt (~> 3.1.20)
-      cuprum (~> 1.2)
-      cuprum-rails (~> 0.1)
-      jwt (~> 2.10)
-      librum-core
-      pg (~> 1.5)
-      rails (~> 8.0.1)
-      view_component (~> 3.21)
-
-GIT
   remote: https://github.com/sleepingkingstudios/plumbum
   revision: 9bfe5c80491d8310dc7bee8079a8cd1065adac94
   specs:
@@ -75,6 +61,19 @@ GIT
       erubi (~> 1.6)
       sleeping_king_studios-tools (>= 0.8.0, < 2)
       thor (>= 0.19.4, < 2.0)
+
+PATH
+  remote: ../librum-iam
+  specs:
+    librum-iam (0.1.0.alpha.1)
+      bcrypt (~> 3.1.20)
+      cuprum (~> 1.2)
+      cuprum-rails (~> 0.1)
+      jwt (~> 2.10)
+      librum-core
+      pg (~> 1.5)
+      rails (~> 8.0.1)
+      view_component (~> 3.21)
 
 GEM
   remote: https://rubygems.org/

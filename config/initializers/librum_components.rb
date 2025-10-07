@@ -8,4 +8,7 @@ Rails.application.config.after_initialize do
   Librum::Components.provider.set(:components,    components)
   Librum::Components.provider.set(:configuration, configuration)
   Librum::Components.provider.set(:routes,        routes)
+
+  # Add authentication config to all controller resources.
+  Librum::Components::Resource.include(Librum::Iam::Resource)
 end
