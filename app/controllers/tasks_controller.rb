@@ -32,7 +32,7 @@ class TasksController < BaseController
       order:             { name: :asc },
       only_form_actions: true
     ),
-    only: %i[create new edit update]
+    actions: { only: %i[create new edit update] }
   middleware \
     Cuprum::Rails::Actions::Middleware::Associations::Find.new(
       association_type: :has_many,
@@ -40,7 +40,7 @@ class TasksController < BaseController
       foreign_key_name: :source_task_id,
       name:             'relationships'
     ),
-    only: %i[show]
+    actions: { only: %i[show] }
   middleware \
     Cuprum::Rails::Actions::Middleware::Associations::Find.new(
       association_type: :has_many,
@@ -48,7 +48,7 @@ class TasksController < BaseController
       foreign_key_name: :target_task_id,
       name:             'inverse_relationships'
     ),
-    only: %i[show]
+    actions: { only: %i[show] }
 
   action :create,
     Cuprum::Rails::Actions::Resources::Create,

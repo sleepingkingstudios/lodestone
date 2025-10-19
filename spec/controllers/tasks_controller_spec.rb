@@ -43,48 +43,42 @@ RSpec.describe TasksController, type: :controller do
     using: Librum::Core::Responders::Html::ResourceResponder
 
   include_deferred 'should define middleware',
-    lambda {
-      an_instance_of(Cuprum::Rails::Actions::Middleware::Resources::Find)
-        .and(
-          have_attributes(
-            only_form_actions?: true,
-            resource:           have_attributes(entity_class: Project)
-          )
-        )
-    },
-    only: %i[create new edit update]
+    Cuprum::Rails::Actions::Middleware::Resources::Find,
+    actions:  { only: %i[create new edit update] },
+    matching: lambda {
+      have_attributes(
+        only_form_actions?: true,
+        resource:           have_attributes(entity_class: Project)
+      )
+    }
 
   include_deferred 'should define middleware',
-    lambda {
-      an_instance_of(Cuprum::Rails::Actions::Middleware::Associations::Find)
-        .and(
-          have_attributes(
-            association_type: :has_many,
-            association:      have_attributes(
-              entity_class:     TaskRelationship,
-              foreign_key_name: 'source_task_id',
-              name:             'relationships'
-            )
-          )
+    Cuprum::Rails::Actions::Middleware::Associations::Find,
+    actions:  { only: %i[show] },
+    matching: lambda {
+      have_attributes(
+        association_type: :has_many,
+        association:      have_attributes(
+          entity_class:     TaskRelationship,
+          foreign_key_name: 'source_task_id',
+          name:             'relationships'
         )
-    },
-    only: %i[show]
+      )
+    }
 
   include_deferred 'should define middleware',
-    lambda {
-      an_instance_of(Cuprum::Rails::Actions::Middleware::Associations::Find)
-        .and(
-          have_attributes(
-            association_type: :has_many,
-            association:      have_attributes(
-              entity_class:     TaskRelationship,
-              foreign_key_name: 'target_task_id',
-              name:             'inverse_relationships'
-            )
-          )
+    Cuprum::Rails::Actions::Middleware::Associations::Find,
+    actions:  { only: %i[show] },
+    matching: lambda {
+      have_attributes(
+        association_type: :has_many,
+        association:      have_attributes(
+          entity_class:     TaskRelationship,
+          foreign_key_name: 'target_task_id',
+          name:             'inverse_relationships'
         )
-    },
-    only: %i[show]
+      )
+    }
 
   include_deferred 'should define action',
     :create,

@@ -119,7 +119,7 @@ RSpec.describe TaskRelationshipsController, type: :controller do
 
   include_deferred 'should define middleware',
     Lodestone::TaskRelationships::Middleware::FindTasks,
-    only: %i[create edit new update]
+    actions: { only: %i[create edit new update] }
 
   include_deferred 'should define action',
     :create,
