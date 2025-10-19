@@ -45,7 +45,7 @@ class TaskRelationshipsController < BaseController
   responder :html, TaskRelationshipsController::Responder
 
   middleware Lodestone::TaskRelationships::Middleware::FindTasks.new,
-    only: %i[create edit new update]
+    actions: { only: %i[create edit new update] }
 
   action :create,
     Cuprum::Rails::Actions::Resources::Create
