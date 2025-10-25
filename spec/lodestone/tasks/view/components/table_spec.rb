@@ -19,7 +19,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
   let(:data)              { [] }
   let(:result)            { Cuprum::Result.new }
   let(:resource) do
-    Librum::Components::Resource.new(name: 'tasks', title_attribute: 'title')
+    Librum::Core::Resource.new(name: 'tasks', title_attribute: 'title')
   end
   let(:routes) do
     Cuprum::Rails::Routing::PluralRoutes.new(base_path: '/tasks')

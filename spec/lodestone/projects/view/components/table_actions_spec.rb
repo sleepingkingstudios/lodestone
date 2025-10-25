@@ -23,7 +23,7 @@ do
     }
   end
   let(:resource) do
-    Librum::Components::Resource.new(name: 'projects', title_attribute: 'name')
+    Librum::Core::Resource.new(name: 'projects', title_attribute: 'name')
   end
   let(:routes) do
     Cuprum::Rails::Routing::PluralRoutes.new(base_path: '/projects')

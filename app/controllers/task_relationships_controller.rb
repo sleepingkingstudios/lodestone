@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Controller for managing task relationships.
-class TaskRelationshipsController < BaseController
+class TaskRelationshipsController < ViewController
   # Responder for handling HTML requests.
   class Responder < Librum::Core::Responders::Html::ResourceResponder
     include Rails.application.routes.url_helpers
@@ -29,7 +29,7 @@ class TaskRelationshipsController < BaseController
   end
 
   def self.resource # rubocop:disable Metrics/MethodLength
-    Librum::Components::Resource.new(
+    Librum::Core::Resource.new(
       actions:              %i[create destroy edit new update],
       base_path:            '/tasks/:task_id/relationships',
       components:           Lodestone::TaskRelationships::View::Components,

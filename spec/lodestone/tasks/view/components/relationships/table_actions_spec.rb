@@ -26,7 +26,7 @@ do
     )
   end
   let(:resource) do
-    Librum::Components::Resource.new(name: 'task_relationships')
+    Librum::Core::Resource.new(name: 'task_relationships')
   end
   let(:routes) do
     Cuprum::Rails::Routing::PluralRoutes.new(
