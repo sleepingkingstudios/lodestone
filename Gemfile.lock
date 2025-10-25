@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: 768ecc26ba37ad8658438874cc7f61f2df8c47c0
+  revision: 259640813440caa62a65796c5095cd079fefef8f
   specs:
     librum-core (0.1.0.alpha.1)
       cuprum (~> 1.2)

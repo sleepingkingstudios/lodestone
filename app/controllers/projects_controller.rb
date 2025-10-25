@@ -3,7 +3,7 @@
 require 'librum/core/commands/resources/new'
 
 # Controller for managing Project entities.
-class ProjectsController < BaseController
+class ProjectsController < ViewController
   def self.resource # rubocop:disable Metrics/MethodLength
     Librum::Core::Resource.new(
       components:           Lodestone::Projects::View::Components,

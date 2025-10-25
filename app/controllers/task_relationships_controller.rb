@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Controller for managing task relationships.
-class TaskRelationshipsController < BaseController
+class TaskRelationshipsController < ViewController
   # Responder for handling HTML requests.
   class Responder < Librum::Core::Responders::Html::ResourceResponder
     include Rails.application.routes.url_helpers
