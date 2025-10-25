@@ -29,7 +29,7 @@ class TaskRelationshipsController < BaseController
   end
 
   def self.resource # rubocop:disable Metrics/MethodLength
-    Librum::Components::Resource.new(
+    Librum::Core::Resource.new(
       actions:              %i[create destroy edit new update],
       base_path:            '/tasks/:task_id/relationships',
       components:           Lodestone::TaskRelationships::View::Components,

@@ -13,7 +13,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
   end
   let(:request) { Cuprum::Rails::Request.new }
   let(:resource) do
-    Librum::Components::Resource.new(name: 'tasks', **resource_options)
+    Librum::Core::Resource.new(name: 'tasks', **resource_options)
   end
   let(:result) { Cuprum::Rails::Result.new }
 
