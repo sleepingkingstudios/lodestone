@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Controller for managing task boards.
-class BoardsController < ViewController
+class BoardsController < BaseController
   def self.resource
     @resource ||=
       Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)

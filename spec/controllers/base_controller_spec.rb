@@ -4,7 +4,7 @@ require 'rails_helper'
 
 require 'support/contracts/controller_contracts'
 
-RSpec.describe ViewController, type: :controller do
+RSpec.describe BaseController, type: :controller do
   include Spec::Support::Contracts::ControllerContracts
 
   describe '.default_format' do

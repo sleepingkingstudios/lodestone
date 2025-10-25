@@ -4,9 +4,9 @@ require 'cuprum/rails/actions/middleware/associations/find'
 require 'cuprum/rails/actions/middleware/resources/find'
 
 # Controller for managing tasks.
-class TasksController < ViewController
+class TasksController < BaseController
   def self.resource # rubocop:disable Metrics/MethodLength
-    Librum::Core::Resource.new(
+    Librum::Components::Resource.new(
       components:           Lodestone::Tasks::View::Components,
       default_order:        :slug,
       entity_class:         ::Task,

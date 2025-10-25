@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: ed6b13646cc6eeb58b1cf99faf4a5641f56c7c28
+  revision: 9e01096d4a47e2fa4c59f79be4382139bff4512d
   specs:
     cuprum-rails (0.3.0.alpha)
       cuprum (~> 1.2)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-components
-  revision: 8e362c18340399ce97b9b9ead269d05df1de105f
+  revision: db27ab0a5f2b967f508e1567da7dc58a5bbb1cda
   specs:
     librum-components (0.1.0)
       cuprum-rails (~> 0.2)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: 259640813440caa62a65796c5095cd079fefef8f
+  revision: 2e8cfd1c657969908f1cde070b00fa2f6ab41e8b
   specs:
     librum-core (0.1.0.alpha.1)
       cuprum (~> 1.2)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-iam
-  revision: cc00a4e61db23016cc9c1fe108c1b1a5936ddebb
+  revision: f078c32dac65d3c1ede04df212e8a193fb23ab76
   specs:
     librum-iam (0.1.0.alpha.1)
       bcrypt (~> 3.1.20)
@@ -154,7 +154,7 @@ GEM
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    benchmark (0.5.0)
+    benchmark (0.4.1)
     bigdecimal (3.3.1)
     builder (3.3.0)
     byebug (11.1.3)
@@ -210,8 +210,7 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.9.0)
-      logger
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
