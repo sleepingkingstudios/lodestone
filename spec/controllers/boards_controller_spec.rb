@@ -18,7 +18,7 @@ RSpec.describe BoardsController, type: :controller do
 
     include_examples 'should define class reader',
       :resource,
-      -> { an_instance_of(Librum::Core::Resources::BaseResource) }
+      -> { an_instance_of(Librum::Core::Resource) }
 
     it { expect(resource.name).to be == 'board' }
 

@@ -4,13 +4,6 @@
 
 <% content_for :body do %>
   <%= render Lodestone::View::Layouts::Page.new do %>
-    <%=
-      render Librum::Components::Bulma::Resources::DestroyButton.new(
-        text: 'Log Out',
-        url: authentication_session_path
-      )
-    %>
-
     <%= yield %>
   <% end %>
 <% end %>

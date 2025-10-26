@@ -6,4 +6,4 @@ Set up the authentication credentials for the `development` and `test` environme
 
 - `bundle exec rails credentials:edit --environment=development`
 
-See `config/credentials/example.yml` for a sample credentials file./
+See `config/credentials/example.yml` for a sample credentials file.
