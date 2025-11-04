@@ -18,10 +18,12 @@ jobs:
 
     # Sets up the build environment.
     env:
-      DATABASE_HOST:     localhost
-      DATABASE_PORT:     5432
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres_password
+      BASIC_AUTH_USERNAME: kevin.flynn@example.com
+      BASIC_AUTH_PASSWORD: tronlives
+      DATABASE_HOST:       localhost
+      DATABASE_PORT:       5432
+      DATABASE_USERNAME:   postgres
+      DATABASE_PASSWORD:   postgres_password
 
     services:
       # Initialize a PostgreSQL service on postgres:5432.

@@ -3,8 +3,11 @@
 # Controller for managing task boards.
 class BoardsController < ViewController
   def self.resource
-    @resource ||=
-      Librum::Core::Resources::BaseResource.new(name: 'board', singular: true)
+    @resource ||= Librum::Core::Resource.new(
+      name:                'board',
+      singular:            true,
+      skip_authentication: true
+    )
   end
 
   action :show,

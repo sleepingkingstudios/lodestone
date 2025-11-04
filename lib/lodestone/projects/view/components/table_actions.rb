@@ -11,9 +11,9 @@ module Lodestone::Projects::View::Components
 
     def build_board_action
       components::Button.new(
-        class_name: bulma_class_names(
-          'has-text-success is-borderless is-shadowless mx-0 px-1 py-0'
-        ),
+        class_name: bulma_class_names('px-1'),
+        color:      'success',
+        link:       true,
         text:       'Board',
         type:       'link',
         url:        "#{routes.show_path(resource_id)}/board"

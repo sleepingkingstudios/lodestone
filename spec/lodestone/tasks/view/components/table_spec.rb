@@ -152,18 +152,18 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/investigate-mystery">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/investigate-mystery">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/investigate-mystery/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/investigate-mystery/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[0]} action="/tasks/investigate-mystery" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -190,18 +190,18 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/confirm-hypothesis">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/confirm-hypothesis">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/confirm-hypothesis/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/confirm-hypothesis/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[1]} action="/tasks/confirm-hypothesis" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -228,18 +228,18 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/publish-results">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/publish-results">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/tasks/publish-results/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/tasks/publish-results/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[2]} action="/tasks/publish-results" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>

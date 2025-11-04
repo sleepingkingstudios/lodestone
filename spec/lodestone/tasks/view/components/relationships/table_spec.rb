@@ -206,14 +206,14 @@ do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/task_relationships/00000000-0000-0000-0000-000000000000/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/task_relationships/00000000-0000-0000-0000-000000000000/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000000.\\n\\nConfirm deletion?" action="/task_relationships/00000000-0000-0000-0000-000000000000" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -240,14 +240,14 @@ do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/task_relationships/00000000-0000-0000-0000-000000000001/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/task_relationships/00000000-0000-0000-0000-000000000001/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000001.\\n\\nConfirm deletion?" action="/task_relationships/00000000-0000-0000-0000-000000000001" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -276,14 +276,14 @@ do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/task_relationships/00000000-0000-0000-0000-000000000002/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/task_relationships/00000000-0000-0000-0000-000000000002/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000002.\\n\\nConfirm deletion?" action="/task_relationships/00000000-0000-0000-0000-000000000002" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -310,14 +310,14 @@ do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/task_relationships/00000000-0000-0000-0000-000000000003/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/task_relationships/00000000-0000-0000-0000-000000000003/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000003.\\n\\nConfirm deletion?" action="/task_relationships/00000000-0000-0000-0000-000000000003" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>

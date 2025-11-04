@@ -19,6 +19,7 @@ class TasksController < ViewController
         task_type
         title
       ],
+      skip_authentication:  true,
       title_attribute:      'title'
     )
   end

@@ -158,22 +158,22 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/board">
+                    <a class="button has-text-success is-borderless is-shadowless m-0 p-0 px-1" href="/projects/ex-app/board">
                       Board
                     </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/projects/ex-app">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/ex-app/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/projects/ex-app/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[0]} action="/projects/ex-app" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -206,22 +206,22 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/board">
+                    <a class="button has-text-success is-borderless is-shadowless m-0 p-0 px-1" href="/projects/secret/board">
                       Board
                     </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/projects/secret">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/secret/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/projects/secret/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[1]} action="/projects/secret" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
@@ -254,22 +254,22 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
 
                 <td>
                   <div class="buttons is-right is-gapless">
-                    <a class="button has-text-success is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/board">
+                    <a class="button has-text-success is-borderless is-shadowless m-0 p-0 px-1" href="/projects/dps/board">
                       Board
                     </a>
 
-                    <a class="button has-text-info is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps">
+                    <a class="button has-text-info is-borderless is-shadowless m-0 p-0 px-1" href="/projects/dps">
                       Show
                     </a>
 
-                    <a class="button has-text-warning is-borderless is-shadowless mx-0 px-1 py-0" href="/projects/dps/edit">
+                    <a class="button has-text-warning is-borderless is-shadowless m-0 p-0 px-1" href="/projects/dps/edit">
                       Update
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[2]} action="/projects/dps" accept-charset="UTF-8" method="post">
                       <input type="hidden" name="_method" value="delete" autocomplete="off">
 
-                      <button class="button has-text-danger is-borderless is-shadowless mx-0 px-1 py-0" type="submit">
+                      <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
                       </button>
                     </form>
