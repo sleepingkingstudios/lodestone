@@ -38,7 +38,8 @@ class TaskRelationshipsController < ViewController
         relationship_type
         source_task_id
         target_task_id
-      ]
+      ],
+      skip_authentication:  true
     )
   end
 
