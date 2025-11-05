@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2022_08_07_062031) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_05_042819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
+
+  create_table "librum_iam_credentials", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type", null: false
+    t.boolean "active", default: true, null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "expires_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id", "type"], name: "index_librum_iam_credentials_on_user_id_and_type"
+    t.index ["user_id"], name: "index_librum_iam_credentials_on_user_id"
+  end
+
+  create_table "librum_iam_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "username", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "slug", default: "", null: false
+    t.string "role", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_librum_iam_users_on_email", unique: true
+    t.index ["slug"], name: "index_librum_iam_users_on_slug", unique: true
+    t.index ["username"], name: "index_librum_iam_users_on_username", unique: true
+  end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,6 +50,25 @@ ActiveRecord::Schema[8.0].define(version: 2022_08_07_062031) do
     t.string "project_type", default: "", null: false
     t.string "repository", default: "", null: false
     t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "saga_tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "saga_id"
+    t.uuid "task_id"
+    t.index ["saga_id"], name: "index_saga_tasks_on_saga_id"
+    t.index ["task_id"], name: "index_saga_tasks_on_task_id"
+  end
+
+  create_table "sagas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "slug", default: "", null: false
+    t.string "status", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sagas_on_name", unique: true
+    t.index ["slug"], name: "index_sagas_on_slug", unique: true
   end
 
   create_table "task_relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -52,6 +95,7 @@ ActiveRecord::Schema[8.0].define(version: 2022_08_07_062031) do
     t.index ["slug"], name: "index_tasks_on_slug", unique: true
   end
 
+  add_foreign_key "librum_iam_credentials", "librum_iam_users", column: "user_id"
   add_foreign_key "task_relationships", "tasks", column: "source_task_id"
   add_foreign_key "task_relationships", "tasks", column: "target_task_id"
   add_foreign_key "tasks", "projects"
