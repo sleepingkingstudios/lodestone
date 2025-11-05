@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= render Lodestone::View::Layouts::Page.new(session: @session) do %>
+  <%= render Lodestone::View::Layouts::Page.new do %>
     <%= yield %>
   <% end %>
 <% end %>

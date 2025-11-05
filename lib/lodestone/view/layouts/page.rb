@@ -7,6 +7,8 @@ module Lodestone::View::Layouts
   class Page < Librum::Components::Base
     dependency :routes
 
+    option :session
+
     # @return [ActiveSupport::SafeBuffer] the rendered page.
     def call
       page =
@@ -48,11 +50,17 @@ module Lodestone::View::Layouts
         brand:,
         color:,
         copyright:,
-        max_width:  'widescreen',
+        max_width:         'widescreen',
         navigation:,
+        session:,
+        session_component:,
         tagline:,
-        title:
+        title:,
       }
+    end
+
+    def session_component
+      Librum::Iam::Authentication::View::Components::CurrentSession
     end
 
     def tagline
