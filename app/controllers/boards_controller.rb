@@ -6,7 +6,7 @@ class BoardsController < ViewController
     @resource ||= Librum::Core::Resource.new(
       name:                'board',
       singular:            true,
-      skip_authentication: true
+      skip_authentication: legacy_authentication?
     )
   end
 

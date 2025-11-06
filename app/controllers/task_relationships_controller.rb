@@ -39,7 +39,7 @@ class TaskRelationshipsController < ViewController
         source_task_id
         target_task_id
       ],
-      skip_authentication:  true
+      skip_authentication:  legacy_authentication?
     )
   end
 
