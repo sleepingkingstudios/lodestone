@@ -9,9 +9,8 @@ end
 require 'byebug'
 require 'cuprum/rspec/be_a_result'
 require 'cuprum/rspec/be_callable'
-require 'librum/components/rspec/deferred/component_examples'
-require 'librum/components/rspec/matchers/match_snapshot_matcher'
-require 'librum/components/rspec/render_component'
+require 'librum/components/rspec/bulma_helpers'
+require 'librum/components/rspec/component_helpers'
 require 'plumbum/rspec/stub_provider'
 require 'rspec/sleeping_king_studios/all'
 
@@ -29,8 +28,8 @@ RSpec.configure do |config|
   config.include RSpec::SleepingKingStudios::Examples::PropertyExamples
   config.include Plumbum::RSpec::StubProvider
 
-  config.include Librum::Components::RSpec::Matchers,        type: :component
-  config.include Librum::Components::RSpec::RenderComponent, type: :component
+  config.include Librum::Components::RSpec::BulmaHelpers,     framework: :bulma
+  config.include Librum::Components::RSpec::ComponentHelpers, type: :component
 
   config.disable_monkey_patching!
 

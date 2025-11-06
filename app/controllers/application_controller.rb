@@ -7,6 +7,11 @@ require 'cuprum/rails/repository'
 class ApplicationController < ActionController::Base
   include Cuprum::Rails::Controller
 
+  # @todo: Remove this flag to disable legacy authentication.
+  def self.legacy_authentication?
+    ENV.fetch('LEGACY_AUTHENTICATION', 'true') != 'false'
+  end
+
   class << self
     private
 
@@ -31,7 +36,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  http_basic_authenticate_with name: username, password: password
+  if legacy_authentication?
+    http_basic_authenticate_with name: username, password: password
+  end
 
   unless Rails.env.production?
     middleware Cuprum::Rails::Actions::Middleware::LogRequest
