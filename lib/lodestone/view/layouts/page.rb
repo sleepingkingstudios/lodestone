@@ -7,6 +7,8 @@ module Lodestone::View::Layouts
   class Page < Librum::Components::Base
     dependency :routes
 
+    option :session, validate: Librum::Iam::Session
+
     # @return [ActiveSupport::SafeBuffer] the rendered page.
     def call
       page =
@@ -36,6 +38,8 @@ module Lodestone::View::Layouts
     end
 
     def navigation
+      return [] if session&.authenticated_user.blank?
+
       [
         { label: 'Board',    url: routes.board_path },
         { label: 'Projects', url: routes.projects_path },
@@ -43,16 +47,22 @@ module Lodestone::View::Layouts
       ]
     end
 
-    def page_options
+    def page_options # rubocop:disable Metrics/MethodLength
       {
         brand:,
         color:,
         copyright:,
-        max_width:  'widescreen',
+        max_width:         'widescreen',
         navigation:,
+        session:,
+        session_component:,
         tagline:,
         title:
       }
+    end
+
+    def session_component
+      Librum::Iam::Authentication::View::Components::CurrentSession
     end
 
     def tagline
