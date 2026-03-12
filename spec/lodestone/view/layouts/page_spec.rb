@@ -74,7 +74,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
                     <i class="fa-solid fa-copyright"></i>
                   </span>
 
-                  Rob&nbsp;Smith 2021-2025
+                  Rob&nbsp;Smith 2021-#{Time.current.year}
                 </span>
               </p>
 
@@ -206,7 +206,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
                       <i class="fa-solid fa-copyright"></i>
                     </span>
 
-                    Rob&nbsp;Smith 2021-2025
+                    Rob&nbsp;Smith 2021-#{Time.current.year}
                   </span>
                 </p>
 
