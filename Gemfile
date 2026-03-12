@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.7'
+ruby '3.4.9'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
@@ -40,7 +40,7 @@ gem 'stannum', '~> 0.4'
 group :development, :test do
   gem 'annotaterb', '~> 4.14'
 
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: %i[mri windows]
   gem 'factory_bot_rails', '~> 6.4'
   gem 'thor', '~> 1.4'
 
@@ -65,4 +65,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: %i[jruby windows]
