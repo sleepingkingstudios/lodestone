@@ -20,7 +20,7 @@ module Spec::Support::Examples
 
     shared_examples 'should have attribute' \
       do |attr_name, default: nil, value: DEFAULT_VALUE|
-        attr_name = attr_name.intern
+        attr_name = attr_name.intern # rubocop:disable RSpec/LeakyLocalVariable
 
         include_examples 'should have property', attr_name
 

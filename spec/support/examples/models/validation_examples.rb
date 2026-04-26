@@ -30,10 +30,10 @@ module Spec::Support::Examples::Models
     do |attr_name, **options|
       matching    = options.fetch(:matching, [])
       nonmatching = options.fetch(:nonmatching, %w[xyzzy])
-      message     = options.fetch(:message, 'is invalid')
+      message     = options.fetch(:message, 'is invalid') # rubocop:disable RSpec/LeakyLocalVariable
 
       matching.each do |value|
-        value, desc =
+        value, desc = # rubocop:disable RSpec/LeakyLocalVariable
           if value.is_a?(Array)
             value
           else
@@ -52,7 +52,7 @@ module Spec::Support::Examples::Models
       end
 
       nonmatching.each do |value|
-        value, desc =
+        value, desc = # rubocop:disable RSpec/LeakyLocalVariable
           if value.is_a?(Array)
             value
           else
@@ -73,7 +73,7 @@ module Spec::Support::Examples::Models
 
     shared_examples 'should validate the inclusion of' \
     do |attr_name, **options|
-      message = options.fetch(:message, 'is not included in the list')
+      message = options.fetch(:message, 'is not included in the list') # rubocop:disable RSpec/LeakyLocalVariable
       values  = options.fetch(:in)
 
       context "when #{attr_name} is an invalid value" do
@@ -100,7 +100,7 @@ module Spec::Support::Examples::Models
     do |attr_name, **options|
       extend ClassMethods
 
-      message = options.fetch(:message, 'is not a number')
+      message = options.fetch(:message, 'is not a number') # rubocop:disable RSpec/LeakyLocalVariable
 
       context "when #{attr_name} is not a number" do
         let(:attributes) { super().merge(attr_name => 'not a number') }
@@ -111,8 +111,8 @@ module Spec::Support::Examples::Models
       end
 
       if options[:greater_than_or_equal_to]
-        gte_count   = options[:greater_than_or_equal_to]
-        gte_message = extract_message(
+        gte_count   = options[:greater_than_or_equal_to] # rubocop:disable RSpec/LeakyLocalVariable
+        gte_message = extract_message( # rubocop:disable RSpec/LeakyLocalVariable
           options[:greater_than_or_equal_to],
           "must be greater than or equal to #{gte_count}"
         )
@@ -144,8 +144,8 @@ module Spec::Support::Examples::Models
       end
 
       if options[:less_than_or_equal_to]
-        lte_count   = options[:less_than_or_equal_to]
-        lte_message = extract_message(
+        lte_count   = options[:less_than_or_equal_to] # rubocop:disable RSpec/LeakyLocalVariable
+        lte_message = extract_message( # rubocop:disable RSpec/LeakyLocalVariable
           options[:less_than_or_equal_to],
           "must be less than or equal to #{lte_count}"
         )
@@ -177,7 +177,7 @@ module Spec::Support::Examples::Models
       end
 
       if options[:only_integer]
-        integer_message =
+        integer_message = # rubocop:disable RSpec/LeakyLocalVariable
           extract_message(options[:only_integer], 'must be an integer')
 
         context "when #{attr_name} is not an integer" do
@@ -197,7 +197,7 @@ module Spec::Support::Examples::Models
       extend ClassMethods
 
       attr_type = normalize_attribute_type(type)
-      message ||= "can't be blank"
+      message ||= "can't be blank" # rubocop:disable RSpec/LeakyLocalVariable
 
       context "when #{attr_name} is nil" do
         let(:attributes) { super().merge(attr_name => nil) }
@@ -220,7 +220,7 @@ module Spec::Support::Examples::Models
 
     shared_examples 'should validate the uniqueness of' \
     do |attr_name, attributes: {}|
-      injected_attributes = attributes
+      injected_attributes = attributes # rubocop:disable RSpec/LeakyLocalVariable
 
       context "when a #{described_class} exists with the same #{attr_name}" do
         let(:value)        { subject.send(attr_name) }
