@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.9'
+ruby '3.4.10'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
@@ -28,8 +28,7 @@ gem 'stimulus-rails', '~> 1.3'
 
 # Commands
 gem 'cuprum', '~> 1.3'
-gem 'cuprum-collections',
-  git: 'https://github.com/sleepingkingstudios/cuprum-collections'
+gem 'cuprum-collections', '~> 0.5.0'
 gem 'cuprum-rails',
   git: 'https://github.com/sleepingkingstudios/cuprum-rails'
 gem 'plumbum',
