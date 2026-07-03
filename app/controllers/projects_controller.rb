@@ -18,7 +18,6 @@ class ProjectsController < ViewController
         repository
         slug
       ],
-      skip_authentication:  legacy_authentication?,
       title_attribute:      'name'
     )
   end
