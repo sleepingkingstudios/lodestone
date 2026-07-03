@@ -7,7 +7,12 @@ require 'cuprum/rails/records/repository'
 RSpec.describe Lodestone::Boards::Commands::Show do
   subject(:command) { described_class.new(repository:) }
 
-  let(:repository) { Cuprum::Rails::Records::Repository.new }
+  let(:repository) do
+    Cuprum::Rails::Records::Repository.new.tap do |repository|
+      repository.create(entity_class: Project)
+      repository.create(entity_class: Task)
+    end
+  end
 
   describe '#call' do
     shared_context 'when there are many projects' do
@@ -18,7 +23,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
         [project, other_project].each do |entity|
           result =
             repository
-            .find_or_create(entity_class: Project)
+            .find(entity_class: Project)
             .insert_one
             .call(entity:)
 
@@ -76,7 +81,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
       end
       let(:expected_tasks) do
         repository
-          .find_or_create(entity_class: Task)
+          .find(entity_class: Task)
           .find_matching
           .call(order: { updated_at: :desc })
           .value
@@ -87,7 +92,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
         [*project_tasks, *other_project_tasks].each do |entity|
           result =
             repository
-            .find_or_create(entity_class: Task)
+            .find(entity_class: Task)
             .insert_one
             .call(entity:)
 
@@ -179,7 +184,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'id',
           attribute_value: project_id,
-          collection_name: 'projects',
+          name:            'projects',
           primary_key:     true
         )
       end
@@ -197,7 +202,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'slug',
           attribute_value: project_id,
-          collection_name: 'projects',
+          name:            'projects',
           primary_key:     false
         )
       end
@@ -224,7 +229,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
       wrap_context 'when there are many tasks' do
         let(:expected_tasks) do
           repository
-            .find_or_create(entity_class: Task)
+            .find(entity_class: Task)
             .find_matching
             .call(
               order: { updated_at: :desc },
@@ -257,7 +262,7 @@ RSpec.describe Lodestone::Boards::Commands::Show do
       wrap_context 'when there are many tasks' do
         let(:expected_tasks) do
           repository
-            .find_or_create(entity_class: Task)
+            .find(entity_class: Task)
             .find_matching
             .call(
               order: { updated_at: :desc },

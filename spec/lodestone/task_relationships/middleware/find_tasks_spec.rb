@@ -206,7 +206,7 @@ RSpec.describe Lodestone::TaskRelationships::Middleware::FindTasks do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'id',
           attribute_value: task_id,
-          collection_name: 'tasks',
+          name:            'tasks',
           primary_key:     true
         )
       end
@@ -231,7 +231,7 @@ RSpec.describe Lodestone::TaskRelationships::Middleware::FindTasks do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'slug',
           attribute_value: task_id,
-          collection_name: 'tasks',
+          name:            'tasks',
           primary_key:     false
         )
       end

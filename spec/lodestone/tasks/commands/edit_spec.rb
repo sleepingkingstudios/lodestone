@@ -40,7 +40,7 @@ RSpec.describe Lodestone::Tasks::Commands::Edit do
           Cuprum::Collections::Errors::NotFound.new(
             attribute_name:  'slug',
             attribute_value: invalid_primary_key_value,
-            collection_name: resource.name,
+            name:            resource.name,
             primary_key:     false
           )
         end

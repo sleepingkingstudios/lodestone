@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: ed6b13646cc6eeb58b1cf99faf4a5641f56c7c28
+  revision: b0369fc2cbf09b50bb3e0f993ca29ff88e648c51
   specs:
     cuprum-rails (0.3.0.alpha)
-      cuprum (~> 1.2)
-      cuprum-collections (~> 0.4)
+      cuprum (~> 1.3)
+      cuprum-collections (~> 0.6)
       rails (>= 7.0, < 9)
-      stannum (~> 0.3)
+      stannum (~> 0.4)
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-components
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: 259640813440caa62a65796c5095cd079fefef8f
+  revision: 6ae407f7c67e475a8a384642a41c49732498cadd
   specs:
     librum-core (0.1.0.alpha.1)
       cuprum (~> 1.2)
@@ -156,9 +156,10 @@ GEM
     crass (1.0.7)
     cuprum (1.3.1)
       sleeping_king_studios-tools (~> 1.2, >= 1.2.1)
-    cuprum-collections (0.5.1)
-      cuprum (~> 1.1)
-      stannum (~> 0.3)
+    cuprum-collections (0.6.0)
+      cuprum (~> 1.3, >= 1.3.1)
+      sleeping_king_studios-tools (~> 1.2, >= 1.2.1)
+      stannum (~> 0.4, >= 0.4.1)
     date (3.5.1)
     diff-lcs (1.6.0)
     diffy (3.4.4)
@@ -179,12 +180,12 @@ GEM
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
     ffi (1.17.1-x86_64-linux-musl)
-    globalid (1.3.0)
+    globalid (1.4.0)
       activesupport (>= 6.1)
     hashdiff (1.1.2)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.2.2)
+    importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
@@ -206,13 +207,13 @@ GEM
     loofah (2.25.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.9.0)
+    mail (2.9.1)
       logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
       net-smtp
-    marcel (1.1.0)
+    marcel (1.2.1)
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (6.0.6)
@@ -248,14 +249,14 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2)
-    pg (1.6.2-aarch64-linux)
-    pg (1.6.2-aarch64-linux-musl)
-    pg (1.6.2-arm64-darwin)
-    pg (1.6.2-x86_64-darwin)
-    pg (1.6.2-x86_64-linux)
-    pg (1.6.2-x86_64-linux-musl)
-    pp (0.6.3)
+    pg (1.6.3)
+    pg (1.6.3-aarch64-linux)
+    pg (1.6.3-aarch64-linux-musl)
+    pg (1.6.3-arm64-darwin)
+    pg (1.6.3-x86_64-darwin)
+    pg (1.6.3-x86_64-linux)
+    pg (1.6.3-x86_64-linux-musl)
+    pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
     prism (1.9.0)
@@ -264,9 +265,6 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.3.1)
-      date
-      stringio
     puma (7.2.1)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -313,9 +311,14 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (7.2.0)
+    rbs (4.0.3)
+      logger
+      prism (>= 1.6.0)
+      tsort
+    rdoc (8.0.0)
       erb
-      psych (>= 4.0.0)
+      prism (>= 1.6.0)
+      rbs (>= 4.0.0)
       tsort
     regexp_parser (2.11.2)
     reline (0.6.3)
@@ -388,7 +391,6 @@ GEM
       sleeping_king_studios-tools (~> 1.2, >= 1.2.1)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.2.0)
     thor (1.5.0)
     timeout (0.6.1)
     tsort (0.2.0)
@@ -403,11 +405,11 @@ GEM
       activesupport (>= 5.2.0, < 8.2)
       concurrent-ruby (~> 1)
       method_source (~> 1.0)
-    websocket-driver (0.8.0)
+    websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.7.5)
+    zeitwerk (2.8.2)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -425,7 +427,7 @@ DEPENDENCIES
   byebug
   commonmarker (~> 0.23)
   cuprum (~> 1.3)
-  cuprum-collections (~> 0.5.0)
+  cuprum-collections (~> 0.6)
   cuprum-rails!
   factory_bot_rails (~> 6.4)
   importmap-rails (~> 2.1)
@@ -448,7 +450,7 @@ DEPENDENCIES
   rubocop-rspec_rails (~> 2.32)
   simplecov (~> 0.21)
   sleeping_king_studios-tasks!
-  sleeping_king_studios-tools (~> 1.2)
+  sleeping_king_studios-tools (~> 1.3)
   stannum (~> 0.4)
   stimulus-rails (~> 1.3)
   thor (~> 1.4)
