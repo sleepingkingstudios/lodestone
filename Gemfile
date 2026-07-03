@@ -28,12 +28,12 @@ gem 'stimulus-rails', '~> 1.3'
 
 # Commands
 gem 'cuprum', '~> 1.3'
-gem 'cuprum-collections', '~> 0.5.0'
+gem 'cuprum-collections', '~> 0.6'
 gem 'cuprum-rails',
   git: 'https://github.com/sleepingkingstudios/cuprum-rails'
 gem 'plumbum',
   git: 'https://github.com/sleepingkingstudios/plumbum'
-gem 'sleeping_king_studios-tools', '~> 1.2'
+gem 'sleeping_king_studios-tools', '~> 1.3'
 gem 'stannum', '~> 0.4'
 
 group :development, :test do

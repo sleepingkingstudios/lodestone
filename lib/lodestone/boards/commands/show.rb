@@ -39,11 +39,11 @@ module Lodestone::Boards::Commands
     end
 
     def projects_collection
-      repository.find_or_create(entity_class: Project)
+      repository.find(entity_class: Project)
     end
 
     def tasks_collection
-      repository.find_or_create(entity_class: Task)
+      repository.find(entity_class: Task)
     end
 
     def validate_project_id(project_id, as: 'project_id')

@@ -97,7 +97,7 @@ RSpec.describe Lodestone::Tasks::Middleware::FindProject do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'id',
           attribute_value: project_id,
-          collection_name: 'projects',
+          name:            'projects',
           primary_key:     true
         )
       end
@@ -122,7 +122,7 @@ RSpec.describe Lodestone::Tasks::Middleware::FindProject do
         Cuprum::Collections::Errors::NotFound.new(
           attribute_name:  'slug',
           attribute_value: project_id,
-          collection_name: 'projects',
+          name:            'projects',
           primary_key:     false
         )
       end
