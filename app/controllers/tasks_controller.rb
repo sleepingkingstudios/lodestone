@@ -19,7 +19,6 @@ class TasksController < ViewController
         task_type
         title
       ],
-      skip_authentication:  legacy_authentication?,
       title_attribute:      'title'
     )
   end
