@@ -411,7 +411,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                     <input name="task[title]" class="input is-danger" type="text" value="Example Task">
 
                     <span class="icon is-small is-right">
-                      <i class="fa-solid fa-exclamation-triangle"></i>
+                      <i class="fa-solid fa-circle-xmark"></i>
                     </span>
                   </div>
 
@@ -956,7 +956,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                     <input name="task[title]" class="input is-danger" type="text" value="Example Task">
 
                     <span class="icon is-small is-right">
-                      <i class="fa-solid fa-exclamation-triangle"></i>
+                      <i class="fa-solid fa-circle-xmark"></i>
                     </span>
                   </div>
 

@@ -31,8 +31,7 @@ gem 'cuprum', '~> 1.3'
 gem 'cuprum-collections', '~> 0.6'
 gem 'cuprum-rails',
   git: 'https://github.com/sleepingkingstudios/cuprum-rails'
-gem 'plumbum',
-  git: 'https://github.com/sleepingkingstudios/plumbum'
+gem 'plumbum', '~> 0.1'
 gem 'sleeping_king_studios-tools', '~> 1.3'
 gem 'stannum', '~> 0.4'
 

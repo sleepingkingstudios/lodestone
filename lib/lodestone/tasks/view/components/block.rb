@@ -9,6 +9,9 @@ module Lodestone::Tasks::View::Components
         { key: 'project', value: ->(task) { project_link(task) } },
         { key: 'task_type', transform: :titleize },
         {
+          color: lambda do |value|
+            Lodestone::Tasks::View::Components.status_color(value)
+          end,
           key:   'status',
           value: lambda do |task|
             Lodestone::Tasks::View::Components.format_status(task&.status)
