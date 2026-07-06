@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :body do %>
-  <%= render Lodestone::View::Layouts::Page.new(session: @session) do %>
+  <%= render Lodestone::View::Layouts::Page.new(alerts: normalize_alerts(flash), session: @session) do %>
     <%= yield %>
   <% end %>
 <% end %>
