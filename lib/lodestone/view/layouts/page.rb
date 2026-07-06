@@ -7,6 +7,7 @@ module Lodestone::View::Layouts
   class Page < Librum::Components::Base
     dependency :routes
 
+    option :alerts
     option :session, validate: Librum::Iam::Session
 
     # @return [ActiveSupport::SafeBuffer] the rendered page.
@@ -49,6 +50,7 @@ module Lodestone::View::Layouts
 
     def page_options # rubocop:disable Metrics/MethodLength
       {
+        alerts:,
         brand:,
         color:,
         copyright:,

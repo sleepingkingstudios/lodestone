@@ -50,7 +50,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
           </div>
         </nav>
 
-        <main class="section" style="flex: 1;">
+        <main class="section pt-5" style="flex: 1;">
           <div class="container content is-max-widescreen">
             <h1>
               Greetings, Starfighter!
@@ -87,7 +87,110 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
       HTML
     end
 
+    define_method :indent do |str, count|
+      offset = ' ' * count
+
+      str
+        .lines
+        .map { |line| line.start_with?("\n") ? line : "#{offset}#{line}" }
+        .join
+    end
+
     it { expect(rendered).to match_snapshot }
+
+    describe 'with alerts: normalized alerts' do
+      let(:alerts) do
+        [
+          {
+            message: 'Reactor temperature critical',
+            type:    'warning'
+          },
+          {
+            icon:    'radiation',
+            message: 'Meltdown imminent',
+            type:    'danger'
+          }
+        ]
+      end
+      let(:component_options) { super().merge(alerts:) }
+      let(:render_alerts) do
+        alerts_component =
+          component
+          .components::Layouts::Page::Alerts
+          .new(alerts:)
+        rendered         = pretty_render(alerts_component)
+
+        indent(rendered, 4)
+      end
+      let(:snapshot) do
+        <<~HTML
+          <nav class="navbar is-success" role="navigation" aria-label="main navigation" data-controller="librum-components-navbar">
+            <div class="container is-max-widescreen">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                  <span class="icon">
+                    <i class="fa-solid fa-compass fa-2xl"></i>
+                  </span>
+
+                  <span class="title is-size-4">
+                    Lodestone
+                  </span>
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-action="click->librum-components-navbar#toggle" data-librum-components-navbar-target="button">
+                  <span aria-hidden="true"></span>
+
+                  <span aria-hidden="true"></span>
+
+                  <span aria-hidden="true"></span>
+
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </nav>
+
+          <main class="section pt-5" style="flex: 1;">
+            <div class="container content is-max-widescreen">
+              #{render_alerts.strip}
+
+              <h1>
+                Greetings, Starfighter!
+              </h1>
+
+              <p>
+                You have been recruited by the Star League to defend the frontier
+                against Xur and the Ko-Dan Armada!
+              </p>
+            </div>
+          </main>
+
+          <footer>
+            <div class="footer">
+              <div class="container is-max-widescreen">
+                <p class="has-text-centered">
+                  <span class="icon-text">
+                    Sleeping&nbsp;King&nbsp;Studios is
+
+                    <span class="icon">
+                      <i class="fa-solid fa-copyright"></i>
+                    </span>
+
+                    Rob&nbsp;Smith 2021-#{Time.current.year}
+                  </span>
+                </p>
+
+                <p class="has-text-centered is-italic mt-1">
+                  Non&nbsp;Sufficit&nbsp;Orbis
+                </p>
+              </div>
+            </div>
+          </footer>
+        HTML
+      end
+
+      it { expect(rendered).to match_snapshot }
+    end
 
     describe 'with session: a user session' do
       let(:user) do
@@ -182,7 +285,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
             </div>
           </div>
 
-          <main class="section" style="flex: 1;">
+          <main class="section pt-5" style="flex: 1;">
             <div class="container content is-max-widescreen">
               <h1>
                 Greetings, Starfighter!
