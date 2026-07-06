@@ -351,7 +351,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                     <input name="project[name]" class="input is-danger" type="text" value="Example Application">
 
                     <span class="icon is-small is-right">
-                      <i class="fa-solid fa-exclamation-triangle"></i>
+                      <i class="fa-solid fa-circle-xmark"></i>
                     </span>
                   </div>
 
@@ -820,7 +820,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                     <input name="project[name]" class="input is-danger" type="text" value="Example Application">
 
                     <span class="icon is-small is-right">
-                      <i class="fa-solid fa-exclamation-triangle"></i>
+                      <i class="fa-solid fa-circle-xmark"></i>
                     </span>
                   </div>
 

@@ -44,7 +44,9 @@ RSpec.describe Lodestone::Tasks::View::Components::Block, type: :component do
               Status
             </div>
 
-            <div class="cell is-col-span-3 is-col-span-5-desktop"></div>
+            <div class="cell is-col-span-3 is-col-span-5-desktop">
+              <span class="has-text-text"></span>
+            </div>
           </div>
         </div>
       HTML
@@ -105,7 +107,9 @@ RSpec.describe Lodestone::Tasks::View::Components::Block, type: :component do
               </div>
 
               <div class="cell is-col-span-3 is-col-span-5-desktop">
-                To Do
+                <span class="has-text-link">
+                  To Do
+                </span>
               </div>
             </div>
           </div>
