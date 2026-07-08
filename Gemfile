@@ -53,7 +53,7 @@ end
 group :test do
   gem 'rspec', '~> 3.13'
   gem 'rspec-rails', '~> 7.1'
-  gem 'rspec-sleeping_king_studios', '~> 2.8'
+  gem 'rspec-sleeping_king_studios', '~> 2.8', '>= 2.8.5'
 
   gem 'rubocop', '~> 1.86'
   gem 'rubocop-factory_bot', '~> 2.28'

@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do
+    member do
+      patch :status
+      put   :status
+    end
+
     resources :relationships,
       controller: :task_relationships,
       only:       %i[create destroy edit new update]

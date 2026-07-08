@@ -11,6 +11,32 @@ module Lodestone::Tasks::View
     }.freeze
     private_constant :STATUS_COLOR_NAMES
 
+    TASK_STATUS_TRANSITIONS = {
+      ::Task::Statuses::WONT_DO     => {
+        nil                      => nil,
+        ::Task::Statuses::ICEBOX => 'restore'
+      }.freeze,
+      ::Task::Statuses::ICEBOX      => {
+        ::Task::Statuses::WONT_DO => 'cancel',
+        ::Task::Statuses::TO_DO   => 'prioritize'
+      }.freeze,
+      ::Task::Statuses::TO_DO       => {
+        ::Task::Statuses::ICEBOX      => 'freeze',
+        ::Task::Statuses::IN_PROGRESS => 'start'
+      }.freeze,
+      ::Task::Statuses::IN_PROGRESS => {
+        ::Task::Statuses::TO_DO => 'stop',
+        ::Task::Statuses::DONE  => 'finish'
+      }.freeze,
+      ::Task::Statuses::DONE        => {
+        ::Task::Statuses::IN_PROGRESS => 'restart',
+        ::Task::Statuses::ARCHIVED    => 'archive'
+      }.freeze,
+      ::Task::Statuses::ARCHIVED    => {
+        ::Task::Statuses::DONE => 'unarchive'
+      }.freeze
+    }.freeze
+
     TASK_TYPE_ICON_NAMES = {
       ::Task::TaskTypes::BUGFIX        => 'bug',
       ::Task::TaskTypes::CHORE         => 'wrench',

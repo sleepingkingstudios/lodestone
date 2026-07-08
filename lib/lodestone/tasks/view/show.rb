@@ -36,16 +36,11 @@ module Lodestone::Tasks::View
     end
 
     def render_before_content
-      return if resource_data&.project.blank?
+      return if resource_data.nil?
 
-      component = components::Link.new(
-        color: 'link',
-        icon:  'rectangle-list',
-        text:  'Project Board',
-        url:   "/projects/#{resource_data.project['slug']}/board"
-      )
+      links = Lodestone::Tasks::View::Components::Links.new(task: resource_data)
 
-      content_tag('p') { render(component) }
+      render(links)
     end
 
     def render_description

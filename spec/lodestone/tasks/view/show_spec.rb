@@ -18,7 +18,6 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
   let(:result) { Cuprum::Rails::Result.new }
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <h1 class="has-text-overflow-ellipsis">
@@ -71,7 +70,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with a result with a task' do
       let(:example_application) do
@@ -94,6 +93,11 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
         Cuprum::Rails::Result.new(
           value: { 'task' => task }
         )
+      end
+      let(:rendered_links) do
+        component = Lodestone::Tasks::View::Components::Links.new(task:)
+
+        pretty_render(component)
       end
       let(:snapshot) do
         <<~HTML
@@ -135,15 +139,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
             </div>
           </div>
 
-          <p>
-            <a class="icon-text has-text-link" href="/projects/ex-app/board">
-              <span class="icon">
-                <i class="fa-solid fa-rectangle-list"></i>
-              </span>
-
-              Project Board
-            </a>
-          </p>
+          #{rendered_links.strip}
 
           <div class="fixed-grid has-0-cols has-4-cols-tablet has-6-cols-desktop">
             <div class="grid">
@@ -247,7 +243,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a result with a task with relationships' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -343,6 +339,11 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
           }
         )
       end
+      let(:rendered_links) do
+        component = Lodestone::Tasks::View::Components::Links.new(task:)
+
+        pretty_render(component)
+      end
       let(:snapshot) do
         <<~HTML
           <div class="level mb-5">
@@ -383,15 +384,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
             </div>
           </div>
 
-          <p>
-            <a class="icon-text has-text-link" href="/projects/ex-app/board">
-              <span class="icon">
-                <i class="fa-solid fa-rectangle-list"></i>
-              </span>
-
-              Project Board
-            </a>
-          </p>
+          #{rendered_links.strip}
 
           <div class="fixed-grid has-0-cols has-4-cols-tablet has-6-cols-desktop">
             <div class="grid">
