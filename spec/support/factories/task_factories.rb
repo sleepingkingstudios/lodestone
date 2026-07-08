@@ -18,6 +18,10 @@ FactoryBot.define do
       (Task.order(project_index: :desc).first&.project_index || 0) + 1
     end
 
+    trait :with_project do
+      association :project
+    end
+
     trait :archived do
       status { Task::Statuses::ARCHIVED }
     end
