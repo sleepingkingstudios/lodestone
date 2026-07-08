@@ -1,0 +1,5 @@
+<%= form_with model: task, http_method: :patch, url: do |form| %>
+  <%= form.hidden_field 'status', value: status %>
+
+  <%= render(build_button) %>
+<% end %>
