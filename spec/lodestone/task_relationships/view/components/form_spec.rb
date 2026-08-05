@@ -26,8 +26,6 @@ do
   end
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
-
     describe 'with action_name: :create' do
       let(:action_name) { :create }
       let(:snapshot) do
@@ -114,7 +112,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with data' do
         let(:source_task) do
@@ -269,10 +267,10 @@ do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
-      describe 'with data and errors' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      describe 'with data and errors' do
         let(:source_task) do
           FactoryBot.build(
             :task,
@@ -442,7 +440,7 @@ do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
 
@@ -537,7 +535,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with data' do
         let(:source_task) do
@@ -695,10 +693,10 @@ do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
-      describe 'with data and errors' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+      describe 'with data and errors' do
         let(:source_task) do
           FactoryBot.build(
             :task,
@@ -871,7 +869,7 @@ do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
   end

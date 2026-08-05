@@ -18,7 +18,6 @@ RSpec.describe Lodestone::Projects::View::Show, type: :component do
   let(:result) { Cuprum::Rails::Result.new }
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <h1 class="has-text-overflow-ellipsis">
@@ -71,7 +70,7 @@ RSpec.describe Lodestone::Projects::View::Show, type: :component do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with a result with data' do
       let(:confirm_message) do
@@ -195,7 +194,7 @@ RSpec.describe Lodestone::Projects::View::Show, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

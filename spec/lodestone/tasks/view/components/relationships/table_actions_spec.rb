@@ -44,7 +44,6 @@ do
         data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="#{confirm_message}"
       TEXT
     end
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <div class="buttons is-right is-gapless">
@@ -67,6 +66,6 @@ do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
   end
 end

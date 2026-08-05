@@ -620,7 +620,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

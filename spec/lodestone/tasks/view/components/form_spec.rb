@@ -24,8 +24,6 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
   end
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
-
     describe 'with action_name: :create' do
       let(:action_name) { :create }
       let(:snapshot) do
@@ -170,7 +168,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with a result with data' do
         let(:projects) do
@@ -354,7 +352,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
       describe 'with a result with data and errors' do
@@ -558,7 +556,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
 
@@ -711,7 +709,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with a result with data' do
         let(:projects) do
@@ -897,7 +895,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
       describe 'with a result with data and errors' do
@@ -1103,7 +1101,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
   end
