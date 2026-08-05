@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   scope :authentication, as: 'authentication' do
     resource :session,
-      controller: 'librum/iam/view/sessions',
+      controller: 'librum/iam/authentication/sessions',
       only:       %i[create destroy]
   end
 
