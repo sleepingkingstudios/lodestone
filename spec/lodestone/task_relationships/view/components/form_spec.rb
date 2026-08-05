@@ -37,23 +37,23 @@ do
               <input name="task_relationship[source_task_id]" class="input" type="hidden">
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_source_task_id">
                   Source Task
                 </label>
 
                 <div class="control">
-                  <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value=" ">
+                  <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value=" ">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_relationship_type">
                   Relationship Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task_relationship[relationship_type]">
+                    <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                       <option value="belongs_to">
                         Belongs To
                       </option>
@@ -75,13 +75,13 @@ do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_target_task_id">
                   Target Task
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task_relationship[target_task_id]">
+                    <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                       <option value="" selected="selected">
                         &nbsp;
                       </option>
@@ -176,23 +176,23 @@ do
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_source_task_id">
                     Source Task
                   </label>
 
                   <div class="control">
-                    <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
+                    <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_relationship_type">
                     Relationship Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task_relationship[relationship_type]">
+                      <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                         <option value="belongs_to">
                           Belongs To
                         </option>
@@ -214,13 +214,13 @@ do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_target_task_id">
                     Target Task
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task_relationship[target_task_id]">
+                      <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                         <option value="" selected="selected">
                           &nbsp;
                         </option>
@@ -341,23 +341,23 @@ do
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_source_task_id">
                     Source Task
                   </label>
 
                   <div class="control">
-                    <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
+                    <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_relationship_type">
                     Relationship Type
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task_relationship[relationship_type]">
+                      <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                         <option value="belongs_to">
                           Belongs To
                         </option>
@@ -383,13 +383,13 @@ do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_target_task_id">
                     Target Task
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task_relationship[target_task_id]">
+                      <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                         <option value="" selected="selected">
                           &nbsp;
                         </option>
@@ -460,23 +460,23 @@ do
               <input name="task_relationship[source_task_id]" class="input" type="hidden">
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_source_task_id">
                   Source Task
                 </label>
 
                 <div class="control">
-                  <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value=" ">
+                  <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value=" ">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_relationship_type">
                   Relationship Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task_relationship[relationship_type]">
+                    <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                       <option value="belongs_to">
                         Belongs To
                       </option>
@@ -498,13 +498,13 @@ do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_relationship_target_task_id">
                   Target Task
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task_relationship[target_task_id]">
+                    <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                       <option value="" selected="selected">
                         &nbsp;
                       </option>
@@ -602,23 +602,23 @@ do
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_source_task_id">
                     Source Task
                   </label>
 
                   <div class="control">
-                    <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
+                    <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_relationship_type">
                     Relationship Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task_relationship[relationship_type]">
+                      <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                         <option value="belongs_to">
                           Belongs To
                         </option>
@@ -640,13 +640,13 @@ do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_target_task_id">
                     Target Task
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task_relationship[target_task_id]">
+                      <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                         <option value="">
                           &nbsp;
                         </option>
@@ -770,23 +770,23 @@ do
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_source_task_id">
                     Source Task
                   </label>
 
                   <div class="control">
-                    <input name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
+                    <input id="task_relationship_source_task_id" name="task_relationship[source_task_id]" class="input" disabled="disabled" type="text" value="Source Task (source-task)">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_relationship_type">
                     Relationship Type
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task_relationship[relationship_type]">
+                      <select id="task_relationship_relationship_type" name="task_relationship[relationship_type]">
                         <option value="belongs_to">
                           Belongs To
                         </option>
@@ -812,13 +812,13 @@ do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_relationship_target_task_id">
                     Target Task
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task_relationship[target_task_id]">
+                      <select id="task_relationship_target_task_id" name="task_relationship[target_task_id]">
                         <option value="">
                           &nbsp;
                         </option>

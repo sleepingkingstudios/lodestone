@@ -33,23 +33,23 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
           <form class="fixed-grid has-3-cols" action="/tasks" accept-charset="UTF-8" method="post">
             <div class="grid">
               <div class="field cell is-col-span-3">
-                <label class="label">
+                <label class="label" for="task_title">
                   Title
                 </label>
 
                 <div class="control">
-                  <input name="task[title]" class="input" type="text">
+                  <input id="task_title" name="task[title]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_project_id">
                   Project
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[project_id]">
+                    <select id="task_project_id" name="task[project_id]">
                       <option value=""></option>
 
                       <option>
@@ -61,13 +61,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_task_type">
                   Task Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[task_type]">
+                    <select id="task_task_type" name="task[task_type]">
                       <option value="bugfix">
                         Bugfix
                       </option>
@@ -101,13 +101,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_status">
                   Status
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[status]">
+                    <select id="task_status" name="task[status]">
                       <option value="wont_do">
                         Won't Do
                       </option>
@@ -137,12 +137,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-3">
-                <label class="label">
+                <label class="label" for="task_description">
                   Description
                 </label>
 
                 <div class="control">
-                  <textarea name="task[description]" class="textarea"></textarea>
+                  <textarea id="task_description" name="task[description]" class="textarea"></textarea>
                 </div>
               </div>
 
@@ -211,23 +211,23 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
             <form class="fixed-grid has-3-cols" action="/tasks" accept-charset="UTF-8" method="post">
               <div class="grid">
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_title">
                     Title
                   </label>
 
                   <div class="control">
-                    <input name="task[title]" class="input" type="text" value="Example Task">
+                    <input id="task_title" name="task[title]" class="input" type="text" value="Example Task">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_project_id">
                     Project
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[project_id]">
+                      <select id="task_project_id" name="task[project_id]">
                         <option value=""></option>
 
                         <option value="00000000-0000-0000-0000-000000000000" selected="selected">
@@ -243,13 +243,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_task_type">
                     Task Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[task_type]">
+                      <select id="task_task_type" name="task[task_type]">
                         <option value="bugfix">
                           Bugfix
                         </option>
@@ -283,13 +283,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_status">
                     Status
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[status]">
+                      <select id="task_status" name="task[status]">
                         <option value="wont_do">
                           Won't Do
                         </option>
@@ -319,12 +319,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="task[description]" class="textarea">
+                    <textarea id="task_description" name="task[description]" class="textarea">
                       This is an example task.
                     </textarea>
                   </div>
@@ -403,12 +403,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
             <form class="fixed-grid has-3-cols" action="/tasks" accept-charset="UTF-8" method="post">
               <div class="grid">
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_title">
                     Title
                   </label>
 
                   <div class="control has-icons-right">
-                    <input name="task[title]" class="input is-danger" type="text" value="Example Task">
+                    <input id="task_title" name="task[title]" class="input is-danger" type="text" value="Example Task">
 
                     <span class="icon is-small is-right">
                       <i class="fa-solid fa-circle-xmark"></i>
@@ -421,13 +421,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_project_id">
                     Project
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task[project_id]">
+                      <select id="task_project_id" name="task[project_id]">
                         <option value=""></option>
 
                         <option value="00000000-0000-0000-0000-000000000000" selected="selected">
@@ -447,13 +447,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_task_type">
                     Task Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[task_type]">
+                      <select id="task_task_type" name="task[task_type]">
                         <option value="bugfix">
                           Bugfix
                         </option>
@@ -487,13 +487,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_status">
                     Status
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[status]">
+                      <select id="task_status" name="task[status]">
                         <option value="wont_do">
                           Won't Do
                         </option>
@@ -523,12 +523,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="task[description]" class="textarea">
+                    <textarea id="task_description" name="task[description]" class="textarea">
                       This is an example task.
                     </textarea>
                   </div>
@@ -574,23 +574,23 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
 
             <div class="grid">
               <div class="field cell is-col-span-3">
-                <label class="label">
+                <label class="label" for="task_title">
                   Title
                 </label>
 
                 <div class="control">
-                  <input name="task[title]" class="input" type="text">
+                  <input id="task_title" name="task[title]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_project_id">
                   Project
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[project_id]">
+                    <select id="task_project_id" name="task[project_id]">
                       <option value=""></option>
 
                       <option>
@@ -602,13 +602,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_task_type">
                   Task Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[task_type]">
+                    <select id="task_task_type" name="task[task_type]">
                       <option value="bugfix">
                         Bugfix
                       </option>
@@ -642,13 +642,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="task_status">
                   Status
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="task[status]">
+                    <select id="task_status" name="task[status]">
                       <option value="wont_do">
                         Won't Do
                       </option>
@@ -678,12 +678,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-3">
-                <label class="label">
+                <label class="label" for="task_description">
                   Description
                 </label>
 
                 <div class="control">
-                  <textarea name="task[description]" class="textarea"></textarea>
+                  <textarea id="task_description" name="task[description]" class="textarea"></textarea>
                 </div>
               </div>
 
@@ -754,23 +754,23 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
 
               <div class="grid">
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_title">
                     Title
                   </label>
 
                   <div class="control">
-                    <input name="task[title]" class="input" type="text" value="Example Task">
+                    <input id="task_title" name="task[title]" class="input" type="text" value="Example Task">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_project_id">
                     Project
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[project_id]">
+                      <select id="task_project_id" name="task[project_id]">
                         <option value=""></option>
 
                         <option value="00000000-0000-0000-0000-000000000000" selected="selected">
@@ -786,13 +786,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_task_type">
                     Task Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[task_type]">
+                      <select id="task_task_type" name="task[task_type]">
                         <option value="bugfix">
                           Bugfix
                         </option>
@@ -826,13 +826,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_status">
                     Status
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[status]">
+                      <select id="task_status" name="task[status]">
                         <option value="wont_do">
                           Won't Do
                         </option>
@@ -862,12 +862,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="task[description]" class="textarea">
+                    <textarea id="task_description" name="task[description]" class="textarea">
                       This is an example task.
                     </textarea>
                   </div>
@@ -948,12 +948,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
 
               <div class="grid">
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_title">
                     Title
                   </label>
 
                   <div class="control has-icons-right">
-                    <input name="task[title]" class="input is-danger" type="text" value="Example Task">
+                    <input id="task_title" name="task[title]" class="input is-danger" type="text" value="Example Task">
 
                     <span class="icon is-small is-right">
                       <i class="fa-solid fa-circle-xmark"></i>
@@ -966,13 +966,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_project_id">
                     Project
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="task[project_id]">
+                      <select id="task_project_id" name="task[project_id]">
                         <option value=""></option>
 
                         <option value="00000000-0000-0000-0000-000000000000" selected="selected">
@@ -992,13 +992,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_task_type">
                     Task Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[task_type]">
+                      <select id="task_task_type" name="task[task_type]">
                         <option value="bugfix">
                           Bugfix
                         </option>
@@ -1032,13 +1032,13 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="task_status">
                     Status
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="task[status]">
+                      <select id="task_status" name="task[status]">
                         <option value="wont_do">
                           Won't Do
                         </option>
@@ -1068,12 +1068,12 @@ RSpec.describe Lodestone::Tasks::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-3">
-                  <label class="label">
+                  <label class="label" for="task_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="task[description]" class="textarea">
+                    <textarea id="task_description" name="task[description]" class="textarea">
                       This is an example task.
                     </textarea>
                   </div>
