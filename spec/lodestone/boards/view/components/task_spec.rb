@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
-  include Librum::Components::RSpec::Deferred::ComponentExamples
-
   subject(:component) { described_class.new(**component_options) }
 
   let(:task_options) do
@@ -29,7 +27,6 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
   end
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <div class="box">
@@ -65,7 +62,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'slate' }
       let(:icon)       { 'search' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with status: ICEBOX' do
@@ -75,7 +72,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'info' }
       let(:icon)       { 'search' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with status: IN_PROGRESS' do
@@ -85,7 +82,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'success' }
       let(:icon)       { 'search' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with status: TO_DO' do
@@ -95,7 +92,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'search' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: BUGFIX' do
@@ -105,7 +102,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'bug' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: CHORE' do
@@ -115,7 +112,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'wrench' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: EPIC' do
@@ -125,7 +122,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'lightbulb' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: FEATURE' do
@@ -135,7 +132,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'gear' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: INVESTIGATION' do
@@ -145,7 +142,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'search' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: MILESTONE' do
@@ -155,7 +152,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'trophy' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with type: RELEASE' do
@@ -165,7 +162,7 @@ RSpec.describe Lodestone::Boards::View::Components::Task, type: :component do
       let(:link_color) { 'link' }
       let(:icon)       { 'award' }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

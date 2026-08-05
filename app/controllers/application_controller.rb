@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include Cuprum::Rails::Controller
 
   def self.repository
-    @repository ||= Cuprum::Rails::Records::Repository.new.tap do |repository|
+    @repository ||= Librum::Iam::Repository.new.tap do |repository|
       repository.create(entity_class: Project)
       repository.create(entity_class: Task)
       repository.create(entity_class: TaskRelationship)

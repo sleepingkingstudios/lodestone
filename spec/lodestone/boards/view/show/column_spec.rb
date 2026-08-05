@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
-  include Librum::Components::RSpec::Deferred::ComponentExamples
-
   subject(:component) { described_class.new(**component_options) }
 
   let(:component_options) { { status: } }
@@ -15,7 +13,6 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
   include_deferred 'should define component option', :tasks
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <h2 class="has-text-overflow-ellipsis is-size-4">
@@ -24,7 +21,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     context 'with tasks' do
       let(:tasks) do
@@ -125,7 +122,7 @@ RSpec.describe Lodestone::Boards::View::Show::Column, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

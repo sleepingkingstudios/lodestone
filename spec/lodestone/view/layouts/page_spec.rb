@@ -21,7 +21,6 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
   end
 
   describe '#call' do
-    let(:rendered) { render_component(component) }
     let(:snapshot) do
       <<~HTML
         <nav class="navbar is-success" role="navigation" aria-label="main navigation" data-controller="librum-components-navbar">

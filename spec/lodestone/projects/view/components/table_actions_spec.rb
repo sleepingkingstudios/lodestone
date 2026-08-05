@@ -5,8 +5,6 @@ require 'rails_helper'
 RSpec.describe Lodestone::Projects::View::Components::TableActions,
   type: :component \
 do
-  include Librum::Components::RSpec::Deferred::ComponentExamples
-
   subject(:component) { described_class.new(**component_options) }
 
   let(:component_options) do
@@ -39,7 +37,6 @@ do
         data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="#{confirm_message}"
       TEXT
     end
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <div class="buttons is-right is-gapless">
@@ -66,6 +63,6 @@ do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
   end
 end

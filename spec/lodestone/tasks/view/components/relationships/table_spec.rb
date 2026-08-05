@@ -36,8 +36,6 @@ do
   let(:task)                  { nil }
 
   describe '#call' do
-    # Wrap contents in a table to ensure HTML fragment is valid.
-    let(:rendered) { render_component(component) }
     let(:snapshot) do
       <<~HTML
         <table class="table is-fullwidth multi-body">
@@ -72,12 +70,12 @@ do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with a task' do
       let(:task) { FactoryBot.build(:task, title: 'Example Task') }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with relationships and inverse relationships' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -329,7 +327,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

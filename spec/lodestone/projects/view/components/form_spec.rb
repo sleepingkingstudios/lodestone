@@ -24,8 +24,6 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
   end
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
-
     describe 'with action_name: :create' do
       let(:action_name) { :create }
       let(:snapshot) do
@@ -33,33 +31,33 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
           <form class="fixed-grid has-6-cols" action="/projects" accept-charset="UTF-8" method="post">
             <div class="grid">
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_name">
                   Name
                 </label>
 
                 <div class="control">
-                  <input name="project[name]" class="input" type="text">
+                  <input id="project_name" name="project[name]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_slug">
                   Slug
                 </label>
 
                 <div class="control">
-                  <input name="project[slug]" class="input" type="text">
+                  <input id="project_slug" name="project[slug]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_project_type">
                   Project Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="project[project_type]">
+                    <select id="project_project_type" name="project[project_type]">
                       <option value="" selected="selected"></option>
 
                       <option value="application">
@@ -79,25 +77,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-4">
-                <label class="label">
+                <label class="label" for="project_repository">
                   Repository
                 </label>
 
                 <div class="control">
-                  <input name="project[repository]" class="input" type="text">
+                  <input id="project_repository" name="project[repository]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="project_active">
                   &nbsp;
                 </label>
 
                 <div class="control px-1 py-2">
-                  <label class="checkbox">
+                  <label class="checkbox" for="project_active">
                     <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                    <input name="project[active]" type="checkbox" value="1">
+                    <input id="project_active" name="project[active]" type="checkbox" value="1">
 
                     <span class="ml-1">
                       Active
@@ -107,15 +105,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="project_public">
                   &nbsp;
                 </label>
 
                 <div class="control px-1 py-2">
-                  <label class="checkbox">
+                  <label class="checkbox" for="project_public">
                     <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                    <input name="project[public]" type="checkbox" value="1">
+                    <input id="project_public" name="project[public]" type="checkbox" value="1">
 
                     <span class="ml-1">
                       Public
@@ -125,12 +123,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-6">
-                <label class="label">
+                <label class="label" for="project_description">
                   Description
                 </label>
 
                 <div class="control">
-                  <textarea name="project[description]" class="textarea"></textarea>
+                  <textarea id="project_description" name="project[description]" class="textarea"></textarea>
                 </div>
               </div>
 
@@ -158,7 +156,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with a result with data' do
         let(:data) do
@@ -183,33 +181,33 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
             <form class="fixed-grid has-6-cols" action="/projects" accept-charset="UTF-8" method="post">
               <div class="grid">
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_name">
                     Name
                   </label>
 
                   <div class="control">
-                    <input name="project[name]" class="input" type="text" value="Example Application">
+                    <input id="project_name" name="project[name]" class="input" type="text" value="Example Application">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_slug">
                     Slug
                   </label>
 
                   <div class="control">
-                    <input name="project[slug]" class="input" type="text" value="ex-app">
+                    <input id="project_slug" name="project[slug]" class="input" type="text" value="ex-app">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_project_type">
                     Project Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="project[project_type]">
+                      <select id="project_project_type" name="project[project_type]">
                         <option value=""></option>
 
                         <option value="application" selected="selected">
@@ -229,25 +227,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-4">
-                  <label class="label">
+                  <label class="label" for="project_repository">
                     Repository
                   </label>
 
                   <div class="control">
-                    <input name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
+                    <input id="project_repository" name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_active">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_active">
                       <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                      <input name="project[active]" type="checkbox" checked="checked" value="1">
+                      <input id="project_active" name="project[active]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Active
@@ -257,15 +255,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_public">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_public">
                       <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                      <input name="project[public]" type="checkbox" checked="checked" value="1">
+                      <input id="project_public" name="project[public]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Public
@@ -275,12 +273,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-6">
-                  <label class="label">
+                  <label class="label" for="project_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="project[description]" class="textarea">
+                    <textarea id="project_description" name="project[description]" class="textarea">
                       An example application.
                     </textarea>
                   </div>
@@ -310,7 +308,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
       describe 'with a result with data and errors' do
@@ -343,12 +341,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
             <form class="fixed-grid has-6-cols" action="/projects" accept-charset="UTF-8" method="post">
               <div class="grid">
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_name">
                     Name
                   </label>
 
                   <div class="control has-icons-right">
-                    <input name="project[name]" class="input is-danger" type="text" value="Example Application">
+                    <input id="project_name" name="project[name]" class="input is-danger" type="text" value="Example Application">
 
                     <span class="icon is-small is-right">
                       <i class="fa-solid fa-circle-xmark"></i>
@@ -361,23 +359,23 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_slug">
                     Slug
                   </label>
 
                   <div class="control">
-                    <input name="project[slug]" class="input" type="text" value="ex-app">
+                    <input id="project_slug" name="project[slug]" class="input" type="text" value="ex-app">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_project_type">
                     Project Type
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="project[project_type]">
+                      <select id="project_project_type" name="project[project_type]">
                         <option value=""></option>
 
                         <option value="application" selected="selected">
@@ -401,25 +399,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-4">
-                  <label class="label">
+                  <label class="label" for="project_repository">
                     Repository
                   </label>
 
                   <div class="control">
-                    <input name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
+                    <input id="project_repository" name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_active">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_active">
                       <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                      <input name="project[active]" type="checkbox" checked="checked" value="1">
+                      <input id="project_active" name="project[active]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Active
@@ -429,15 +427,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_public">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_public">
                       <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                      <input name="project[public]" type="checkbox" checked="checked" value="1">
+                      <input id="project_public" name="project[public]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Public
@@ -447,12 +445,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-6">
-                  <label class="label">
+                  <label class="label" for="project_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="project[description]" class="textarea">
+                    <textarea id="project_description" name="project[description]" class="textarea">
                       An example application.
                     </textarea>
                   </div>
@@ -482,7 +480,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
 
@@ -498,33 +496,33 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
 
             <div class="grid">
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_name">
                   Name
                 </label>
 
                 <div class="control">
-                  <input name="project[name]" class="input" type="text">
+                  <input id="project_name" name="project[name]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_slug">
                   Slug
                 </label>
 
                 <div class="control">
-                  <input name="project[slug]" class="input" type="text">
+                  <input id="project_slug" name="project[slug]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field cell is-col-span-2">
-                <label class="label">
+                <label class="label" for="project_project_type">
                   Project Type
                 </label>
 
                 <div class="control">
                   <div class="select is-block">
-                    <select name="project[project_type]">
+                    <select id="project_project_type" name="project[project_type]">
                       <option value="" selected="selected"></option>
 
                       <option value="application">
@@ -544,25 +542,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-4">
-                <label class="label">
+                <label class="label" for="project_repository">
                   Repository
                 </label>
 
                 <div class="control">
-                  <input name="project[repository]" class="input" type="text">
+                  <input id="project_repository" name="project[repository]" class="input" type="text">
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="project_active">
                   &nbsp;
                 </label>
 
                 <div class="control px-1 py-2">
-                  <label class="checkbox">
+                  <label class="checkbox" for="project_active">
                     <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                    <input name="project[active]" type="checkbox" value="1">
+                    <input id="project_active" name="project[active]" type="checkbox" value="1">
 
                     <span class="ml-1">
                       Active
@@ -572,15 +570,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field">
-                <label class="label">
+                <label class="label" for="project_public">
                   &nbsp;
                 </label>
 
                 <div class="control px-1 py-2">
-                  <label class="checkbox">
+                  <label class="checkbox" for="project_public">
                     <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                    <input name="project[public]" type="checkbox" value="1">
+                    <input id="project_public" name="project[public]" type="checkbox" value="1">
 
                     <span class="ml-1">
                       Public
@@ -590,12 +588,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
               </div>
 
               <div class="field cell is-col-span-6">
-                <label class="label">
+                <label class="label" for="project_description">
                   Description
                 </label>
 
                 <div class="control">
-                  <textarea name="project[description]" class="textarea"></textarea>
+                  <textarea id="project_description" name="project[description]" class="textarea"></textarea>
                 </div>
               </div>
 
@@ -623,7 +621,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with a result with data' do
         let(:data) do
@@ -650,33 +648,33 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
 
               <div class="grid">
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_name">
                     Name
                   </label>
 
                   <div class="control">
-                    <input name="project[name]" class="input" type="text" value="Example Application">
+                    <input id="project_name" name="project[name]" class="input" type="text" value="Example Application">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_slug">
                     Slug
                   </label>
 
                   <div class="control">
-                    <input name="project[slug]" class="input" type="text" value="ex-app">
+                    <input id="project_slug" name="project[slug]" class="input" type="text" value="ex-app">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_project_type">
                     Project Type
                   </label>
 
                   <div class="control">
                     <div class="select is-block">
-                      <select name="project[project_type]">
+                      <select id="project_project_type" name="project[project_type]">
                         <option value=""></option>
 
                         <option value="application" selected="selected">
@@ -696,25 +694,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-4">
-                  <label class="label">
+                  <label class="label" for="project_repository">
                     Repository
                   </label>
 
                   <div class="control">
-                    <input name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
+                    <input id="project_repository" name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_active">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_active">
                       <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                      <input name="project[active]" type="checkbox" checked="checked" value="1">
+                      <input id="project_active" name="project[active]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Active
@@ -724,15 +722,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_public">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_public">
                       <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                      <input name="project[public]" type="checkbox" checked="checked" value="1">
+                      <input id="project_public" name="project[public]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Public
@@ -742,12 +740,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-6">
-                  <label class="label">
+                  <label class="label" for="project_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="project[description]" class="textarea">
+                    <textarea id="project_description" name="project[description]" class="textarea">
                       An example application.
                     </textarea>
                   </div>
@@ -777,7 +775,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
 
       describe 'with a result with data and errors' do
@@ -812,12 +810,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
 
               <div class="grid">
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_name">
                     Name
                   </label>
 
                   <div class="control has-icons-right">
-                    <input name="project[name]" class="input is-danger" type="text" value="Example Application">
+                    <input id="project_name" name="project[name]" class="input is-danger" type="text" value="Example Application">
 
                     <span class="icon is-small is-right">
                       <i class="fa-solid fa-circle-xmark"></i>
@@ -830,23 +828,23 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_slug">
                     Slug
                   </label>
 
                   <div class="control">
-                    <input name="project[slug]" class="input" type="text" value="ex-app">
+                    <input id="project_slug" name="project[slug]" class="input" type="text" value="ex-app">
                   </div>
                 </div>
 
                 <div class="field cell is-col-span-2">
-                  <label class="label">
+                  <label class="label" for="project_project_type">
                     Project Type
                   </label>
 
                   <div class="control">
                     <div class="select is-danger is-block">
-                      <select name="project[project_type]">
+                      <select id="project_project_type" name="project[project_type]">
                         <option value=""></option>
 
                         <option value="application" selected="selected">
@@ -870,25 +868,25 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-4">
-                  <label class="label">
+                  <label class="label" for="project_repository">
                     Repository
                   </label>
 
                   <div class="control">
-                    <input name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
+                    <input id="project_repository" name="project[repository]" class="input" type="text" value="example.com/projects/ex-app">
                   </div>
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_active">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_active">
                       <input autocomplete="off" name="project[active]" type="hidden" value="0">
 
-                      <input name="project[active]" type="checkbox" checked="checked" value="1">
+                      <input id="project_active" name="project[active]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Active
@@ -898,15 +896,15 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field">
-                  <label class="label">
+                  <label class="label" for="project_public">
                     &nbsp;
                   </label>
 
                   <div class="control px-1 py-2">
-                    <label class="checkbox">
+                    <label class="checkbox" for="project_public">
                       <input autocomplete="off" name="project[public]" type="hidden" value="0">
 
-                      <input name="project[public]" type="checkbox" checked="checked" value="1">
+                      <input id="project_public" name="project[public]" type="checkbox" checked="checked" value="1">
 
                       <span class="ml-1">
                         Public
@@ -916,12 +914,12 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
                 </div>
 
                 <div class="field cell is-col-span-6">
-                  <label class="label">
+                  <label class="label" for="project_description">
                     Description
                   </label>
 
                   <div class="control">
-                    <textarea name="project[description]" class="textarea">
+                    <textarea id="project_description" name="project[description]" class="textarea">
                       An example application.
                     </textarea>
                   </div>
@@ -951,7 +949,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
   end

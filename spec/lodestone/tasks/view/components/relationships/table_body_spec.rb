@@ -68,12 +68,12 @@ do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with a task' do
       let(:task) { FactoryBot.build(:task, title: 'Example Task') }
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with relationships' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -132,7 +132,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with inverse relationships' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -191,7 +191,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with a task with relationships and inverse relationships' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -297,7 +297,7 @@ do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
-  include Librum::Components::RSpec::Deferred::ComponentExamples
-
   subject(:component) do
     described_class.new(**required_keywords, **component_options)
   end
@@ -33,7 +31,6 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
         TEXT
       end
     end
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <table class="table is-fullwidth is-striped">
@@ -77,7 +74,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
         'Confirm deletion?'
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with data' do
       let(:data) do
@@ -287,7 +284,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

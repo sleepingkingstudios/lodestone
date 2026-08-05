@@ -13,7 +13,6 @@ RSpec.describe Lodestone::Tasks::View::Components::Block, type: :component do
   let(:result)            { Cuprum::Result.new }
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
     let(:snapshot) do
       <<~HTML
         <div class="fixed-grid has-0-cols has-4-cols-tablet has-6-cols-desktop">
@@ -52,7 +51,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Block, type: :component do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with a result with data' do
       let(:project) do
@@ -116,7 +115,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Block, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
   end
 end

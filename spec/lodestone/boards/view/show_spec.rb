@@ -3,15 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Lodestone::Boards::View::Show, type: :component do
-  include Librum::Components::RSpec::Deferred::ComponentExamples
-
   subject(:component) { described_class.new(result:) }
 
   let(:result) { Cuprum::Result.new }
 
   describe '#call' do
-    let(:rendered) { pretty_render(component) }
-    let(:value)    { {} }
+    let(:value) { {} }
     let(:heading_text) do
       'All Tasks'
     end
@@ -88,7 +85,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
       HTML
     end
 
-    it { expect(rendered).to match_snapshot(snapshot) }
+    it { expect(rendered).to match_snapshot }
 
     describe 'with project: value' do
       let(:result) { Cuprum::Result.new(value:) }
@@ -147,7 +144,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
     end
 
     describe 'with tasks: value' do
@@ -276,7 +273,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
         HTML
       end
 
-      it { expect(rendered).to match_snapshot(snapshot) }
+      it { expect(rendered).to match_snapshot }
 
       describe 'with project: value' do
         let(:value)  { super().merge('project' => project) }
@@ -331,7 +328,7 @@ RSpec.describe Lodestone::Boards::View::Show, type: :component do
           HTML
         end
 
-        it { expect(rendered).to match_snapshot(snapshot) }
+        it { expect(rendered).to match_snapshot }
       end
     end
   end

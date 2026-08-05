@@ -10,7 +10,7 @@ RSpec.describe BoardsController, type: :controller do
   describe '.repository' do
     include_examples 'should define class reader',
       :repository,
-      -> { an_instance_of(Cuprum::Rails::Records::Repository) }
+      -> { be_a(Cuprum::Rails::Records::Repository) }
   end
 
   describe '.resource' do

@@ -35,6 +35,8 @@ gem 'plumbum', '~> 0.1'
 gem 'sleeping_king_studios-tools', '~> 1.3'
 gem 'stannum', '~> 0.4'
 
+gem 'view_component', '~> 4.12'
+
 group :development, :test do
   gem 'annotaterb', '~> 4.14'
 
