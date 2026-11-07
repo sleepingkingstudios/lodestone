@@ -492,7 +492,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
       let(:snapshot) do
         <<~HTML
           <form class="fixed-grid has-6-cols" action="/projects/ex-app" accept-charset="UTF-8" method="post">
-            <input type="hidden" name="_method" value="patch" autocomplete="off">
+            <input type="hidden" name="_method" value="patch">
 
             <div class="grid">
               <div class="field cell is-col-span-2">
@@ -644,7 +644,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
         let(:snapshot) do
           <<~HTML
             <form class="fixed-grid has-6-cols" action="/projects/ex-app" accept-charset="UTF-8" method="post">
-              <input type="hidden" name="_method" value="patch" autocomplete="off">
+              <input type="hidden" name="_method" value="patch">
 
               <div class="grid">
                 <div class="field cell is-col-span-2">
@@ -806,7 +806,7 @@ RSpec.describe Lodestone::Projects::View::Components::Form, type: :component do
         let(:snapshot) do
           <<~HTML
             <form class="fixed-grid has-6-cols" action="/projects/ex-app" accept-charset="UTF-8" method="post">
-              <input type="hidden" name="_method" value="patch" autocomplete="off">
+              <input type="hidden" name="_method" value="patch">
 
               <div class="grid">
                 <div class="field cell is-col-span-2">

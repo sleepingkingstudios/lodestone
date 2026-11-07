@@ -158,7 +158,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[0]} action="/tasks/investigate-mystery" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -196,7 +196,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[1]} action="/tasks/confirm-hypothesis" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -234,7 +234,7 @@ RSpec.describe Lodestone::Tasks::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[2]} action="/tasks/publish-results" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy

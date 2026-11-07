@@ -118,7 +118,7 @@ RSpec.describe Lodestone::Projects::View::Show, type: :component do
 
               <div class="level-item">
                 <form class="is-inline-block" #{data_attributes} action="/projects/ex-app" accept-charset="UTF-8" method="post">
-                  <input type="hidden" name="_method" value="delete" autocomplete="off">
+                  <input type="hidden" name="_method" value="delete">
 
                   <button class="button is-danger is-outlined" type="submit">
                     <span class="icon">

@@ -452,7 +452,7 @@ do
       let(:snapshot) do
         <<~HTML
           <form class="fixed-grid has-3-cols" action="/tasks/00000000-0000-0000-0000-000000000000" accept-charset="UTF-8" method="post">
-            <input type="hidden" name="_method" value="patch" autocomplete="off">
+            <input type="hidden" name="_method" value="patch">
 
             <div class="grid">
               <input name="task_relationship[source_task_id]" class="input" type="hidden">
@@ -594,7 +594,7 @@ do
         let(:snapshot) do
           <<~HTML
             <form class="fixed-grid has-3-cols" action="/tasks/00000000-0000-0000-0000-000000000000" accept-charset="UTF-8" method="post">
-              <input type="hidden" name="_method" value="patch" autocomplete="off">
+              <input type="hidden" name="_method" value="patch">
 
               <div class="grid">
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">
@@ -762,7 +762,7 @@ do
         let(:snapshot) do
           <<~HTML
             <form class="fixed-grid has-3-cols" action="/tasks/00000000-0000-0000-0000-000000000000" accept-charset="UTF-8" method="post">
-              <input type="hidden" name="_method" value="patch" autocomplete="off">
+              <input type="hidden" name="_method" value="patch">
 
               <div class="grid">
                 <input name="task_relationship[source_task_id]" class="input" type="hidden" value="00000000-0000-0000-0000-000000000001">

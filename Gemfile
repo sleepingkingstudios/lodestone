@@ -4,12 +4,12 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.10'
+ruby '3.4.12'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.5' # Use postgresql as the database for Active Record
 gem 'puma', '~> 7.0', '>= 7.2.1'
-gem 'rails', '~> 8.0.2', '>= 8.0.2.1'
+gem 'rails', '~> 8.1.0', '>= 8.1.4.1'
 
 # Engines
 gem 'librum-components',
@@ -57,11 +57,12 @@ group :test do
   gem 'rspec-rails', '~> 7.1'
   gem 'rspec-sleeping_king_studios', '~> 2.8', '>= 2.8.5'
 
-  gem 'rubocop', '~> 1.86'
+  gem 'rubocop', '~> 1.92'
   gem 'rubocop-factory_bot', '~> 2.28'
-  gem 'rubocop-rails', '~> 2.35'
-  gem 'rubocop-rspec', '~> 3.9'
-  gem 'rubocop-rspec_rails', '~> 2.32'
+  gem 'rubocop-rails', '~> 2.38' # https://docs.rubocop.org/rubocop-rails/
+  gem 'rubocop-rake', '~> 0.7', '>= 0.7.1'
+  gem 'rubocop-rspec', '~> 3.10' # https://docs.rubocop.org/rubocop-rspec/
+  gem 'rubocop-rspec_rails', '~> 2.33'
 
   gem 'simplecov', '~> 0.21'
 end
