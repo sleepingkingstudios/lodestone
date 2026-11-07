@@ -31,9 +31,9 @@ do
     let(:snapshot) do
       <<~HTML
         <form action="/tasks/example-task/status" accept-charset="UTF-8" method="post">
-          <input type="hidden" name="_method" value="patch" autocomplete="off">
+          <input type="hidden" name="_method" value="patch">
 
-          <input value="archived" autocomplete="off" type="hidden" name="task[status]" id="task_status">
+          <input value="archived" type="hidden" name="task[status]" id="task_status">
 
           <button class="button px-2 py-0 is-borderless is-shadowless" type="submit">
             <span class="icon">

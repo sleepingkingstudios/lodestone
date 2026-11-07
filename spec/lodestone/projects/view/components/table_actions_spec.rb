@@ -53,7 +53,7 @@ do
           </a>
 
           <form class="is-inline-block" #{data_attributes} action="/projects/example-project" accept-charset="UTF-8" method="post">
-            <input type="hidden" name="_method" value="delete" autocomplete="off">
+            <input type="hidden" name="_method" value="delete">
 
             <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
               Destroy

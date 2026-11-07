@@ -168,7 +168,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[0]} action="/projects/ex-app" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -216,7 +216,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[1]} action="/projects/secret" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -264,7 +264,7 @@ RSpec.describe Lodestone::Projects::View::Components::Table, type: :component do
                     </a>
 
                     <form class="is-inline-block" #{data_attributes[2]} action="/projects/dps" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy

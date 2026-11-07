@@ -123,7 +123,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
 
               <div class="level-item">
                 <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task Example Task.\\n\\nConfirm deletion?" action="/tasks/ex-app-0" accept-charset="UTF-8" method="post">
-                  <input type="hidden" name="_method" value="delete" autocomplete="off">
+                  <input type="hidden" name="_method" value="delete">
 
                   <button class="button is-danger is-outlined" type="submit">
                     <span class="icon">
@@ -368,7 +368,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
 
               <div class="level-item">
                 <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task Example Task.\\n\\nConfirm deletion?" action="/tasks/ex-app-0" accept-charset="UTF-8" method="post">
-                  <input type="hidden" name="_method" value="delete" autocomplete="off">
+                  <input type="hidden" name="_method" value="delete">
 
                   <button class="button is-danger is-outlined" type="submit">
                     <span class="icon">
@@ -502,7 +502,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000000.\\n\\nConfirm deletion?" action="/tasks/ex-app-0/relationships/00000000-0000-0000-0000-000000000000" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -536,7 +536,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000001.\\n\\nConfirm deletion?" action="/tasks/ex-app-0/relationships/00000000-0000-0000-0000-000000000001" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -572,7 +572,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000002.\\n\\nConfirm deletion?" action="/tasks/ex-lib-0/relationships/00000000-0000-0000-0000-000000000002" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy
@@ -606,7 +606,7 @@ RSpec.describe Lodestone::Tasks::View::Show, type: :component do
                     </a>
 
                     <form class="is-inline-block" data-action="submit->librum-components-confirm-form#submit" data-controller="librum-components-confirm-form" data-librum-components-confirm-form-message-value="This will permanently delete task_relationship 00000000-0000-0000-0000-000000000003.\\n\\nConfirm deletion?" action="/tasks/ex-lib-1/relationships/00000000-0000-0000-0000-000000000003" accept-charset="UTF-8" method="post">
-                      <input type="hidden" name="_method" value="delete" autocomplete="off">
+                      <input type="hidden" name="_method" value="delete">
 
                       <button class="button has-text-danger is-borderless is-shadowless m-0 p-0 px-1" type="submit">
                         Destroy

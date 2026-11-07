@@ -267,7 +267,7 @@ RSpec.describe Lodestone::View::Layouts::Page, type: :component do
               <div class="level-right">
                 <div class="level-item">
                   <form class="is-inline-block" action="/authentication/session" accept-charset="UTF-8" method="post">
-                    <input type="hidden" name="_method" value="delete" autocomplete="off">
+                    <input type="hidden" name="_method" value="delete">
 
                     <button class="button has-text-danger is-outlined is-borderless is-shadowless m-0 p-0" type="submit">
                       <span class="icon">

@@ -74,7 +74,6 @@ module Spec::Support::Examples
       end
 
       describe '#valid?' do
-        # rubocop:disable Layout/HashAlignment
         include_examples 'should validate the format of',
           :slug,
           message:     'must be in kebab-case',
@@ -92,7 +91,6 @@ module Spec::Support::Examples
             '-invalid-slug' => 'a string with leading dash',
             'invalid-slug-' => 'a string with trailing dash'
           }
-        # rubocop:enable Layout/HashAlignment
 
         include_examples 'should validate the presence of', :slug, type: String
 
